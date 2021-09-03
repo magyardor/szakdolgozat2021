@@ -1,1 +1,1 @@
-# szakdolgozat2021
+# Kisvállalatokat segítő webáruház Andular keretrendszerben
