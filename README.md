@@ -29,4 +29,4 @@ Az általam készített webáruház 3 aktort/szerepkört különböztet meg.
 - Használati esetek: Az alkalmazásban található funkcionális esetek.
 - Relációk: A fentebb leírt eseteket összekötő/összekapcsoló jelölések. A relációk folytonossága, iránya és számossága az adott két végponttól függ.
 
-
+![Admin](use_case_diagram.PNG)
