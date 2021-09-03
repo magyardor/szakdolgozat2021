@@ -14,3 +14,19 @@ A webalkalmazás végső célja, hogy kisvállalkozásoknak kezdeti felületet b
 ## Követelmény leírás
 
 ### Funkcionális követelmények
+
+A webáruház különböző termékek tárolására és árusítására szolgáló alkalmazás.
+
+#### Use case diagram
+
+Diagram magyarázó leírása:
+- Actor: Az alkalmazás használói és a kapcsolódó eszközök (pl.: hardver vagy egyéb a rendszerrel együtműködő programok)
+Az általam készített webáruház 3 aktort/szerepkört különböztet meg.
+  - Az általános felhasználót aki az alkalmazáson keresztül böngészi vagy vásárolja a termékeket. 
+  - A tulajdonost akinek admini jogosultsága van, de nem az admini feladatok ellátását szolgálja, hanem az alkalmazásban szereplő adatok naprakészen tartását menedzseli. 
+  - Az admint aki az alkalmazás készítő és a komolyabb rendszer szintű feladatok menedzselése.
+- System: A diagramban szereplő használati eseteket összefoglaló jelölés.
+- Használati esetek: Az alkalmazásban található funkcionális esetek.
+- Relációk: A fentebb leírt eseteket összekötő/összekapcsoló jelölések. A relációk folytonossága, iránya és számossága az adott két végponttól függ.
+
+
