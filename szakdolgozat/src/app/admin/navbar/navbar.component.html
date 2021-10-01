@@ -1,1 +1,50 @@
-<p>navbar works!</p>
+<mat-toolbar class="toolbar" style="box-shadow: 0px -20px 20px 20px #000;">
+  <span class="material-icons pointer noselect" (click)="isExpanded = !isExpanded">menu</span>
+</mat-toolbar>
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav [ngClass]="{'opened-menu': isExpanded || isShowing}" class="example-sidenav" mode="side"
+    opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+    <div id="sidenav">
+      <mat-nav-list class="p-0">
+        <mat-list-item [routerLink]="['/home']">
+          <span class="material-icons m-3 noselect"> home </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Home</span>
+        </mat-list-item>
+        <div class="subMenuTitle">Add Products</div>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/add-products']">
+          <span class="material-icons m-3 noselect"> add </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Add Product</span>
+        </mat-list-item>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/products-list']">
+          <span class="material-icons m-3 noselect"> list </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Manage Products</span>
+        </mat-list-item>
+        <div class="subMenuTitle">News</div>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/news-list/add-news']">
+          <span class="material-icons m-3 noselect"> add </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Add News</span>
+        </mat-list-item>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/news-list']">
+          <span class="material-icons m-3 noselect"> list </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Manage News</span>
+        </mat-list-item>
+      </mat-nav-list>
+      <mat-nav-list [routerLinkActive]="['selected']" class="pb-2">
+        <div class="subMenuTitle">Account</div>
+        <mat-list-item [routerLink]="['/admin/add-user']">
+          <span class="material-icons m-3 noselect"> add </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}"
+            [routerLinkActive]="['selected']">Add User</span>
+        </mat-list-item>
+        <mat-list-item (click)="logOut()">
+          <span class="material-icons m-3 noselect logout"> power_off </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Logout</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content" style="margin: 15px;">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContainerComponent } from './container/container.component';
 import { FooterComponent } from './container/footer/footer.component';
 import { JwtInterceptor } from './service/interceptors/jwt.interceptor';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,13 @@ import { JwtInterceptor } from './service/interceptors/jwt.interceptor';
     HomeComponent,
     ContainerComponent,
     FooterComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    SharedModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
   bootstrap: [AppComponent]

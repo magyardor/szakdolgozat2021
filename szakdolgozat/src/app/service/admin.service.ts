@@ -2,7 +2,6 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Subject } from "rxjs";
-import { environment } from '../../environments/environment';
 import { UserData } from "../models/admin.model";
 
 @Injectable({providedIn: 'root'})
@@ -38,7 +37,8 @@ export class AdminService {
 
   logIn(email: string, password: string){
     const authData: UserData = {email: email, password: password};
-    this.http.post<{token: string, expiresIn: number}>("http://localhost:3000/api/auth/login", authData).subscribe(res => {
+    this.http.post<{token: string, expiresIn: number}>("http://localhost:3000/api/auth/login", authData)
+    .subscribe(res => {
       const tokens = res.token;
       this.token = tokens;
       if(tokens){
@@ -50,7 +50,7 @@ export class AdminService {
         const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
         console.log(expirationDate);
         this.saveAuthData(tokens, expirationDate);
-        this.router.navigate(["/"]);
+        this.router.navigate(["/admin/products-list"]);
       }
     });
   }
@@ -76,7 +76,7 @@ export class AdminService {
     this.authStatusListener.next(false);
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/admin/login"]);
   }
 
   private setAuthTimer(duration: number){
