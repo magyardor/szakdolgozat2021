@@ -1,7 +1,7 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form [formGroup]="userForm" class="form-group" *ngIf="!isLoading">
-    <div id="add-user-text">Log in</div>
+  <form [formGroup]="addUserForm" class="form-group" *ngIf="!isLoading">
+    <div id="add-user-text">Add user</div>
     <mat-form-field>
       <input id="useremail" matInput formControlName="email" type="email" placeholder="Email" required email>
       <mat-error>Please enter a valid email.</mat-error>
@@ -11,7 +11,7 @@
       <mat-error>Please enter a valid password</mat-error>
     </mat-form-field>
     <div id="button-container">
-      <button mat-raised-button color="primary" (click)="login()">Log in</button>
+      <button mat-raised-button color="primary" (click)="addUser()">Add user</button>
     </div>
   </form>
 </mat-card>
