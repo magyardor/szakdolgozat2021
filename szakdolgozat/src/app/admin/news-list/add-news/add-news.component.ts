@@ -38,16 +38,17 @@ export class AddNewsComponent implements OnInit {
     });
     this.route.paramMap.subscribe((paramMap => {
       if(paramMap.has('newsID')) {
-        this.isLoading = true;
         this.mode = 'edit';
         this.newsID = paramMap.get('newsID');
+        this.isLoading = true;
+        console.log(this.newsID)
         this.service.getNew(this.newsID).subscribe(newsData => {
           this.isLoading = false;
           this.news = {id: newsData._id, title: newsData.title, description: newsData.description, imagePath: newsData.imagePath};
           this.form.setValue({
-            title: newsData.title,
-            description: newsData.description,
-            imagePath: newsData.imagePath
+            title: this.news.title,
+            description: this.news.description,
+            imagePath: this.news.imagePath
           });
         });
       }
@@ -64,7 +65,7 @@ export class AddNewsComponent implements OnInit {
     this.form.get('image')?.updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
-      this.imagePreview = reader.result;
+      this.imagePreview = reader.result as string;
     };
     reader.readAsDataURL(file);
   }
@@ -75,10 +76,10 @@ export class AddNewsComponent implements OnInit {
     }
     this.isLoading = true;
     if(this.mode === 'create') {
-      this.service.addNews(this.form.value.title, this.form.value.content, this.form.value.image);
+      this.service.addNews(this.form.value.title, this.form.value.description, this.form.value.image);
     }
     else {
-      this.service.updateNews(this.newsID, this.form.value.title, this.form.value.content, this.form.value.imagePath);
+      this.service.updateNews(this.newsID, this.form.value.title, this.form.value.description, this.form.value.imagePath);
     }
     this.form.reset();
 

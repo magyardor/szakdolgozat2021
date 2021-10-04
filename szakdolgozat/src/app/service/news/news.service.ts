@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 import { map } from 'rxjs/operators';
 import { News } from 'src/app/models/news.model';
@@ -9,6 +10,8 @@ import { News } from 'src/app/models/news.model';
   providedIn: 'root'
 })
 export class NewsService {
+private news: News[] = [];
+private newsUpdated = new Subject<{news: News[]; newsCount: number}>();
 
 constructor(
   private http: HttpClient,
@@ -17,7 +20,7 @@ constructor(
 
   getNews(newsPerPage: number, currentPage: number) {
     const queryParams = `?pagesize=${newsPerPage}&page=${currentPage}`;
-    this.http.get<{message: string, news: any, maxNews: number}>("" + queryParams)
+    this.http.get<{message: string, news: any, maxNews: number}>("http://localhost:3000/api/news" + queryParams)
       .pipe(map(newsData => {
         return {news: newsData.news.map((post: any) => {
           return {
@@ -27,7 +30,17 @@ constructor(
             imagePath: post.imagePath
           };
         }), maxNews: newsData.maxNews}
-      }))
+      })).subscribe(transformData => {
+        this.news = transformData.news;
+        this.newsUpdated.next({
+          news: [...this.news],
+          newsCount: transformData.maxNews
+        });
+      });
+  }
+
+  getNewsUpdateListener() {
+    return this.newsUpdated.asObservable();
   }
 
   getNew(id: any) {
@@ -46,9 +59,9 @@ constructor(
   }
 
   updateNews(id: any, title: string, description: string, image: string){
-    let newsData;
+    let newsData: News | FormData;
     if(typeof(image) === "object"){
-      const newsData = new FormData();
+      newsData = new FormData();
       newsData.append("id", id),
       newsData.append("title", title),
       newsData.append("description", description),

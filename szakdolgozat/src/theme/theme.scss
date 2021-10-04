@@ -1,0 +1,25 @@
+:root {
+  --main-color: rgba(var(--main-color-v), 1);
+  --secondary-color: rgba(var(--secondary-color-v), 1);
+  --highlighter-color: rgba(var(--highlighter-color-v), 1);
+  --dark-color: rgba(var(--dark-color-v), 1);
+  --light-color: rgba(var(--light-color-v), 1);
+  --white-color: rgba(var(--white-color-v), 1);
+  --success-color: rgba(var(--success-color-v), 1);
+  --danger-color: rgba(var(--danger-color-v), 1);
+  --warning-color: rgba(var(--warning-color-v), 1);
+  --input-color: rgba(var(--input-color-v), 1);
+
+  // colors by RGB value for adding different opacity
+  // eg: `color: rgba(var(--main-color-v), 0.5);`
+  --main-color-v: 204, 255, 229;
+  --secondary-color-v: 255, 229, 204;
+  --highlighter-color-v: 204, 255, 255;
+  --dark-color-v: 37, 41, 51;
+  --light-color-v: 224, 224, 224;
+  --white-color-v: 255, 255, 255;
+  --success-color-v: 153, 255, 153;
+  --danger-color-v: 255, 153, 153;
+  --warning-color-v: 255, 204, 153;
+  --input-color-v: 225, 230, 240;
+}

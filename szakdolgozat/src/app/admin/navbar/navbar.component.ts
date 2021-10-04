@@ -8,6 +8,9 @@ import { AdminService } from 'src/app/service/admin.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  mobileQuery!: MediaQueryList;
+  menuSetup!: any[];
+
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
   isExpanded = true;
   showSubmenu: boolean = false;

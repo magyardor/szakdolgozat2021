@@ -1,7 +1,126 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./theme/theme.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+  background-color: var(--white-color);
+  /* @include ngx-popperjs-theme(var(--highlighter-color), var(--white-color)); */
+}
+* { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@mixin box-shadow {
+  -webkit-box-shadow: 0px 4px 10px 0px rgba(var(--dark-color-v), 0.3);
+  -moz-box-shadow: 0px 4px 10px 0px rgba(var(--dark-color-v), 0.3);
+  box-shadow: 0px 4px 10px 0px rgba(var(--dark-color-v), 0.3);
+}
+@mixin button-properties {
+  border-width: 2px;
+  border-radius: 5px;
+  min-width: 140px;
+  min-height: 40px;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 4px;
+  transition: all 300ms ease-in-out;
+
+  &:hover {
+    @include box-shadow;
+  }
+}
+
+.btn-cta {
+  @include button-properties;
+  background-image: linear-gradient(
+    to right,
+    var(--main-color),
+    var(--secondary-color)
+  ) !important;
+  color: var(--white-color) !important;
+  border: none !important;
+  padding: 0.5rem 1.5rem !important;
+}
+.btn-main {
+  @include button-properties;
+  background-color: var(--main-color) !important;
+  color: var(--white-color) !important;
+  border: 1px solid var(--main-color) !important;
+}
+.btn-secondary {
+  @include button-properties;
+  background-color: var(--white-color) !important;
+  color: var(--main-color) !important;
+  border-color: var(--main-color) !important;
+}
+.btn-danger {
+  @include button-properties;
+  background-color: var(--danger-color) !important;
+  color: var(--white-color) !important;
+  border-color: var(--danger-color) !important;
+}
+.btn-success {
+  @include button-properties;
+  background-color: var(--success-color) !important;
+  color: var(--white-color) !important;
+  border-color: var(--success-color) !important;
+}
+.btn-warn {
+  @include button-properties;
+  background-color: var(--warning-color) !important;
+  color: var(--dark-color) !important;
+  border-color: var(--warning-color) !important;
+}
+/* .btn-main-to-sec {
+  @include button-properties;
+  background: var(--main-to-sec-linear-gradient-v) !important;
+  color: var(--white-color) !important;
+  border: none !important;
+} */
+.btn-main-outlined {
+  @include button-properties;
+  background: var(--white-color) !important;
+  color: var(--main-color) !important;
+  border: 1px solid var(--main-color) !important;
+}
+.btn-cancel {
+  @include button-properties;
+  background: var(--white-color) !important;
+  color: var(--secondary-color) !important;
+  border: 1px solid var(--main-color) !important;
+}
+.btn-delete {
+  @include button-properties;
+  background: var(--warning-color) !important;
+  color: var(--white-color) !important;
+  border: 1px solid var(--warning-color) !important;
+}
+.btn-highlighter {
+  @include button-properties;
+  background-color: var(--highlighter-color) !important;
+  color: var(--white-color) !important;
+  border: 1px solid var(--highlighter-color) !important;
+}
+
+@mixin colored-box-shadow {
+  @include box-shadow;
+  margin: 1rem;
+  padding: 1rem;
+}
+.white-box-shadow {
+  @include colored-box-shadow;
+  background-color: var(--white-color);
+}
+.primary-box-shadow {
+  @include colored-box-shadow;
+  background-color: var(--main-color);
+}
+.secondary-box-shadow {
+  @include colored-box-shadow;
+  background-color: var(--secondary-color);
+}
+.dark-box-shadow {
+  @include colored-box-shadow;
+  background-color: var(--dark-color);
+}
 
 mat-card {
   display: flex;
@@ -30,12 +149,46 @@ form{
       border-bottom: 2px solid #707070;
       font-size: 18px;
   }
+}
 
-  button{
-      width:181px;
-      height:56px;
-      background-color: #1B3E73;
-      color: white;
-      border-radius: 5px;
-  }
+.color-primary {
+  color: var(--main-color) !important;
+}
+.color-secondary {
+  color: var(--secondary-color) !important;
+}
+.color-highlighter {
+  color: var(--highlighter-color) !important;
+}
+.color-dark {
+  color: var(--dark-color) !important;
+}
+.color-light {
+  color: var(--light-color) !important;
+}
+.color-white {
+  color: var(--white-color) !important;
+}
+.color-success {
+  color: var(--success-color) !important;
+}
+.color-danger {
+  color: var(--danger-color) !important;
+}
+.color-warning {
+  color: var(--warning-color) !important;
+}
+.pointer {
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.noselect {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

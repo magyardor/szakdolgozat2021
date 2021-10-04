@@ -18,43 +18,41 @@ const storage = multer.diskStorage({
     if(isValid) {
       error = null;
     }
-    callback(null, "backend/images/news");
+    callback(error, "backend/images/news");
   },
   filename: (req, file, callback) => {
-    const name = file.originalname.toLowerCase().split(' ').join('-');
+    const name = file.originalname.toLowerCase().split(" ").join("-");
     const ext = MIME_TYPE_MAP[file.mimetype];
-    callback(null, name + '-' + Date.now() + '.' + ext);
+    callback(null, name + "-" + Date.now() + "." + ext);
   }
 });
 
 router.post("",
-  checkAuth,
   multer({storage: storage}).single("image"), (req, res, next) => {
-  const url = req.protocol + '://' + req.get("host");
+  const url = req.protocol + "://" + req.get("host");
   const news = new News({
     title: req.body.title,
     description: req.body.description,
-    imagePath: url + "/images/news/" + req.file.filename
+    imagePath: url + "/images/news" + req.file.filename
   });
+  console.log(news);
   news.save().then(result => {
+    console.log(result);
     res.status(201).json({
-      message: 'News added successfully',
+      message: "News added successfully",
       news: {
-        id: result._id,
-        title: result.title,
-        description: result.description,
-        imagePath: result.imagePath
-      },
+        ...result,
+        id: result._id
+      }
     });
   });
 });
 
 router.put("/:id",
-  checkAuth,
   multer({storage: storage}).single("image"), (req, res, next) => {
   let imagePath = req.body.imagePath;
   if(req.file) {
-    const url = req.protocol + '://' + req.get("host");
+    const url = req.protocol + "://" + req.get("host");
     imagePath = url + "/images/news/" + req.file.filename
   }
   const news = new News({
@@ -63,6 +61,7 @@ router.put("/:id",
     description: req.body.description,
     imagePath: imagePath
   });
+  console.log(news);
   News.updateOne({_id: req.params.id}, news).then(result => {
     res.status(200).json(
       {message: "Update succsessful!"}
@@ -84,7 +83,7 @@ router.get("", (req, res, next) => {
   })
   .then(count => {
     res.status(200).json({
-      message: 'News fetched successfully!',
+      message: "News fetched successfully!",
       news: fetchNews,
       maxNews: count
     });
@@ -97,17 +96,16 @@ router.get("/:id", (req, res, next) => {
       res.status(200).json(news);
     }
     else{
-      res.status(404).json({message: 'News not found!'});
+      res.status(404).json({message: "News not found!"});
     }
   });
 });
 
 router.delete("/:id",
-  checkAuth,
   (req, res, next) => {
   News.deleteOne({_id: req.params.id}).then( result => {
     res.status(200).json({
-      message: 'News deleted!'
+      message: "News deleted!"
     });
   });
 });

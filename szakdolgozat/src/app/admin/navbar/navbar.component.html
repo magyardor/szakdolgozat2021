@@ -10,7 +10,7 @@
           <span class="material-icons m-3 noselect"> home </span>
           <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Home</span>
         </mat-list-item>
-        <div class="subMenuTitle">Add Products</div>
+        <div class="subMenuTitle animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Add Products</div>
         <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/add-products']">
           <span class="material-icons m-3 noselect"> add </span>
           <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Add Product</span>
@@ -19,7 +19,7 @@
           <span class="material-icons m-3 noselect"> list </span>
           <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Manage Products</span>
         </mat-list-item>
-        <div class="subMenuTitle">News</div>
+        <div class="subMenuTitle animated-text" [ngClass]="{'opened': isExpanded || isShowing}">News</div>
         <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/news-list/add-news']">
           <span class="material-icons m-3 noselect"> add </span>
           <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Add News</span>
@@ -30,7 +30,7 @@
         </mat-list-item>
       </mat-nav-list>
       <mat-nav-list [routerLinkActive]="['selected']" class="pb-2">
-        <div class="subMenuTitle">Account</div>
+        <div class="subMenuTitle animated-text"  [ngClass]="{'opened': isExpanded || isShowing}">Account</div>
         <mat-list-item [routerLink]="['/admin/add-user']">
           <span class="material-icons m-3 noselect"> add </span>
           <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}"
