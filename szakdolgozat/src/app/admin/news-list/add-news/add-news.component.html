@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="primary-box-shadow">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="form" (submit)="onAddNews()" *ngIf="!isLoading">
     <mat-form-field>
@@ -6,7 +6,7 @@
       <mat-error *ngIf="form.get('title')?.invalid">Please enter a post title.</mat-error>
     </mat-form-field>
     <div>
-      <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+      <button mat-stroked-button type="button" class="btn-secondary" (click)="filePicker.click()">Pick Image</button>
       <input type="file" #filePicker (change)="onImagePicked($event)">
     </div>
     <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image')?.valid">
@@ -18,7 +18,7 @@
     </mat-form-field>
     <button
       mat-raised-button
-      color="warn"
+      class="btn-warn"
       type="submit">Save post</button>
   </form>
 </mat-card>

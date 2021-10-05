@@ -15,7 +15,12 @@ const routes: Routes = [
     /* canActivate: [AuthGuard] */
   },
   {
-    path: 'add-news',
+    path: 'create',
+    component: AddNewsComponent,
+    /* canActivate: [AuthGuard] */
+  },
+  {
+    path: 'edit/:newsId',
     component: AddNewsComponent,
     /* canActivate: [AuthGuard] */
   }
@@ -29,8 +34,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  exports: [RouterModule],
   declarations: [
+    NewsListComponent,
     AddNewsComponent
   ]
 })

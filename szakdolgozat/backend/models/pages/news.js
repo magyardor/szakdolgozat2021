@@ -6,4 +6,4 @@ const newsSchema = mongoose.Schema({
   imagePath: { type: String, required: true }
 });
 
-module.exports = mongoose.model("News", newsSchema);
+module.exports = mongoose.model('News', newsSchema);

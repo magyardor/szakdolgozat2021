@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const authRoutes = require("./routes/auth/auth");
 const newsRoutes = require("./routes/news/news");
+const productsRoutes = require("./routes/products/products");
 
 const app = express();
 mongoose.connect("mongodb+srv://dorina:34QZvkfYLLLhpCaP@webshop.zaoii.mongodb.net/myFirstDatabase")
@@ -27,6 +28,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/auth", authRoutes);
-app.use("api/news", newsRoutes);
+app.use("/api/news", newsRoutes);
+app.use("/api/products", productsRoutes);
 
 module.exports = app;

@@ -1,0 +1,28 @@
+<mat-card class="primary-box-shadow">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onAddProducts()" *ngIf="!isLoading">
+    <mat-form-field>
+      <input matInput type="text" formControlName="name" placeholder="Name">
+      <mat-error *ngIf="form.get('name')?.invalid">Please enter a products name.</mat-error>
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" class="btn-secondary" (click)="filePicker.click()">Pick Image</button>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image')?.valid">
+      <img [src]="imagePreview" [alt]="form.value.name">
+    </div>
+    <mat-form-field>
+      <textarea matInput rows="4" formControlName="description" placeholder="Description"></textarea>
+      <mat-error *ngIf="form.get('description')?.invalid">Please enter a products description.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" formControlName="price" placeholder="Price">
+      <mat-error *ngIf="form.get('price')?.invalid">Please enter a products price.</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      class="btn-warn"
+      type="submit">Save products</button>
+  </form>
+</mat-card>

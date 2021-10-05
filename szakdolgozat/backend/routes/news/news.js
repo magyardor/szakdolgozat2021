@@ -6,9 +6,9 @@ const checkAuth = require("../../middleware/authMiddleware");
 
 const router = express.Router();
 const MIME_TYPE_MAP = {
-  'image/png': 'png',
-  'image/jpeg': 'jpg',
-  'image/jpg': 'jpg'
+  "image/png": "png",
+  "image/jpeg": "jpg",
+  "image/jpg": "jpg"
 };
 
 const storage = multer.diskStorage({
@@ -27,13 +27,12 @@ const storage = multer.diskStorage({
   }
 });
 
-router.post("",
-  multer({storage: storage}).single("image"), (req, res, next) => {
+router.post("", multer({storage: storage}).single("image"), (req, res, next) => {
   const url = req.protocol + "://" + req.get("host");
   const news = new News({
     title: req.body.title,
     description: req.body.description,
-    imagePath: url + "/images/news" + req.file.filename
+    imagePath: url + "/images/" + req.file.filename
   });
   console.log(news);
   news.save().then(result => {
@@ -48,12 +47,11 @@ router.post("",
   });
 });
 
-router.put("/:id",
-  multer({storage: storage}).single("image"), (req, res, next) => {
+router.put("/:id", multer({storage: storage}).single("image"), (req, res, next) => {
   let imagePath = req.body.imagePath;
   if(req.file) {
     const url = req.protocol + "://" + req.get("host");
-    imagePath = url + "/images/news/" + req.file.filename
+    imagePath = url + "/images/" + req.file.filename
   }
   const news = new News({
     _id: req.body.id,
@@ -70,28 +68,27 @@ router.put("/:id",
 });
 
 router.get("", (req, res, next) => {
-  const pageSize = +req.query.pagesize;
-  const currentPage = +req.query.page;
-  const newsQuery = News.find();
-  let fetchNews;
+  /* const pageSize = +req.query.pagesize;
+  const currentPage = +req.query.page; */
+  News.find()
+  /* let fetchNews;
   if(pageSize && currentPage) {
     newsQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
   }
   newsQuery.then(documents => {
     fetchNews = documents;
     return News.count();
-  })
+  })*/
   .then(count => {
     res.status(200).json({
       message: "News fetched successfully!",
-      news: fetchNews,
-      maxNews: count
+      news: count,
     });
   });
 });
 
 router.get("/:id", (req, res, next) => {
-  News.findById({_id: req.params.id}).then(news => {
+  News.findById(req.params.id).then(news => {
     if(news) {
       res.status(200).json(news);
     }

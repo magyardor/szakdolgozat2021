@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { News } from 'src/app/models/news.model';
 import { NewsService } from 'src/app/service/news/news.service';
 import { mimeType } from 'src/app/service/validators/mime-type.validator';
@@ -11,52 +11,43 @@ import { mimeType } from 'src/app/service/validators/mime-type.validator';
   styleUrls: ['./add-news.component.scss']
 })
 export class AddNewsComponent implements OnInit {
-  form!: FormGroup;
-  imagePreview!: any;
-  isLoading = false;
-  mode = 'create';
-  newsID!: any;
   news!: News;
+  isLoading = false;
+  form!: FormGroup;
+  imagePreview!: string;
+  private mode = "create";
+  private newsId!: any;
 
   constructor(
-    private service: NewsService,
-    private route: ActivatedRoute,
-  ) { }
+    public newsService: NewsService,
+    public route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.form = new FormGroup({
-      title: new FormControl(null, {
-        validators: [Validators.required, Validators.minLength(3)]
-      }),
-      description: new FormControl(null, {
-        validators: [Validators.required]
-      }),
-      image: new FormControl(null, {
-        validators: [Validators.required],
-        asyncValidators: [mimeType]
-      } )
+      title: new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
+      description: new FormControl(null, {validators: [Validators.required]}),
+      image: new FormControl(null, {validators: [Validators.required], asyncValidators: [mimeType]})
     });
-    this.route.paramMap.subscribe((paramMap => {
-      if(paramMap.has('newsID')) {
-        this.mode = 'edit';
-        this.newsID = paramMap.get('newsID');
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has("newsId")) {
+        this.mode = "edit";
+        this.newsId = paramMap.get("newsId");
         this.isLoading = true;
-        console.log(this.newsID)
-        this.service.getNew(this.newsID).subscribe(newsData => {
+        this.newsService.getNew(this.newsId).subscribe(newsData => {
           this.isLoading = false;
           this.news = {id: newsData._id, title: newsData.title, description: newsData.description, imagePath: newsData.imagePath};
           this.form.setValue({
             title: this.news.title,
             description: this.news.description,
-            imagePath: this.news.imagePath
+            image: this.news.imagePath
           });
         });
+      } else {
+        this.mode = "create";
+        this.newsId = '';
       }
-      else {
-        this.mode = 'create';
-        this.newsID = null;
-      }
-    }));
+    });
   }
 
   onImagePicked(event: Event) {
@@ -76,10 +67,10 @@ export class AddNewsComponent implements OnInit {
     }
     this.isLoading = true;
     if(this.mode === 'create') {
-      this.service.addNews(this.form.value.title, this.form.value.description, this.form.value.image);
+      this.newsService.addNews(this.form.value.title, this.form.value.description, this.form.value.image);
     }
     else {
-      this.service.updateNews(this.newsID, this.form.value.title, this.form.value.description, this.form.value.imagePath);
+      this.newsService.updateNews(this.newsId, this.form.value.title, this.form.value.description, this.form.value.image);
     }
     this.form.reset();
 
