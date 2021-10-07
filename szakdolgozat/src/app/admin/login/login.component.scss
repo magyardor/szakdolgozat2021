@@ -1,6 +1,6 @@
 #add-user-text{
     font-size: 32px;
-    color:#1B3E73;
+    color:var(--light-color);
     font-weight: bold;
     padding-bottom: 50px;
 }
@@ -9,3 +9,10 @@
     justify-content: center;
 }
 
+.login {
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20em !important;
+  margin: auto;
+}

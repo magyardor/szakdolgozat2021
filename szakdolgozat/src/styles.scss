@@ -42,13 +42,13 @@ html, body {
 .btn-main {
   @include button-properties;
   background-color: var(--main-color) !important;
-  color: #0066CC !important;
+  color: var(--light-color) !important;
   border: 1px solid var(--main-color) !important;
 }
 .btn-secondary {
   @include button-properties;
   background-color: var(--white-color) !important;
-  color: #0066CC !important;
+  color: var(--light-color) !important;
   border-color: var(--main-color) !important;
 }
 .btn-danger {
@@ -77,9 +77,9 @@ html, body {
 } */
 .btn-main-outlined {
   @include button-properties;
-  background: #0066CC !important;
+  background: var(--light-color) !important;
   color: var(--white-color) !important;
-  border: 1px solid var(--main-color) !important;
+  border: 1px solid var(--light-color) !important;
 }
 .btn-cancel {
   @include button-properties;
@@ -138,6 +138,12 @@ mat-spinner {
   margin: auto;
 }
 
+mat-menu {
+  mat-menu-item {
+    color: var(--light-color) !important;
+  }
+}
+
 form{
   display:flex;
   flex-direction: column;
@@ -150,6 +156,26 @@ form{
     border-bottom: 2px solid #707070;
     font-size: 18px;
   }
+}
+
+table {
+  background-color: var(--white-color) !important;
+  border: solidvar(--light-color) 1px;
+  width: 100%;
+  th {
+    background-color: var(--light-color);
+    /* border: solid var(--white-color) 1px; */
+    color: var(--white-color) !important;
+  }
+  td {
+    /* border: solid#0066CC 1px; */
+    color: var(--light-color) !important;
+  }
+
+  tr:hover {
+    background-color: var(--input-color);
+  }
+
 }
 
 .color-primary {

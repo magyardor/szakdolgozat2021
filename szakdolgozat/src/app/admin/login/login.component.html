@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="primary-box-shadow login">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="userForm" class="form-group" *ngIf="!isLoading">
     <div id="add-user-text">Log in</div>
@@ -11,7 +11,7 @@
       <mat-error>Please enter a valid password</mat-error>
     </mat-form-field>
     <div id="button-container">
-      <button mat-raised-button color="primary" (click)="login()">Log in</button>
+      <button mat-raised-button class="btn-main-outlined" (click)="login()">Log in</button>
     </div>
   </form>
 </mat-card>
