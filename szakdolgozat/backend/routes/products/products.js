@@ -33,7 +33,7 @@ router.post("", multer({storage: storage}).single("image"), (req, res, next) => 
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    imagePath: url + "/images/" + req.file.filename
+    imagePath: url + "/images/products/" + req.file.filename
   });
   console.log(products);
   products.save().then(result => {
@@ -52,14 +52,14 @@ router.put("/:id", multer({storage: storage}).single("image"), (req, res, next) 
   let imagePath = req.body.imagePath;
   if(req.file) {
     const url = req.protocol + "://" + req.get("host");
-    imagePath = url + "/images/" + req.file.filename
+    imagePath = url + "/images/products/" + req.file.filename
   }
   const products = new Products({
     _id: req.body.id,
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    imagePath: imagePath
+    imagePath: req.body.imagePath
   });
   console.log(products);
   Products.updateOne({_id: req.params.id}, products).then(result => {

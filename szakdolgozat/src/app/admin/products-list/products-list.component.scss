@@ -1,0 +1,14 @@
+.prod-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.prod-image img {
+  width: 20%;
+}
+
+mat-menu-item {
+  display: flex !important;
+  align-items: center !important;
+}

@@ -8,6 +8,7 @@
   --success-color: rgba(var(--success-color-v), 1);
   --danger-color: rgba(var(--danger-color-v), 1);
   --warning-color: rgba(var(--warning-color-v), 1);
+  --info-color: rgba(var(--info-color-v), 1);
   --input-color: rgba(var(--input-color-v), 1);
 
   // colors by RGB value for adding different opacity
@@ -21,5 +22,6 @@
   --success-color-v: 153, 255, 153;
   --danger-color-v: 255, 153, 153;
   --warning-color-v: 255, 204, 153;
+  --info-color-v: 153, 204, 255;
   --input-color-v: 224, 224, 224;
 }

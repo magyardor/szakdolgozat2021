@@ -32,7 +32,7 @@ router.post("", multer({storage: storage}).single("image"), (req, res, next) => 
   const news = new News({
     title: req.body.title,
     description: req.body.description,
-    imagePath: url + "/images/" + req.file.filename
+    imagePath: url + "/images/news/" + req.file.filename
   });
   console.log(news);
   news.save().then(result => {
@@ -51,13 +51,13 @@ router.put("/:id", multer({storage: storage}).single("image"), (req, res, next) 
   let imagePath = req.body.imagePath;
   if(req.file) {
     const url = req.protocol + "://" + req.get("host");
-    imagePath = url + "/images/" + req.file.filename
+    imagePath = url + "/images/news/" + req.file.filename
   }
   const news = new News({
     _id: req.body.id,
     title: req.body.title,
     description: req.body.description,
-    imagePath: imagePath
+    imagePath: req.body.imagePath
   });
   console.log(news);
   News.updateOne({_id: req.params.id}, news).then(result => {

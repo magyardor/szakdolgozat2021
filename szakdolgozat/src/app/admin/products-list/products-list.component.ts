@@ -10,7 +10,7 @@ import { ProductsService } from 'src/app/service/products/products.service';
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit, OnDestroy {
-  displayedColumns: string[] = ['id','title','description','image','menu'];
+  displayedColumns: string[] = ['id','name','description','price','image','menu'];
   products: Products[] = [];
   isLoading = false;
   productsSub!: Subscription;

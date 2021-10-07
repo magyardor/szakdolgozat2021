@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertComponent } from './alert/alert.component';
 
 /* Material import */
 import { MatButtonModule } from '@angular/material/button';
@@ -31,6 +32,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { CustomIconComponent } from './custom-icon/custom-icon.component';
+
 
 @NgModule({
   imports: [
@@ -68,6 +71,7 @@ import { MatTreeModule } from '@angular/material/tree';
      MatTreeModule,
   ],
   exports: [
+    AlertComponent,
      /* Material */
      MatButtonModule,
      MatButtonToggleModule,
@@ -97,6 +101,10 @@ import { MatTreeModule } from '@angular/material/tree';
      MatToolbarModule,
      MatTooltipModule,
      MatTreeModule,
+  ],
+  declarations: [
+    AlertComponent,
+    CustomIconComponent
   ],
 })
 export class SharedModule { }

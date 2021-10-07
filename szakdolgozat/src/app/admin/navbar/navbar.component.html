@@ -1,5 +1,6 @@
 <mat-toolbar class="toolbar" style="box-shadow: 0px -20px 20px 20px #000;">
   <span class="material-icons pointer noselect" (click)="isExpanded = !isExpanded">menu</span>
+  <div><h2>Webshop</h2></div>
 </mat-toolbar>
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav [ngClass]="{'opened-menu': isExpanded || isShowing}" class="example-sidenav" mode="side"
@@ -29,12 +30,11 @@
           <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Manage News</span>
         </mat-list-item>
       </mat-nav-list>
-      <mat-nav-list [routerLinkActive]="['selected']" class="pb-2">
+      <mat-nav-list class="pb-2">
         <div class="subMenuTitle animated-text"  [ngClass]="{'opened': isExpanded || isShowing}">Account</div>
-        <mat-list-item [routerLink]="['/admin/add-user']">
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/add-user']">
           <span class="material-icons m-3 noselect"> add </span>
-          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}"
-            [routerLinkActive]="['selected']">Add User</span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Add User</span>
         </mat-list-item>
         <mat-list-item (click)="logOut()">
           <span class="material-icons m-3 noselect logout"> power_off </span>

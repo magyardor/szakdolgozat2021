@@ -19,6 +19,7 @@ mongoose.connect("mongodb+srv://dorina:34QZvkfYLLLhpCaP@webshop.zaoii.mongodb.ne
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use("/images/news", express.static(path.join("backend/images/news")));
+app.use("/images/products", express.static(path.join("backend/images/products")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

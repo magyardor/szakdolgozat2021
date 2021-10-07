@@ -69,6 +69,12 @@ html, body {
   color: var(--white-color) !important;
   border-color: var(--warning-color) !important;
 }
+.btn-info {
+  @include button-properties;
+  background-color: var(--info-color) !important;
+  color: var(--white-color) !important;
+  border-color: var(--info-color) !important;
+}
 /* .btn-main-to-sec {
   @include button-properties;
   background: var(--main-to-sec-linear-gradient-v) !important;
@@ -133,15 +139,38 @@ mat-form-field {
   width: 100%;
 }
 
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--light-color) !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: var(--light-color) !important;
+}
+
 mat-spinner {
   color: var(--main-color);
   margin: auto;
 }
 
-mat-menu {
-  mat-menu-item {
-    color: var(--light-color) !important;
-  }
+.mat-menu-item {
+  color: var(--light-color) !important;
+}
+/* .mat-focus-indicator {
+  display: flex !important;
+  align-items: center;
+} */
+
+mat-paginator {
+  background-color: var(--light-color) !important;
+}
+
+.mat-select-panel {
+  background-color: var(--main-color) !important;
+  color: var(--light-color) !important;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: var(--light-color);
 }
 
 form{
@@ -160,18 +189,31 @@ form{
 
 table {
   background-color: var(--white-color) !important;
-  border: solidvar(--light-color) 1px;
   width: 100%;
   th {
     background-color: var(--light-color);
-    /* border: solid var(--white-color) 1px; */
+    border: solid var(--light-color) 1px;
     color: var(--white-color) !important;
   }
+  th.mat-header-cell {
+    text-align: center;
+  }
+  th.mat-header-cell:first-of-type {
+    padding-left: 0px;
+  }
+  th.mat-header-cell:last-of-type {
+    padding-right: 0px;
+  }
   td {
-    /* border: solid#0066CC 1px; */
+    border: solid var(--light-color) 1px;
     color: var(--light-color) !important;
   }
-
+  td.mat-cell:first-of-type {
+    padding-left: 0px;
+  }
+  td.mat-cell:last-of-type {
+    padding-right: 0px;
+  }
   tr:hover {
     background-color: var(--input-color);
   }

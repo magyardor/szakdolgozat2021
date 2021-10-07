@@ -13,6 +13,7 @@ import { FooterComponent } from './container/footer/footer.component';
 import { JwtInterceptor } from './service/interceptors/jwt.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from './container/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CommonModule } from '@angular/common';
     HomeComponent,
     ContainerComponent,
     FooterComponent,
+    NavbarComponent,
   ],
   imports: [
     CommonModule,
