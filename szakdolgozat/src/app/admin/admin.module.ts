@@ -8,7 +8,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AddUserComponent } from './add-user/add-user.component';
 
 import { AuthGuard } from "../service/guards/auth.guard";
-import { AdminComponent } from "./admin.component";
 
 const routes: Routes = [
   {
@@ -18,16 +17,17 @@ const routes: Routes = [
   {
     path: '',
     component: NavbarComponent,
-    /* canActivate: [AuthGuard], */
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'add-user',
-        component: AddUserComponent
+        component: AddUserComponent,
+        /* canActivate: [AuthGuard], */
       },
       {
         path: 'news-list',
         loadChildren: () => import('./news-list/news-list.module').then(m => m.NewsListModule),
-        /* canActivate: [AuthGuard], */
+       /*  canActivate: [AuthGuard], */
       },
       {
         path: 'products-list',
@@ -57,5 +57,6 @@ const routes: Routes = [
     NavbarComponent,
     AddUserComponent,
   ],
+  providers: [AuthGuard]
 })
 export class AdminModule { }

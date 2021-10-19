@@ -1,8 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Subject } from "rxjs";
+import { BehaviorSubject, Subject } from "rxjs";
 import { UserData } from "../models/admin.model";
+import { AlertService } from "./alert.service";
 
 @Injectable({providedIn: 'root'})
 export class AdminService {
@@ -10,11 +11,16 @@ export class AdminService {
   private tokenTimer!: any;
   private authStatusListener = new Subject<boolean>();
   private isAuthenticated = false;
+  private _userSubject: BehaviorSubject<UserData>
 
   constructor(
     private http: HttpClient,
-    private router: Router
-  ){}
+    private router: Router,
+    private alert: AlertService
+  ){
+    const local = localStorage.getItem('user');
+    this._userSubject = new BehaviorSubject<UserData>(local? JSON.parse(local): null);
+  }
 
   getToken() {
     return this.token;
@@ -26,6 +32,10 @@ export class AdminService {
 
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
+  }
+
+  get user(): UserData {
+    return this._userSubject.value;
   }
 
   async addUser(email: string, password: string){

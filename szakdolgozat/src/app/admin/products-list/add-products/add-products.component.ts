@@ -20,7 +20,7 @@ export class AddProductsComponent implements OnInit {
 
   constructor(
     public productsService: ProductsService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
   ) {}
 
   ngOnInit() {
@@ -68,7 +68,7 @@ export class AddProductsComponent implements OnInit {
     }
     this.isLoading = true;
     if(this.mode === 'add-products') {
-      this.productsService.addProducts(this.form.value.name, this.form.value.description, this.form.value.image, this.form.value.price);
+      this.productsService.addProducts(this.form.value.name, this.form.value.description, this.form.value.image, this.form.value.price)
     }
     else {
       this.productsService.updateProducts(this.productsId, this.form.value.name, this.form.value.description, this.form.value.image, this.form.value.price);

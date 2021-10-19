@@ -14,6 +14,7 @@ import { JwtInterceptor } from './service/interceptors/jwt.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './container/navbar/navbar.component';
+import { ErrorInterceptor } from './service/interceptors/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,10 @@ import { NavbarComponent } from './container/navbar/navbar.component';
     HttpClientModule,
     SharedModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
