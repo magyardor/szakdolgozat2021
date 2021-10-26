@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { News } from 'src/app/models/news.model';
+import { AlertService } from 'src/app/service/alert.service';
 import { NewsService } from 'src/app/service/news/news.service';
 import { mimeType } from 'src/app/service/validators/mime-type.validator';
 
@@ -20,7 +21,8 @@ export class AddNewsComponent implements OnInit {
 
   constructor(
     public newsService: NewsService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private alertService: AlertService,
   ) {}
 
   ngOnInit() {
@@ -63,6 +65,9 @@ export class AddNewsComponent implements OnInit {
 
   onAddNews(): void {
     if(this.form.invalid) {
+      this.alertService.warn('ALERT.WARN.INVALID_FORM');
+      this.form.markAllAsTouched();
+      this.isLoading = false;
       return;
     }
     this.isLoading = true;

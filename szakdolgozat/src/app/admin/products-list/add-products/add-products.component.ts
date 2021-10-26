@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Products } from 'src/app/models/products.model';
+import { AlertService } from 'src/app/service/alert.service';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { mimeType } from 'src/app/service/validators/mime-type.validator';
 
@@ -21,6 +22,7 @@ export class AddProductsComponent implements OnInit {
   constructor(
     public productsService: ProductsService,
     public route: ActivatedRoute,
+    private alertService: AlertService,
   ) {}
 
   ngOnInit() {
@@ -64,6 +66,9 @@ export class AddProductsComponent implements OnInit {
 
   onAddProducts(): void {
     if(this.form.invalid) {
+      this.alertService.warn('ALERT.WARN.INVALID_FORM');
+      this.form.markAllAsTouched();
+      this.isLoading = false;
       return;
     }
     this.isLoading = true;

@@ -42,6 +42,9 @@ export class AdminService {
     const authData: UserData = {email: email, password: password};
     return await this.http.post("http://localhost:3000/api/auth/adduser",authData).subscribe(res => {
       console.log(res);
+    }, error => {
+      console.log(error);
+      this.alert.error(error)
     });
   }
 

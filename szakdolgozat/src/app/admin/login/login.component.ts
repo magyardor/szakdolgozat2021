@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from 'src/app/service/admin.service';
+import { AlertService } from 'src/app/service/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   })
 
   constructor(
-    private service: AdminService
+    private service: AdminService,
+    private alertService: AlertService,
   ) { }
 
   ngOnInit(): void {
@@ -25,11 +27,15 @@ export class LoginComponent implements OnInit {
 
   login() {
     if(this.userForm.invalid){
-      return
+      this.alertService.warn('ALERT.WARN.INVALID_FORM');
+      this.userForm.markAllAsTouched();
+      this.isLoading = false;
+      return;
     }
     this.submitted = true;
     this.isLoading = true;
     this.service.logIn(this.userForm.value.email, this.userForm.value.password);
+    this.alertService.success('ALERT.SUCCESS.LOGIN');
   }
 
 }
