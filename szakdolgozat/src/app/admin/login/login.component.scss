@@ -1,18 +1,59 @@
-#add-user-text{
-    font-size: 32px;
-    color:var(--light-color);
-    font-weight: bold;
-    padding-bottom: 50px;
-}
-#button-container{
-    display: flex;
-    justify-content: center;
+#page-login {
+  height: 100vh;
+  display: flex;
 }
 
-.login {
-  width: 50%;
+#logo-bg {
+  height: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20em !important;
-  margin: auto;
+}
+
+img {
+  width: 80%;
+}
+
+#login-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  form {
+    width: 90%;
+
+    input {
+      width: 100%;
+      background-color: var(--highlighter-color) !important;
+      color: var(--white-color) !important;
+    }
+
+    /* #forgot-password {
+      color: #1b3e73;
+      font-size: 14px;
+    } */
+
+    #add-user-text{
+      font-size: 32px;
+      color:var(--highlighter-color);
+      font-weight: bold;
+      padding-bottom: 50px;
+    }
+
+    #button-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn {
+      background: var(--main-color);
+      box-shadow: inset -10px 0px 20px var(--highlighter-color);
+      border-radius: 5px;
+      color: var(--light-color);
+    }
+
+  }
+
 }

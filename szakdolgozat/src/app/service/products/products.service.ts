@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Products } from 'src/app/models/products.model';
+import { AlertService } from '../alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class ProductsService {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private alert: AlertService
   ) { }
 
   getProducts() {
@@ -61,7 +63,10 @@ export class ProductsService {
       };
       this.products.push(products);
       this.prodUpdated.next([...this.products]);
+      this.alert.success('ALERT.SUCCESS.ADD')
       this.router.navigate(["/admin/products-list"]);
+    }, error => {
+      this.alert.error(error.error.message);
     });
   }
 
@@ -92,7 +97,10 @@ export class ProductsService {
         updatedProducts[oldProductsIndex] = products;
         this.products = updatedProducts;
         this.prodUpdated.next([...this.products]);
+        this.alert.success('ALERT.SUCCESS.MODIFY');
         this.router.navigate(["/admin/products-list"]);
+      }, error => {
+        this.alert.error(error.error.message);
       });
   }
 
@@ -101,6 +109,9 @@ export class ProductsService {
       const updatedProducts = this.products.filter(post => post.id !== productsID);
       this.products = updatedProducts;
       this.prodUpdated.next([...this.products]);
+      this.alert.success('ALERT.SUCCESS.DELETE');
+    }, error => {
+      this.alert.error(error.error.message);
     });
   }
 }

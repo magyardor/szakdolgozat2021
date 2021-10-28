@@ -1,6 +1,7 @@
 <mat-card class="primary-box-shadow">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="form" (submit)="onAddNews()" *ngIf="!isLoading">
+    <div><h2>Add News</h2></div>
     <mat-form-field>
       <input matInput type="text" formControlName="title" placeholder="Title">
       <mat-error *ngIf="form.get('title')?.invalid">Please enter a post title.</mat-error>

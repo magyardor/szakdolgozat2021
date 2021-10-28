@@ -33,7 +33,6 @@ export class AddUserComponent implements OnInit {
     }
     this.isLoading = true;
     this.service.addUser(this.addUserForm.value.email, this.addUserForm.value.password);
-    this.alertService.success('ALERT.SUCCESS.ADD');
   }
 
 }

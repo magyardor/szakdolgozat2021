@@ -135,11 +135,16 @@ mat-card {
   margin: auto;
 }
 
-mat-form-field {
+.mat-form-field {
   width: 100%;
+  /* color: var(--main-color) !important; */
 }
 
 .mat-form-field.mat-focused .mat-form-field-label {
+  color: var(--light-color) !important;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-label {
   color: var(--light-color) !important;
 }
 
@@ -147,8 +152,8 @@ mat-form-field {
   background-color: var(--light-color) !important;
 }
 
-mat-spinner {
-  color: var(--main-color);
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: var(--main-color) !important;
   margin: auto;
 }
 

@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     this.isLoading = true;
     this.service.logIn(this.userForm.value.email, this.userForm.value.password);
-    this.alertService.success('ALERT.SUCCESS.LOGIN');
   }
 
 }

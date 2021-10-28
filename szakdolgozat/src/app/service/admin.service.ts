@@ -41,10 +41,10 @@ export class AdminService {
   async addUser(email: string, password: string){
     const authData: UserData = {email: email, password: password};
     return await this.http.post("http://localhost:3000/api/auth/adduser",authData).subscribe(res => {
-      console.log(res);
+      this.alert.success('ALERT.SUCCESS.ADD');
     }, error => {
       console.log(error);
-      this.alert.error(error)
+      this.alert.error(error.error.message)
     });
   }
 
@@ -63,8 +63,12 @@ export class AdminService {
         const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
         console.log(expirationDate);
         this.saveAuthData(tokens, expirationDate);
+        this.alert.success('ALERT.SUCCESS.LOGIN');
         this.router.navigate(["/admin/products-list"]);
       }
+    }, error => {
+      console.log(error)
+      this.alert.error(error.error.message);
     });
   }
 
@@ -89,6 +93,7 @@ export class AdminService {
     this.authStatusListener.next(false);
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
+    this.alert.success('ALERT.SUCCESS.LOGOUT')
     this.router.navigate(["/admin/login"]);
   }
 

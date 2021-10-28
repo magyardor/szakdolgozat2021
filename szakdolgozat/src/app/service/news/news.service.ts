@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 
 import { map } from 'rxjs/operators';
 import { News } from 'src/app/models/news.model';
+import { AlertService } from '../alert.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ private newsUpdated = new Subject<News[]>();
 constructor(
   private http: HttpClient,
   private router: Router,
+  private alert: AlertService
 ) { }
 
   getNews() {
@@ -59,7 +61,10 @@ constructor(
       };
       this.news.push(news);
       this.newsUpdated.next([...this.news]);
+      this.alert.success('ALERT.SUCCESS.ADD')
       this.router.navigate(["/admin/news-list"]);
+    }, error => {
+      this.alert.error(error.error.message);
     });
   }
 
@@ -88,7 +93,10 @@ constructor(
         updatedNews[oldNewsIndex] = news;
         this.news = updatedNews;
         this.newsUpdated.next([...this.news]);
+        this.alert.success('ALERT.SUCCESS.MODIFY');
         this.router.navigate(["/admin/news-list"]);
+      }, error => {
+        this.alert.error(error.error.message);
       });
   }
 
@@ -96,7 +104,10 @@ constructor(
     return this.http.delete("http://localhost:3000/api/news/" + newsID).subscribe(() =>{
       const updatedNews = this.news.filter(post => post.id !== newsID);
       this.news = updatedNews;
+      this.alert.success('ALERT.SUCCESS.DELETE');
       this.newsUpdated.next([...this.news]);
+    }, error => {
+      this.alert.error(error.error.message);
     });
   }
 }

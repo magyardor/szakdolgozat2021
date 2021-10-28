@@ -1,6 +1,7 @@
 <mat-card class="primary-box-shadow">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="form" (submit)="onAddProducts()" *ngIf="!isLoading">
+    <div><h2>Add Products</h2></div>
     <mat-form-field>
       <input matInput type="text" formControlName="name" placeholder="Name">
       <mat-error *ngIf="form.get('name')?.invalid">Please enter a products name.</mat-error>

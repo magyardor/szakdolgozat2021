@@ -1,3 +1,27 @@
+<div id="page-login">
+  <div id="logo-bg" class="col-md-7 d-none d-sm-flex">
+    <img src="..\..\..\assets\logos\logo_monogram.png" id="logo-monogram">
+  </div>
+  <div style="border: 1px solid #C4C4C4; height: 50%; display: flex; align-self: center;"></div>
+  <div id="login-container" class="col-md-5 col-sm-12 container">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form [formGroup]="userForm" class="form-group" *ngIf="!isLoading">
+      <div id="add-user-text">Bejelentkezés</div>
+      <mat-form-field>
+        <input id="useremail" matInput formControlName="email" type="email" placeholder="Email" required email>
+        <mat-error>Please enter a valid email.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input id="password" matInput formControlName="password" type="password" placeholder="Password" required password>
+        <mat-error>Please enter a valid password</mat-error>
+      </mat-form-field>
+      <div id="button-container">
+        <button mat-raised-button class="btn" (click)="login()">Bejelentkezés</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!--
 <mat-card class="primary-box-shadow login">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="userForm" class="form-group" *ngIf="!isLoading">
@@ -14,4 +38,4 @@
       <button mat-raised-button class="btn-main-outlined" (click)="login()">Log in</button>
     </div>
   </form>
-</mat-card>
+</mat-card> -->
