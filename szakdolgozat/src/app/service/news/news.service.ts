@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-
+import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { News } from 'src/app/models/news.model';
 import { AlertService } from '../alert.service';
@@ -21,7 +21,7 @@ constructor(
 ) { }
 
   getNews() {
-    this.http.get<{message: string, news: any}>("http://localhost:3000/api/news")
+    this.http.get<{message: string, news: any}>( environment.apiUrl + "news")
       .pipe(map(newsData => {
           return newsData.news.map((news: any) => {
             return {
@@ -43,7 +43,7 @@ constructor(
   }
 
   getNew(id: any) {
-    return this.http.get<{_id: any, title: string, description: string, imagePath: string}>("http://localhost:3000/api/news/" + id);
+    return this.http.get<{_id: any, title: string, description: string, imagePath: string}>( environment.apiUrl + "news/" + id);
   }
 
   addNews(title: string, description: string, image: File | string) {
@@ -51,7 +51,7 @@ constructor(
     newsData.append("title", title);
     newsData.append("description", description);
     newsData.append("image", image, title);
-    this.http.post<{message: string, news: News}>("http://localhost:3000/api/news", newsData)
+    this.http.post<{message: string, news: News}>( environment.apiUrl + "news", newsData)
     .subscribe(responseData => {
       const news: News = {
         id: responseData.news.id,
@@ -80,7 +80,7 @@ constructor(
     else{
       newsData = {id: id, title: title, description: description, imagePath: image};
     }
-    this.http.put("http://localhost:3000/api/news/" + id, newsData)
+    this.http.put( environment.apiUrl + "news/" + id, newsData)
       .subscribe(response => {
         const updatedNews = [...this.news];
         const oldNewsIndex = updatedNews.findIndex(p => p.id === id);
@@ -101,7 +101,7 @@ constructor(
   }
 
   deleteNews(newsID: any) {
-    return this.http.delete("http://localhost:3000/api/news/" + newsID).subscribe(() =>{
+    return this.http.delete( environment.apiUrl + "news/" + newsID).subscribe(() =>{
       const updatedNews = this.news.filter(post => post.id !== newsID);
       this.news = updatedNews;
       this.alert.success('ALERT.SUCCESS.DELETE');

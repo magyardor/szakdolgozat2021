@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { BehaviorSubject, Subject } from "rxjs";
 import { UserData } from "../models/admin.model";
 import { AlertService } from "./alert.service";
+import { environment } from "src/environments/environment";
 
 @Injectable({providedIn: 'root'})
 export class AdminService {
@@ -40,7 +41,7 @@ export class AdminService {
 
   async addUser(email: string, password: string){
     const authData: UserData = {email: email, password: password};
-    return await this.http.post("http://localhost:3000/api/auth/adduser",authData).subscribe(res => {
+    return await this.http.post( environment.apiUrl + "auth/adduser",authData).subscribe(res => {
       this.alert.success('ALERT.SUCCESS.ADD');
     }, error => {
       console.log(error);
@@ -50,7 +51,7 @@ export class AdminService {
 
   logIn(email: string, password: string){
     const authData: UserData = {email: email, password: password};
-    this.http.post<{token: string, expiresIn: number}>("http://localhost:3000/api/auth/login", authData)
+    this.http.post<{token: string, expiresIn: number}>(  environment.apiUrl + "auth/login", authData)
     .subscribe(res => {
       const tokens = res.token;
       this.token = tokens;

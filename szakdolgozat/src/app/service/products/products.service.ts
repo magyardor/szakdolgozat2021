@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Products } from 'src/app/models/products.model';
 import { AlertService } from '../alert.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class ProductsService {
   ) { }
 
   getProducts() {
-    this.http.get<{message: string, products: any}>("http://localhost:3000/api/products")
+    this.http.get<{message: string, products: any}>( environment.apiUrl + "products")
     .pipe(map(productsData => {
         return productsData.products.map((product: any) => {
           return {
@@ -43,7 +44,7 @@ export class ProductsService {
   }
 
   getProduct(id: any) {
-    return this.http.get<{_id: any, name: string, description: string, imagePath: string, price: number}>("http://localhost:3000/api/products" + id)
+    return this.http.get<{_id: any, name: string, description: string, imagePath: string, price: number}>( environment.apiUrl + "products/" + id)
   }
 
   addProducts(name: string, description: string, image: File | string, price: any) {
@@ -52,7 +53,7 @@ export class ProductsService {
     productsData.append("description", description);
     productsData.append("image", image, name);
     productsData.append("price", price);
-    this.http.post<{message: string, products: Products}>("http://localhost:3000/api/products", productsData)
+    this.http.post<{message: string, products: Products}>( environment.apiUrl + "products", productsData)
     .subscribe(responseData => {
       const products: Products = {
         id: responseData.products.id,
@@ -83,7 +84,7 @@ export class ProductsService {
     else{
       productsData = {id: id, name: name, description: description, imagePath: image, price: price};
     }
-    this.http.put("http://localhost:3000/api/products/" + id, productsData)
+    this.http.put( environment.apiUrl + "products/" + id, productsData)
       .subscribe(response => {
         const updatedProducts = [...this.products];
         const oldProductsIndex = updatedProducts.findIndex(p => p.id === id);
@@ -105,7 +106,7 @@ export class ProductsService {
   }
 
   deleteProducts(productsID: any) {
-    return this.http.delete("http://localhost:3000/api/products/" + productsID).subscribe(() =>{
+    return this.http.delete( environment.apiUrl + "products/" + productsID).subscribe(() =>{
       const updatedProducts = this.products.filter(post => post.id !== productsID);
       this.products = updatedProducts;
       this.prodUpdated.next([...this.products]);

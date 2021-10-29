@@ -8,7 +8,7 @@ const newsRoutes = require("./routes/news/news");
 const productsRoutes = require("./routes/products/products");
 
 const app = express();
-mongoose.connect("mongodb+srv://dorina:34QZvkfYLLLhpCaP@webshop.zaoii.mongodb.net/myFirstDatabase")
+mongoose.connect("mongodb+srv://dorina:" + process.env.MONGO_DB_PASSWORD + "@webshop.zaoii.mongodb.net/myFirstDatabase")
 .then(() => {
   console.log('Connected to database!');
 })
