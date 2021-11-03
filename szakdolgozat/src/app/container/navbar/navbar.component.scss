@@ -1,0 +1,45 @@
+.menu-vertical{
+  display: flex;
+  background-color: var(--main-color);
+  padding: 1rem;
+}
+
+.navbar-collapse {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-bar{
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-item a{
+  color: var(--highlighter-color);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.nav-item a:hover,
+label:hover {
+  text-decoration: none;
+}
+
+.selected {
+  background-color: var(--main-color);
+  color: var(--light-color);
+}
+
+.mat-menu-item{
+  background-color: var(--main-color) !important;
+}
+
+#logo_monogram {
+  display: flex;
+  justify-content: flex-end;
+}
+
+img {
+  width: 10%;
+}

@@ -16,7 +16,7 @@ export class AddProductsComponent implements OnInit {
   isLoading = false;
   form!: FormGroup;
   imagePreview!: string;
-  private mode = "add-products";
+  private mode = "create";
   private productsId!: any;
 
   constructor(
@@ -34,7 +34,7 @@ export class AddProductsComponent implements OnInit {
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has("productsId")) {
-        this.mode = "edit-products";
+        this.mode = "edit";
         this.productsId = paramMap.get("productsId");
         this.isLoading = true;
         this.productsService.getProduct(this.productsId).subscribe(productsData => {
@@ -43,11 +43,12 @@ export class AddProductsComponent implements OnInit {
           this.form.setValue({
             name: this.products.name,
             description: this.products.description,
-            image: this.products.imagePath
+            image: this.products.imagePath,
+            price: this.products.price
           });
         });
       } else {
-        this.mode = "add-products";
+        this.mode = "create";
         this.productsId = '';
       }
     });
@@ -72,7 +73,7 @@ export class AddProductsComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    if(this.mode === 'add-products') {
+    if(this.mode === 'create') {
       this.productsService.addProducts(this.form.value.name, this.form.value.description, this.form.value.image, this.form.value.price)
     }
     else {

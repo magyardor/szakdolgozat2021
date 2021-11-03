@@ -14,6 +14,11 @@ img {
   width: 80%;
 }
 
+.app-form-field {
+  display: grid !important;
+  align-self: center !important;
+}
+
 #login-container {
   width: 100%;
   display: flex;
@@ -23,17 +28,6 @@ img {
 
   form {
     width: 90%;
-
-    input {
-      width: 100%;
-      background-color: var(--highlighter-color) !important;
-      color: var(--white-color) !important;
-    }
-
-    /* #forgot-password {
-      color: #1b3e73;
-      font-size: 14px;
-    } */
 
     #add-user-text{
       font-size: 32px;

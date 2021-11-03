@@ -1,4 +1,4 @@
-<mat-card class="primary-box-shadow">
+<div class="primary-box-shadow add-user-box">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="addUserForm" class="form-group" *ngIf="!isLoading">
     <div id="add-user-text">Add user</div>
@@ -14,4 +14,4 @@
       <button mat-raised-button class="btn-main-outlined" (click)="addUser()">Add user</button>
     </div>
   </form>
-</mat-card>
+</div>

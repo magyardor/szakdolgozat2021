@@ -7,35 +7,17 @@
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <form [formGroup]="userForm" class="form-group" *ngIf="!isLoading">
       <div id="add-user-text">Bejelentkezés</div>
-      <mat-form-field>
-        <input id="useremail" matInput formControlName="email" type="email" placeholder="Email" required email>
-        <mat-error>Please enter a valid email.</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input id="password" matInput formControlName="password" type="password" placeholder="Password" required password>
-        <mat-error>Please enter a valid password</mat-error>
-      </mat-form-field>
+      <div class="app-form-field">
+        <label>E-mail</label>
+        <input formControlName="email" type="email" placeholder="Email" required email>
+      </div>
+      <div class="app-form-field">
+        <label>Password</label>
+        <input formControlName="password" type="password" placeholder="Password" required password>
+      </div>
       <div id="button-container">
         <button mat-raised-button class="btn" (click)="login()">Bejelentkezés</button>
       </div>
     </form>
   </div>
 </div>
-<!--
-<mat-card class="primary-box-shadow login">
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form [formGroup]="userForm" class="form-group" *ngIf="!isLoading">
-    <div id="add-user-text">Log in</div>
-    <mat-form-field>
-      <input id="useremail" matInput formControlName="email" type="email" placeholder="Email" required email>
-      <mat-error>Please enter a valid email.</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input id="password" matInput formControlName="password" type="password" placeholder="Password" required password>
-      <mat-error>Please enter a valid password</mat-error>
-    </mat-form-field>
-    <div id="button-container">
-      <button mat-raised-button class="btn-main-outlined" (click)="login()">Log in</button>
-    </div>
-  </form>
-</mat-card> -->

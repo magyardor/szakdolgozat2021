@@ -135,21 +135,28 @@ mat-card {
   margin: auto;
 }
 
-.mat-form-field {
-  width: 100%;
-  /* color: var(--main-color) !important; */
+.app-form.field {
+  min-height: 110px;
+  min-width: 220px;
+  margin-bottom: 0.5rem;
+
+  label {
+    width: 100%;
+  }
 }
 
-.mat-form-field.mat-focused .mat-form-field-label {
+input[type="email"],
+input[type="password"],
+select {
+  border-radius: 0 !important;
+  border-width: 0 !important;
+  background-color: var(--main-color) !important;
   color: var(--light-color) !important;
-}
+  padding: 0.6rem 1rem !important;
 
-.mat-form-field-appearance-legacy .mat-form-field-label {
-  color: var(--light-color) !important;
-}
-
-.mat-form-field.mat-focused .mat-form-field-ripple {
-  background-color: var(--light-color) !important;
+  &:disabled {
+    filter: grayscale(0.8) !important;
+  }
 }
 
 .mat-progress-spinner circle, .mat-spinner circle {
@@ -184,7 +191,8 @@ form{
   justify-content: space-between;
 
   input{
-    width:100%;
+    display: flex;
+    width: 100%;
     margin-bottom: 50px;
     border:0px;
     border-bottom: 2px solid #707070;
