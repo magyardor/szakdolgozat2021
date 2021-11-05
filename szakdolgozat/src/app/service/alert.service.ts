@@ -28,7 +28,7 @@ export class AlertService {
   clearByTime(alertId?: string) {
     this.timeout = setTimeout(() => {
       this.subject.next(new Alert({alertId}));
-    }, 50000000);
+    }, 1000);
   }
 
   success(message: string, alertId?: string){

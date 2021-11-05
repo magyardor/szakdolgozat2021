@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AdminService } from 'src/app/service/admin.service';
 
@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   menuSetup!: any[];
 
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
-  isExpanded = true;
+  @Input() isExpanded!: boolean;
   showSubmenu: boolean = false;
   isShowing = false;
   showSubSubMenu: boolean = false;

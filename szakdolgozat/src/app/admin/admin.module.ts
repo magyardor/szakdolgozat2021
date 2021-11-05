@@ -4,10 +4,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RouterModule, Routes } from "@angular/router";
 import { SharedModule } from "../shared/shared.module";
 import { LoginComponent } from "./login/login.component";
-import { NavbarComponent } from './navbar/navbar.component';
 import { AddUserComponent } from './add-user/add-user.component';
 
 import { AuthGuard } from "../service/guards/auth.guard";
+import { AdminComponent } from "./admin.component";
 
 const routes: Routes = [
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: NavbarComponent,
+    component: AdminComponent,
     canActivate: [AuthGuard],
     children: [
       {
@@ -54,7 +54,6 @@ const routes: Routes = [
   ],
   declarations: [
     LoginComponent,
-    NavbarComponent,
     AddUserComponent,
   ],
   providers: [AuthGuard]

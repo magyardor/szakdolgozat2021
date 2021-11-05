@@ -13,6 +13,7 @@ export class AdminService {
   private authStatusListener = new Subject<boolean>();
   private isAuthenticated = false;
   private _userSubject: BehaviorSubject<UserData>
+  private users: UserData[] = [];
 
   constructor(
     private http: HttpClient,
