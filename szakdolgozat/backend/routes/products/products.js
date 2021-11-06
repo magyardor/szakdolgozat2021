@@ -20,7 +20,6 @@ router.put("/:id",
 );
 
 router.get("",
-  checkAuth,
   ProductsController.getProducts
 );
 
