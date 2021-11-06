@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { News } from 'src/app/models/news.model';
 import { NewsService } from 'src/app/service/news/news.service';
 
@@ -9,7 +10,7 @@ import { NewsService } from 'src/app/service/news/news.service';
 })
 export class HomeComponent implements OnInit {
   newsList: News [] = [];
-  newsSub: any
+  newsSub: any;
 
   constructor(
     private newsService: NewsService,

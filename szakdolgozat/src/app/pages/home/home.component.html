@@ -1,12 +1,16 @@
 <div class="img-box">
   <img src="../../../assets/logos/logo_name.png">
 </div>
-<div class="primary-box-shadow home-box row">
+<carousel class="home-box-shadow row">
   <div *ngFor="let news of newsList" class="news">
     <div class="news-box">
-      <div>{{news.title}}</div>
-      <div>{{news.description}}</div>
-      <div><img [src]="news.imagePath" [alt]="news.title"></div>
+      <div class="col">
+        <div class="home-title">{{news.title}}</div>
+        <div class="home-description">{{news.description}}</div>
+      </div>
+      <div class="col w-100">
+        <img [src]="news.imagePath" [alt]="news.title" class="home-image">
+      </div>
     </div>
   </div>
-</div>
+</carousel>

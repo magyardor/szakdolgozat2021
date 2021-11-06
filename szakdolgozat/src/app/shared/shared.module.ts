@@ -33,6 +33,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { CustomIconComponent } from './custom-icon/custom-icon.component';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { CustomIconComponent } from './custom-icon/custom-icon.component';
      MatToolbarModule,
      MatTooltipModule,
      MatTreeModule,
+     IvyCarouselModule
   ],
   exports: [
     AlertComponent,
@@ -101,6 +103,7 @@ import { CustomIconComponent } from './custom-icon/custom-icon.component';
      MatToolbarModule,
      MatTooltipModule,
      MatTreeModule,
+     IvyCarouselModule
   ],
   declarations: [
     AlertComponent,
