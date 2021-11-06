@@ -64,6 +64,9 @@ img {
     background-color: var(--light-color);
     display: grid;
     justify-items: center;
+    min-height: 500px;
+    align-items: center;
+    margin: 1rem;
 }
 
 .products-img {
