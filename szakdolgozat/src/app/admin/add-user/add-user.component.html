@@ -1,17 +1,19 @@
-<div class="primary-box-shadow add-user-box">
+<div class="secondary-box-shadow add-user-box">
   <mat-spinner *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="addUserForm" class="form-group" *ngIf="!isLoading">
     <div id="add-user-text">Add user</div>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>User Email</mat-label>
       <input id="useremail" matInput formControlName="email" type="email" placeholder="Email" required email>
       <mat-error>Please enter a valid email.</mat-error>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
       <input id="password" matInput formControlName="password" type="password" placeholder="Password" required password>
       <mat-error>Please enter a valid password</mat-error>
     </mat-form-field>
     <div id="button-container">
-      <button mat-raised-button class="btn-main-outlined" (click)="addUser()">Add user</button>
+      <button mat-raised-button class="btn-secondary" (click)="addUser()">Add user</button>
     </div>
   </form>
 </div>

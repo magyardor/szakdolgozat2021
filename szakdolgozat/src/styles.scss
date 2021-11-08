@@ -89,8 +89,8 @@ html, body {
 }
 .btn-cancel {
   @include button-properties;
-  background: var(--white-color) !important;
-  color: var(--secondary-color) !important;
+  background: var(--secondary-color) !important;
+  color: var(--white-color) !important;
   border: 1px solid var(--main-color) !important;
 }
 .btn-delete {
@@ -127,6 +127,10 @@ html, body {
   @include colored-box-shadow;
   background-color: var(--dark-color);
 }
+.light-box-shadow {
+  @include colored-box-shadow;
+  background-color: var(--light-color);
+}
 
 mat-card {
   display: flex;
@@ -150,9 +154,9 @@ input[type="password"],
 select {
   border-radius: 0 !important;
   border-width: 0 !important;
-  background-color: var(--main-color) !important;
+  /* background-color: var(--main-color) !important; */
   color: var(--light-color) !important;
-  padding: 0.6rem 1rem !important;
+  /* padding: 0.6rem 1rem !important; */
 
   &:disabled {
     filter: grayscale(0.8) !important;

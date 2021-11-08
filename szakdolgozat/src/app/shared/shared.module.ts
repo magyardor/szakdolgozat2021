@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
+import { GoToTopComponent } from './go-to-top/go-to-top.component';
+import { BackButtonComponent } from './back-button/back-button.component';
 
 /* Material import */
 import { MatButtonModule } from '@angular/material/button';
@@ -74,6 +76,9 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
   ],
   exports: [
     AlertComponent,
+    GoToTopComponent,
+    CustomIconComponent,
+    BackButtonComponent,
      /* Material */
      MatButtonModule,
      MatButtonToggleModule,
@@ -107,7 +112,9 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
   ],
   declarations: [
     AlertComponent,
-    CustomIconComponent
+    CustomIconComponent,
+    GoToTopComponent,
+    BackButtonComponent
   ],
 })
 export class SharedModule { }

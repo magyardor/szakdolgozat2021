@@ -4,12 +4,79 @@
   margin-bottom: 2rem;
 }
 
-img {
+#contact-img {
   width: 60%;
 }
 
 .contact-text {
   display: flex;
-  width: 50%;
+  justify-content: center;
   margin: auto;
+  margin-bottom: 2rem;
+}
+
+.contact-profile {
+  width: 400px;
+  height: auto;
+  text-align: center;
+  margin: 1rem;
+  box-shadow:  0px 0px 18px #ccc;
+  border-radius: 3% 3% 10% 10%;
+}
+
+img{
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.profile-header{
+  height: 180px;
+}
+
+.contact-body {
+  background-color: var(--secondary-color);
+  padding: 0px 15px 15px 15px;
+  color: var(--white-color);
+  border-radius: 10%;
+}
+
+.author-img img{
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: var(--secondary-color);
+}
+
+.name {
+  font-size: 30px;
+  color: var(--light-color);
+  margin-bottom: 1rem;
+}
+
+.contact-list {
+  list-style-type: none;
+}
+
+.logos img{
+  width: 10%;
+}
+
+.contact-box {
+  width: 60%;
+  margin: auto;
+}
+
+.contact-title {
+  color: var(--highlighter-color);
+  font-size: 20px;
+  font-style: bold;
+  margin-bottom: 2rem;
+}
+
+.title {
+  color: var(--white-color);
+  font-size: 20px;
+  font-style: bold;
 }

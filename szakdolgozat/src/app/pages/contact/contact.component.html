@@ -1,7 +1,8 @@
 <div class="contact-images">
-  <img src="../../../assets/logos/logo_name.png">
+  <img id="contact-img" src="../../../assets/logos/logo_name.png">
 </div>
 <div class="contact-text">
+  <div class="col" style="width: 40%; display: flex; align-items: center;">
   What is Lorem Ipsum?
   Lorem Ipsum is simply dummy text of the printing and typesetting industry.
   Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -14,4 +15,61 @@
   The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
   Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their
   infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+  </div>
+  <div class="contact-profile col">
+    <div class="profile-header">
+      <a id="profile-background"><img src="../../../assets/backgrounds/dektop.PNG"></a>
+    </div>
+    <div class="contact-body">
+      <div class="author-img">
+        <img src="../../../assets/backgrounds/IMG_0923.JPG">
+      </div>
+      <div class="name bold">
+        Magyar Dorina
+      </div>
+      <div class="contact-list">
+        <div>magyardorina484@gmail.com</div>
+        <div>06204448029</div>
+      </div>
+      <div class="logos">
+        <img src="https://img.icons8.com/fluency/100/000000/instagram-new.png"/>
+        <img src="https://img.icons8.com/color/100/000000/facebook-new.png"/>
+        <img src="https://img.icons8.com/color/100/000000/gmail--v1.png"/>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contact-box">
+  <div class="contact-title">
+    Kapcsolat felvétel
+  </div>
+  <div class="secondary-box-shadow">
+    <label class="title">Űrlap</label>
+    <form style="margin-top: 2rem;">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" placeholder="First Name" formControlName="first_name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" placeholder="Last Name" formControlName="last_name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email-cím</mat-label>
+        <input matInput type="email" placeholder="Email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Üzenet</mat-label>
+        <textarea matInput rows="4" placeholder="Description" formControlName="description"></textarea>
+      </mat-form-field>
+      <div style="display: flex; align-items: center;">
+        <mat-checkbox></mat-checkbox>
+        <label style="margin-left: 0.5rem;">ASZF</label>
+      </div>
+    </form>
+    <div style="display: flex; justify-content: space-evenly;">
+      <button class="btn-cancel">Mégse</button>
+      <button class="btn-secondary">Küldés</button>
+    </div>
+  </div>
 </div>

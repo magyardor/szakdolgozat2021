@@ -17,6 +17,7 @@ export class CustomIconComponent {
 }
 
 export enum CustomIcon {
+  'bold-arrow-upward' = 'bold-arrow-upward',
   'check-circled' = 'check-circled',
   'cross' = 'cross',
   'info' = 'info',
