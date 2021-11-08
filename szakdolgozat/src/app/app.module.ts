@@ -17,6 +17,7 @@ import { ErrorInterceptor } from './service/interceptors/error.interceptor';
 import { AdminComponent } from './admin/admin.component';
 import { NavbarComponent } from './admin/navbar/navbar.component';
 import { ToolbarComponent } from './container/toolbar/toolbar.component';
+import { NewsProfileComponent } from './pages/news/news-profile/news-profile.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ToolbarComponent } from './container/toolbar/toolbar.component';
     FooterComponent,
     AdminComponent,
     NavbarComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    NewsProfileComponent
   ],
   imports: [
     CommonModule,

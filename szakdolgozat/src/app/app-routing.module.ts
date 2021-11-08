@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContainerComponent } from './container/container.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
+import { NewsProfileComponent } from './pages/news/news-profile/news-profile.component';
 import { NewsComponent } from './pages/news/news.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { SharedModule } from './shared/shared.module';
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path: 'news',
         component: NewsComponent,
+      },
+      {
+        path: 'news-profile/:id',
+        component: NewsProfileComponent,
       },
       {
         path: 'contact',

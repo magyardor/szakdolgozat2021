@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 import { News } from 'src/app/models/news.model';
 import { Products } from 'src/app/models/products.model';
 import { NewsService } from 'src/app/service/news/news.service';
@@ -18,7 +19,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private newsService: NewsService,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private router: Router
   ) { }
 
   async ngOnInit(){
@@ -33,4 +35,8 @@ export class HomeComponent implements OnInit {
     console.log(this.newsList)
   }
 
+  onGetNew(newsID: any) {
+    console.log(newsID);
+    this.router.navigateByUrl("/news-profile/" + newsID);
+  }
 }

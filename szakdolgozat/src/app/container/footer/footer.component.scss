@@ -1,9 +1,31 @@
 footer{
   background-color: var(--main-color);
   border-top: 1px solid var(--highlighter-color);
+  margin-top: 2rem;
 }
 
 #footer-bsc {
   display: flex;
-  align-self: flex-end;
+}
+
+img {
+  width: 15%;
+}
+
+#logo_monogram {
+  display: flex;
+  justify-content: center;
+}
+
+.text {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
