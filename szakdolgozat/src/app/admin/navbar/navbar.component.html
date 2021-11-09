@@ -25,6 +25,11 @@
           <span class="material-icons m-3 noselect"> list </span>
           <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Manage News</span>
         </mat-list-item>
+        <div class="subMenuTitle animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Messages</div>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/messages-list']">
+          <span class="material-icons m-3 noselect"> list </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">Manage Messages</span>
+        </mat-list-item>
       </mat-nav-list>
       <mat-nav-list class="pb-2">
         <div class="subMenuTitle animated-text"  [ngClass]="{'opened': isExpanded || isShowing}">Account</div>

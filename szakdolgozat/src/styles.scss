@@ -26,6 +26,13 @@ html, body {
   &:hover {
     @include box-shadow;
   }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    box-shadow: none;
+    transition: none;
+  }
 }
 
 .btn-cta {

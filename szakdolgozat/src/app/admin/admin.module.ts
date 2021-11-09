@@ -8,6 +8,7 @@ import { AddUserComponent } from './add-user/add-user.component';
 
 import { AuthGuard } from "../service/guards/auth.guard";
 import { AdminComponent } from "./admin.component";
+import { MessagesComponent } from './messages/messages.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
         loadChildren: () => import('./products-list/products-list.module').then(m => m.ProductsListModule),
         /* canActivate: [AuthGuard], */
       },
+      {
+        path: 'messages-list',
+        component: MessagesComponent,
+      },
       { path: '**', redirectTo: 'products-list', pathMatch: 'full' },
     ]
   },
@@ -55,6 +60,7 @@ const routes: Routes = [
   declarations: [
     LoginComponent,
     AddUserComponent,
+    MessagesComponent,
   ],
   providers: [AuthGuard]
 })

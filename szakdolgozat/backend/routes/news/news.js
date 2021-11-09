@@ -1,5 +1,4 @@
 const express = require("express");
-const multer = require("multer");
 const NewsController = require("../../controllers/news");
 
 const checkAuth = require("../../middleware/authMiddleware");
