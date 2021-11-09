@@ -9,8 +9,11 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input id="password" matInput formControlName="password" type="password" placeholder="Password" required password>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" placeholder="Password" required password>
       <mat-error>Please enter a valid password</mat-error>
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
     </mat-form-field>
     <div id="button-container">
       <button mat-raised-button class="btn-secondary" (click)="addUser()">Add user</button>

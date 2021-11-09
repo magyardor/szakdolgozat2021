@@ -19,10 +19,10 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactForm = new FormGroup({
-      first_name: new FormControl(''),
-      last_name: new FormControl(''),
-      email: new FormControl(''),
-      description: new FormControl(''),
+      firstName: new FormControl(null, {validators: [Validators.required]}),
+      lastName: new FormControl(null, {validators: [Validators.required]}),
+      email: new FormControl(null, {validators: [Validators.required]}),
+      description: new FormControl(null, {validators: [Validators.required]}),
     });
   }
 
@@ -33,18 +33,17 @@ export class ContactComponent implements OnInit {
       this.isLoading = false;
       return;
     }
-    else{
-      this.isLoading = true;
-      this.contactService.sendMessage(
-        this.contactForm.value.first_name,
-        this.contactForm.value.last_name,
+    this.isLoading = true;
+    if(this.contactForm.valid){
+       this.contactService.sendMessage(
+        this.contactForm.value.firstName,
+        this.contactForm.value.lastName,
         this.contactForm.value.email,
         this.contactForm.value.description,
       );
-      this.contactForm.reset();
       this.isLoading = false;
-      return;
     }
+    this.contactForm.reset();
   }
 
 }

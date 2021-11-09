@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Message } from 'src/app/models/message.model';
+import { Messages } from 'src/app/models/message.model';
 import { ContactService } from 'src/app/service/contact.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { ContactService } from 'src/app/service/contact.service';
 })
 export class MessagesComponent implements OnInit, OnDestroy {
   displayedColumns: string [] = ['full name', 'email', 'description', 'menu'];
-  messages: Message[] = [];
+  messages: Messages[] = [];
   isLoading = false;
   msgSub!: Subscription;
 
@@ -22,7 +22,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.contactService.getMessage();
     this.msgSub = this.contactService.getUpdateMessageListener()
-    .subscribe((msg: Message[]) => {
+    .subscribe((msg: Messages[]) => {
       this.isLoading = false;
       this.messages = msg;
     });

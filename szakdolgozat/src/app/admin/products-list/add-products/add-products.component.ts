@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Products, ProductsGroup } from 'src/app/models/products.model';
+import { Products } from 'src/app/models/products.model';
 import { AlertService } from 'src/app/service/alert.service';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { mimeType } from 'src/app/service/validators/mime-type.validator';
@@ -13,7 +13,6 @@ import { mimeType } from 'src/app/service/validators/mime-type.validator';
 })
 export class AddProductsComponent implements OnInit {
   products!: Products;
-  parent!: any;
   isLoading = false;
   form!: FormGroup;
   imagePreview!: string;
@@ -26,16 +25,13 @@ export class AddProductsComponent implements OnInit {
     private alertService: AlertService,
   ) {}
 
-  async ngOnInit() {
-    await this.productsService.getProductsGroup();
-    this.parent = this.productsService.getprodGorupUpdatedListener();
+  ngOnInit() {
     this.form = new FormGroup({
       name: new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
       description: new FormControl(null, {validators: [Validators.required]}),
       image: new FormControl(null, {validators: [Validators.required], asyncValidators: [mimeType]}),
       price: new FormControl(null, {validators: [Validators.required]}),
-      productsGroup: new FormControl(null, {validators: [Validators.required]}),
-      parent_id: new FormControl(null, {validators: [Validators.required]})
+      productsGroup: new FormControl(null, {validators: [Validators.required]})
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has("productsId")) {
@@ -50,7 +46,6 @@ export class AddProductsComponent implements OnInit {
             description: productsData.description,
             imagePath: productsData.imagePath,
             price: productsData.price,
-            parent_id: productsData.parent_id,
           };
           this.form.setValue({
             name: this.products.name,
@@ -86,23 +81,10 @@ export class AddProductsComponent implements OnInit {
     }
     this.isLoading = true;
     if(this.mode === 'create') {
-      this.productsService.addProducts(
-        this.form.value.name,
-        this.form.value.description,
-        this.form.value.image,
-        this.form.value.price,
-        this.form.value.parent_id
-      )
+      this.productsService.addProducts(this.form.value.name, this.form.value.description, this.form.value.image, this.form.value.price)
     }
     else {
-      this.productsService.updateProducts(
-        this.productsId,
-        this.form.value.name,
-        this.form.value.description,
-        this.form.value.image,
-        this.form.value.price,
-        this.form.value.parent_id
-      );
+      this.productsService.updateProducts(this.productsId, this.form.value.name, this.form.value.description, this.form.value.image, this.form.value.price);
     }
     this.form.reset();
 

@@ -4,27 +4,28 @@ import { Router } from "@angular/router";
 import { Subject } from "rxjs";
 import { map } from 'rxjs/operators';
 import { environment } from "src/environments/environment";
-import { Message } from "../models/message.model";
+import { Messages } from "../models/message.model";
 import { AlertService } from "./alert.service";
 
 @Injectable({providedIn: 'root'})
 export class ContactService {
-  private messages: Message [] = [];
-  private msgUpdate = new Subject<Message[]>();
+  private messages: Messages [] = [];
+  private msgUpdate = new Subject<Messages[]>();
 
   constructor(
     private http: HttpClient,
-    private alert: AlertService
+    private alert: AlertService,
+    private router: Router,
   ){}
 
   getMessage(){
-    this.http.get<{msg: string, message: any}>(environment.apiUrl + "message")
+    this.http.get<{msg: string, messages: any}>(environment.apiUrl + "messages")
     .pipe(map(messagesData => {
-      return messagesData.message.map((msg: any) => {
+      return messagesData.messages.map((msg: any) => {
         return {
           id: msg._id,
-          first_name: msg.first_name,
-          last_name: msg.last_name,
+          firstName: msg.firstName,
+          lastName: msg.lastName,
           email: msg.email,
           description: msg.description
         };
@@ -40,31 +41,32 @@ export class ContactService {
     return this.msgUpdate.asObservable();
   }
 
-  sendMessage(first_name: string, last_name: string, email: string, description: string){
+  sendMessage(firstName: string, lastName: string, email: string, description: string){
     const messagesData = new FormData();
-    messagesData.append("first_name", first_name);
-    messagesData.append("last_name", last_name);
+    messagesData.append("firstName", firstName);
+    messagesData.append("lastName", lastName);
     messagesData.append("email", email);
     messagesData.append("description", description);
-    this.http.post<{message: string, messages: Message}>(environment.apiUrl + "message", messagesData)
+    this.http.post<{message: string, messages: Messages}>(environment.apiUrl + "messages", messagesData)
     .subscribe(responseData => {
-      const msg: Message = {
+      const msg: Messages = {
         id: responseData.messages.id,
-        first_name: first_name,
-        last_name: last_name,
+        firstName: firstName,
+        lastName: lastName,
         email: email,
         description: description
       };
       this.messages.push(msg);
       this.msgUpdate.next([...this.messages]);
       this.alert.success('ALERT.SUCCESS.ADD');
+      this.router.navigate(["/contact"]);
     }, error => {
       this.alert.error(error.error.message);
     });
   }
 
   deleteMessages(msgID: any){
-    return this.http.delete(environment.apiUrl + "message/" + msgID)
+    return this.http.delete(environment.apiUrl + "messages/" + msgID)
     .subscribe(() => {
       const updateMsg = this.messages.filter(x => x.id !== msgID);
       this.messages = updateMsg;

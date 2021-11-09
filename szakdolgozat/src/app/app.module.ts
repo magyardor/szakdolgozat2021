@@ -18,6 +18,7 @@ import { AdminComponent } from './admin/admin.component';
 import { NavbarComponent } from './admin/navbar/navbar.component';
 import { ToolbarComponent } from './container/toolbar/toolbar.component';
 import { NewsProfileComponent } from './pages/news/news-profile/news-profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,8 @@ import { NewsProfileComponent } from './pages/news/news-profile/news-profile.com
   imports: [
     CommonModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,

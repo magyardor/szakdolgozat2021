@@ -10,7 +10,7 @@ import { AlertService } from 'src/app/service/alert.service';
 })
 export class AddUserComponent implements OnInit {
   isLoading = false;
-
+  hide = true;
   addUserForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
@@ -33,6 +33,7 @@ export class AddUserComponent implements OnInit {
     }
     this.isLoading = true;
     this.service.addUser(this.addUserForm.value.email, this.addUserForm.value.password);
+    this.addUserForm.reset();
   }
 
 }

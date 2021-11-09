@@ -11,7 +11,7 @@ import { AlertService } from 'src/app/service/alert.service';
 export class LoginComponent implements OnInit {
   isLoading = false;
   submitted = false;
-
+  hide = true;
   userForm = new FormGroup({
     email: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)

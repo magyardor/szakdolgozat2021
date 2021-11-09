@@ -4,7 +4,6 @@ exports.postProducts = (req, res, next) => {
   const url = req.protocol + "://" + req.get("host");
   const products = new Products({
     name: req.body.name,
-    parend_id: req.body.parend_id,
     description: req.body.description,
     price: req.body.price,
     imagePath: url + "/images/products/" + req.file.filename
@@ -31,7 +30,6 @@ exports.putProducts = (req, res, next) => {
   const products = new Products({
     _id: req.body.id,
     name: req.body.name,
-    parend_id: req.body.parend_id,
     description: req.body.description,
     price: req.body.price,
     imagePath: req.body.imagePath

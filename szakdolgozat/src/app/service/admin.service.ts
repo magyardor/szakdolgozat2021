@@ -42,8 +42,10 @@ export class AdminService {
 
   async addUser(email: string, password: string){
     const authData: UserData = {email: email, password: password};
-    return await this.http.post( environment.apiUrl + "auth/adduser",authData).subscribe(res => {
+    return await this.http.post( environment.apiUrl + "auth/adduser",authData)
+    .subscribe(res => {
       this.alert.success('ALERT.SUCCESS.ADD');
+      this.router.navigate(["/admin/add-user"]);
     }, error => {
       console.log(error);
       this.alert.error(error.error.message)
