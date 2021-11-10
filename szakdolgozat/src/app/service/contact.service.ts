@@ -19,7 +19,7 @@ export class ContactService {
   ){}
 
   getMessage(){
-    this.http.get<{msg: string, messages: any}>(environment.apiUrl + "messages")
+    this.http.get<{message: string, messages: any}>(environment.apiUrl + "messages")
     .pipe(map(messagesData => {
       return messagesData.messages.map((msg: any) => {
         return {

@@ -22,7 +22,7 @@
   </div>
 </carousel>
 <div class="products-box">
-  <mat-grid-list cols="3" rowHeight="2:3" style="margin: 1rem;">
+  <mat-grid-list cols="4" rowHeight="2:3" style="margin: 1rem;">
     <div *ngFor="let prod of productsList">
       <mat-grid-tile>
         <mat-card class="card-box">
@@ -31,8 +31,8 @@
           <div>{{prod.price | currency :'HUF':'symbol':'4.0'}}</div>
           <div class="description">{{prod.description}}</div>
           <div class="button-read">
-            <div>...read more</div>
-            <button class="btn-main" style="max-height: 50px;">Buy</button>
+            <div class="pointer products-profile" (click)="onGetProduct(prod.id)">...read more</div>
+            <button class="btn-main" style="max-height: 50px;" (click)="buy(prod)">Buy</button>
           </div>
         </mat-card>
       </mat-grid-tile>

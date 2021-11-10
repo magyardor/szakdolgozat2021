@@ -3,42 +3,47 @@
     background-color: var(--main-color);
     padding: 1rem;
   }
-  
+
   .navbar-collapse {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 500%;
   }
-  
+
   .nav-bar{
     display: flex;
     list-style-type: none;
   }
-  
+
   .nav-item a{
     color: var(--highlighter-color);
     font-size: 20px;
     cursor: pointer;
   }
-  
+
   .nav-item a:hover,
   label:hover {
     text-decoration: none;
   }
-  
+
   .selected {
     background-color: var(--light-color);
   }
-  
+
   .mat-menu-item{
     background-color: var(--main-color) !important;
   }
-  
-  #logo_monogram {
+
+  .navbar-icons {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-evenly;
   }
-  
+
+  #logo_monogram {
+    display: contents;
+  }
+
   img {
-    width: 10%;
-  }  
+    width: 40%;
+  }

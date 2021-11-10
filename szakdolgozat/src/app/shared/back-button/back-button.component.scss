@@ -4,4 +4,15 @@
   margin-top: 1rem;
   margin-left: 2rem;
   margin-bottom: 2rem;
+  cursor: pointer;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+}
+
+.back:hover {
+  background-color:  rgba(var(--input-color-v), 0.5);;
+  border-radius: 5%;
 }

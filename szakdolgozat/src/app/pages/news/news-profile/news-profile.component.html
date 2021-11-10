@@ -1,4 +1,13 @@
 <app-back-button></app-back-button>
-<!-- <div *ngFor="let profile of news">
-  {{profile | json}}
+<!-- <div>
+  {{news | json}}
 </div> -->
+<div class="primary-box-shadow" style="display: flex;">
+  <!-- letrehozas datuma -->
+  <!-- todo datum hozzaadasa -->
+  <div class="news-profile-img"><img [src]="news.imagePath" [alt]="news.title"></div>
+  <div class="news-profile-text">
+    <div class="profile-text">{{news.title}}</div>
+    <div class="profile-text">{{news.description}}</div>
+  </div>
+</div>

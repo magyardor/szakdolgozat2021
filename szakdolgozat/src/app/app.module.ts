@@ -19,6 +19,8 @@ import { NavbarComponent } from './admin/navbar/navbar.component';
 import { ToolbarComponent } from './container/toolbar/toolbar.component';
 import { NewsProfileComponent } from './pages/news/news-profile/news-profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
+import { ProductsProfileComponent } from './pages/products/products-profile/products-profile.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminComponent,
     NavbarComponent,
     ToolbarComponent,
-    NewsProfileComponent
+    NewsProfileComponent,
+    ShoppingCartComponent,
+    ProductsProfileComponent
   ],
   imports: [
     CommonModule,

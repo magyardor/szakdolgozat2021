@@ -25,7 +25,6 @@ export class NewsComponent implements OnInit {
   }
 
   onGetNew(newsID: any) {
-    console.log(newsID);
     this.router.navigateByUrl("/news-profile/" + newsID);
   }
 

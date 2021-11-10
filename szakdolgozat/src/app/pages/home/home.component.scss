@@ -87,7 +87,7 @@ img {
   justify-items: center;
   min-height: 500px;
   max-width: 320px;
-  align-items: center;
+  align-items: end;
   margin: 1rem;
 }
 
@@ -102,6 +102,10 @@ img {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
+}
+
+.products-profile:hover{
+  color: var(--main-color);
 }
 
 .button-read {

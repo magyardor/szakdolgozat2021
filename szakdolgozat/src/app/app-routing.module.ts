@@ -7,6 +7,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewsProfileComponent } from './pages/news/news-profile/news-profile.component';
 import { NewsComponent } from './pages/news/news.component';
+import { ProductsProfileComponent } from './pages/products/products-profile/products-profile.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { SharedModule } from './shared/shared.module';
 
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: 'products',
         component: ProductsComponent,
+      },
+      {
+        path: 'products-profile/:id',
+        component: ProductsProfileComponent,
       },
       {
         path: 'news',

@@ -50,17 +50,7 @@ exports.putProducts = (req, res, next) => {
 }
 
 exports.getProducts = (req, res, next) => {
-  /* const pageSize = +req.query.pagesize;
-  const currentPage = +req.query.page; */
   Products.find()
-  /* let fetchproducts;
-  if(pageSize && currentPage) {
-    productsQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
-  }
-  productsQuery.then(documents => {
-    fetchproducts = documents;
-    return products.count();
-  })*/
   .then(count => {
     res.status(200).json({
       message: "Products fetched successfully!",

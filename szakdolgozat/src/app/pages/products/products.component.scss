@@ -1,0 +1,37 @@
+.products-list {
+  margin: auto;
+}
+
+.card-box {
+background-color: var(--light-color);
+display: grid;
+justify-items: center;
+min-height: 500px;
+max-width: 320px;
+align-items: end;
+margin: 1rem;
+}
+
+.products-img {
+display: flex;
+justify-content: center;
+}
+
+.description {
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 4;
+-webkit-box-orient: vertical;
+}
+
+.products-profile:hover{
+color: var(--main-color);
+}
+
+.button-read {
+display: flex;
+align-items: center;
+justify-content: space-around;
+width: 100%;
+}

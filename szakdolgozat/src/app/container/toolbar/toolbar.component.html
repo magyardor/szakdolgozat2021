@@ -21,7 +21,20 @@
         </li>
       </ul>
     </div>
-    <a id="logo_monogram"><img src="../../../assets/logos/logo_monogram.png" class="pointer" [routerLink]="['/home']"></a>
+    <div class="navbar-icons">
+      <span class="material-icons" style="color: brown;">search</span>
+      <span
+        class="material-icons"
+        style="color: brown;"
+        matBadgeColor="warn"
+        matBadge="7"
+        [matBadgeHidden]="hidden"
+        (click)="toggleBadgeVisibility()"
+      >
+        shopping_cart
+      </span>
+      <a id="logo_monogram"><img src="../../../assets/logos/logo_monogram.png" class="pointer" [routerLink]="['/home']"></a>
+    </div>
   </nav>
   <!--
   <div class="d-flex flex-wrap justify-content-around pt-5">
@@ -30,4 +43,3 @@
     <button class="btn btn-warn" (click)="alert.warn('ALERT.INVALID_FORM')">Warn</button>
     <button class="btn btn-info" (click)="alert.info('ALERT.INFO')">Info</button>
   </div> -->
-  

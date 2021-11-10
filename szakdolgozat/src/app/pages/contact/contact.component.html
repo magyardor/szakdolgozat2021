@@ -45,15 +45,15 @@
   </div>
   <div class="secondary-box-shadow">
     <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <form style="margin-top: 2rem;" [formGroup]="contactForm" (submit)="onAddMessage()" *ngIf="!isLoading">
+    <form style="margin-top: 2rem;" [formGroup]="contactForm" *ngIf="!isLoading">
       <label class="title">Űrlap</label>
       <mat-form-field appearance="outline">
         <mat-label>First Name</mat-label>
-        <input matInput type="text" placeholder="First Name" formControlName="firstName" required>
+        <input matInput type="text" placeholder="First Name" formControlName="firstName">
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Last Name</mat-label>
-        <input matInput type="text" placeholder="Last Name" formControlName="lastName" required>
+        <input matInput type="text" placeholder="Last Name" formControlName="lastName">
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Email-cím</mat-label>
@@ -61,15 +61,15 @@
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Üzenet</mat-label>
-        <textarea matInput rows="4" placeholder="Description" formControlName="description" required></textarea>
+        <textarea matInput rows="4" placeholder="Description" formControlName="description"></textarea>
       </mat-form-field>
       <div style="display: flex; align-items: center;">
         <mat-checkbox #confirmed></mat-checkbox>
         <label style="margin-left: 0.5rem;">ASZF</label>
       </div>
       <div style="display: flex; justify-content: space-evenly;">
-        <button class="btn-cancel">Mégse</button>
-        <button class="btn-secondary" type="submit" [disabled]="!confirmed.checked">Küldés</button>
+        <button class="btn-cancel"(click)="clear()" >Mégse</button>
+        <button class="btn-secondary"(click)="onAddMessage()" [disabled]="!confirmed.checked">Küldés</button>
       </div>
     </form>
   </div>

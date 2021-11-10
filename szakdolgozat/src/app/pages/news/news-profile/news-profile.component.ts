@@ -9,8 +9,9 @@ import { NewsService } from 'src/app/service/news/news.service';
   styleUrls: ['./news-profile.component.scss']
 })
 export class NewsProfileComponent implements OnInit {
-  news!: any;
-  newsID!: any;
+  news: any;
+  newsSub: any;
+  newsID: any;
 
   constructor(
     private newsService: NewsService,
@@ -21,8 +22,9 @@ export class NewsProfileComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.newsID = params['id'];
     })
-    this.news = await this.newsService.getNew(this.newsID);
-    console.log(this.news)
+    this.newsSub = this.newsService.getNew(this.newsID)
+    .subscribe((news) => {
+      this.news = news;
+    });
   }
-
 }

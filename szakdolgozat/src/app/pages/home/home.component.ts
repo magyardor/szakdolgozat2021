@@ -5,6 +5,7 @@ import { News } from 'src/app/models/news.model';
 import { Products } from 'src/app/models/products.model';
 import { NewsService } from 'src/app/service/news/news.service';
 import { ProductsService } from 'src/app/service/products/products.service';
+import { CartService } from 'src/app/service/shopping-cart/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private newsService: NewsService,
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
+    private cart: CartService,
   ) { }
 
   async ngOnInit(){
@@ -32,11 +34,18 @@ export class HomeComponent implements OnInit {
     this.productsSub = this.productsService.getprodUpdatedListener().subscribe((prod: Products[]) => {
       this.productsList = prod;
     })
-    console.log(this.newsList)
   }
 
   onGetNew(newsID: any) {
     console.log(newsID);
     this.router.navigateByUrl("/news-profile/" + newsID);
+  }
+
+  onGetProduct(prod: any) {
+    this.router.navigateByUrl("products-profile/" + prod);
+  }
+
+  buy(prod: Products){
+    this.cart.addCart(prod);
   }
 }

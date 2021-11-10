@@ -46,4 +46,17 @@ export class ContactComponent implements OnInit {
     this.contactForm.reset();
   }
 
+  clear() {
+    if(this.contactForm.invalid) {
+      this.contactForm.reset();
+      this.alertService.success('Clear');
+    }
+    if(this.contactForm.valid) {
+      /* dialog */
+      this.contactForm.reset();
+      this.alertService.success('Clear');
+    }
+
+  }
+
 }

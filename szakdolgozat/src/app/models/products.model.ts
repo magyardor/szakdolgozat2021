@@ -5,3 +5,8 @@ export interface Products {
   imagePath: string;
   price: number;
 }
+
+export interface Group {
+  id: number;
+  name: string;
+}

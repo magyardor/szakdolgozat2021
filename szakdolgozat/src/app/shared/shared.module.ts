@@ -6,6 +6,7 @@ import { GoToTopComponent } from './go-to-top/go-to-top.component';
 import { BackButtonComponent } from './back-button/back-button.component';
 
 /* Material import */
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
@@ -44,6 +45,7 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     FormsModule,
     ReactiveFormsModule,
      /* Material */
+     MatBadgeModule,
      MatButtonModule,
      MatButtonToggleModule,
      MatCardModule,
@@ -80,6 +82,7 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     CustomIconComponent,
     BackButtonComponent,
      /* Material */
+     MatBadgeModule,
      MatButtonModule,
      MatButtonToggleModule,
      MatCardModule,

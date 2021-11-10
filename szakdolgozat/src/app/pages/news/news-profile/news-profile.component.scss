@@ -1,0 +1,24 @@
+.news-profile-img {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 100%;
+  border: 10px solid var(--white-color);
+  border-radius: 50%;
+  background-color: white;
+}
+
+.news-profile-text {
+  background-color: var(--white-color);
+  display: grid;
+  padding: 50px;
+}
+
+.profile-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
