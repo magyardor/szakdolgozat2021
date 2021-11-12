@@ -2,7 +2,7 @@
 <!-- <div>
   {{news | json}}
 </div> -->
-<div class="primary-box-shadow" style="display: flex;">
+<div *ngIf="news" class="primary-box-shadow" style="display: flex;">
   <!-- letrehozas datuma -->
   <!-- todo datum hozzaadasa -->
   <div class="news-profile-img"><img [src]="news.imagePath" [alt]="news.title"></div>
