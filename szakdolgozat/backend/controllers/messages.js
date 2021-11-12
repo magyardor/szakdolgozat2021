@@ -1,15 +1,15 @@
-const Messages = require("../models/pages/message");
+const Messages = require("../models/pages/messages");
 
-exports.postMsg = (req, res, next) => {
-  const messages = new Messages({
+exports.postMessages = (req, res, next) => {
+  const msg = new Messages({
     lastName: req.body.lastName,
     fistName: req.body.fistName,
     email: req.body.email,
-    description: req.body.description,
+    description: req.body.description
   });
-  console.log(messages);
-  messages.save().then(result => {
-    console.log(result);
+  console.log(req.body)
+  msg.save().then(result => {
+    console.log(result)
     res.status(201).json({
       message: "Message added successfully",
       messages: {
@@ -20,7 +20,7 @@ exports.postMsg = (req, res, next) => {
   });
 }
 
-exports.getMsg = (req, res, next) =>  {
+exports.getMessages = (req, res, next) =>  {
   Messages.find().then(result => {
     res.status(200).json({
       message: "Message fetches successfully!",
@@ -29,7 +29,7 @@ exports.getMsg = (req, res, next) =>  {
   });
 }
 
-exports.deleteMsg = (req, res, next) => {
+exports.deleteMessages = (req, res, next) => {
   Messages.deleteOne({_id: req.params.id}).then(result => {
     res.status(200).json({
       message: "Message deleted!"

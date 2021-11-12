@@ -9,7 +9,7 @@ import { AlertService } from "./alert.service";
 
 @Injectable({providedIn: 'root'})
 export class ContactService {
-  private messages: Messages [] = [];
+  private messages: Messages[] = [];
   private msgUpdate = new Subject<Messages[]>();
 
   constructor(
@@ -49,14 +49,16 @@ export class ContactService {
     messagesData.append("description", description);
     this.http.post<{message: string, messages: Messages}>(environment.apiUrl + "messages", messagesData)
     .subscribe(responseData => {
-      const msg: Messages = {
+      const messages: Messages = {
         id: responseData.messages.id,
         firstName: firstName,
         lastName: lastName,
         email: email,
         description: description
       };
-      this.messages.push(msg);
+      console.log(messages);
+      this.messages.push(messages);
+      console.log(this.messages);
       this.msgUpdate.next([...this.messages]);
       this.alert.success('ALERT.SUCCESS.ADD');
       this.router.navigate(["/contact"]);

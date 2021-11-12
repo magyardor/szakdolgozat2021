@@ -1,21 +1,21 @@
 const express = require("express");
-const messageController = require("../../controllers/message");
+const messageController = require("../../controllers/messages");
 const checkAuth = require("../../middleware/authMiddleware");
 
 const router = express.Router();
 
 router.post("",
-  messageController.postMsg
+  messageController.postMessages
 );
 
 router.get("",
   checkAuth,
-  messageController.getMsg
+  messageController.getMessages
 );
 
 router.delete("/:id",
   checkAuth,
-  messageController.deleteMsg
+  messageController.deleteMessages
 );
 
 module.exports = router;

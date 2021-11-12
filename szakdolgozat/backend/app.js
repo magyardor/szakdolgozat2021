@@ -7,7 +7,7 @@ const authRoutes = require("./routes/auth/auth");
 const newsRoutes = require("./routes/news/news");
 const productsRoutes = require("./routes/products/products");
 const productsGroupRoutes = require("./routes/productsGroup/productsGroup");
-const messagesRoutes = require("./routes/message/message");
+const messagesRoutes = require("./routes/message/messages");
 
 const app = express();
 mongoose.connect("mongodb+srv://dorina:" + process.env.MONGO_DB_PASSWORD + "@webshop.zaoii.mongodb.net/myFirstDatabase")

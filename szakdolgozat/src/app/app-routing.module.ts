@@ -51,9 +51,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    BrowserModule,
     CommonModule,
     SharedModule,
+    BrowserModule,
     RouterModule.forRoot(routes)],
   exports: [RouterModule, SharedModule]
 })

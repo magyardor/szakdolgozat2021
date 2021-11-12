@@ -9,7 +9,7 @@ import { ContactService } from 'src/app/service/contact.service';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-  contactForm!: FormGroup;
+  form!: FormGroup;
   isLoading = false;
 
   constructor(
@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.contactForm = new FormGroup({
+    this.form = new FormGroup({
       firstName: new FormControl(null, {validators: [Validators.required]}),
       lastName: new FormControl(null, {validators: [Validators.required]}),
       email: new FormControl(null, {validators: [Validators.required]}),
@@ -27,33 +27,31 @@ export class ContactComponent implements OnInit {
   }
 
   onAddMessage(): void {
-    if(this.contactForm.invalid) {
+    if(this.form.invalid) {
       this.alertService.warn('ALERT.WARN.INVALID_FORM');
-      this.contactForm.markAllAsTouched();
+      this.form.markAllAsTouched();
       this.isLoading = false;
       return;
     }
+    console.log(this.form);
     this.isLoading = true;
-    if(this.contactForm.valid){
-       this.contactService.sendMessage(
-        this.contactForm.value.firstName,
-        this.contactForm.value.lastName,
-        this.contactForm.value.email,
-        this.contactForm.value.description,
-      );
-      this.isLoading = false;
-    }
-    this.contactForm.reset();
+    this.contactService.sendMessage(
+      this.form.value.firstName,
+      this.form.value.lastName,
+      this.form.value.email,
+      this.form.value.description
+      )
+    this.isLoading = false
   }
 
   clear() {
-    if(this.contactForm.invalid) {
-      this.contactForm.reset();
+    if(this.form.invalid) {
+      this.form.reset();
       this.alertService.success('Clear');
     }
-    if(this.contactForm.valid) {
+    else {
       /* dialog */
-      this.contactForm.reset();
+      this.form.reset();
       this.alertService.success('Clear');
     }
 
