@@ -41,6 +41,17 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl("/news-profile/" + newsID);
   }
 
+  calcColumns(size: any){
+    switch (size){
+      case 'xl': return 4;
+      case 'lg': return 4;
+      case 'md': return 3;
+      case 'sm': return 2;
+      case 'xs': return 1;
+      default: return 2;
+    }
+  }
+
   onGetProduct(prod: any) {
     this.router.navigateByUrl("products-profile/" + prod);
   }

@@ -28,7 +28,9 @@ constructor(
               title: news.title,
               description: news.description,
               id: news._id,
-              imagePath: news.imagePath
+              imagePath: news.imagePath,
+              startDate: news.startDate,
+              endDate: news.endDate
             };
           });
         })
@@ -43,21 +45,32 @@ constructor(
   }
 
   getNew(id: any) {
-    return this.http.get<{_id: any, title: string, description: string, imagePath: string}>( environment.apiUrl + "news/" + id);
+    return this.http.get<{
+      _id: any,
+      title: string,
+      description: string,
+      imagePath: string,
+      startDate: Date,
+      endDate: Date
+    }>( environment.apiUrl + "news/" + id);
   }
 
-  addNews(title: string, description: string, image: File | string) {
+  addNews(title: string, description: string, image: File | string, startDate: any, endDate: any) {
     const newsData = new FormData();
     newsData.append("title", title);
     newsData.append("description", description);
     newsData.append("image", image, title);
+    newsData.append("startDate", startDate);
+    newsData.append("endDate", endDate);
     this.http.post<{message: string, news: News}>( environment.apiUrl + "news", newsData)
     .subscribe(responseData => {
       const news: News = {
         id: responseData.news.id,
         title: title,
         description: description,
-        imagePath: responseData.news.imagePath
+        imagePath: responseData.news.imagePath,
+        startDate: startDate,
+        endDate: endDate
       };
       this.news.push(news);
       this.newsUpdated.next([...this.news]);
@@ -68,17 +81,26 @@ constructor(
     });
   }
 
-  updateNews(id: any, title: string, description: string, image: File | string){
+  updateNews(id: any, title: string, description: string, image: File | string, startDate: any, endDate: any){
     let newsData: News | FormData;
     if(typeof(image) === "object"){
       newsData = new FormData();
-      newsData.append("id", id),
-      newsData.append("title", title),
-      newsData.append("description", description),
-      newsData.append("image", image, title)
+      newsData.append("id", id);
+      newsData.append("title", title);
+      newsData.append("description", description);
+      newsData.append("image", image, title);
+      newsData.append("startDate", startDate);
+      newsData.append("endDate", endDate);
     }
     else{
-      newsData = {id: id, title: title, description: description, imagePath: image};
+      newsData = {
+        id: id,
+        title: title,
+        description: description,
+        imagePath: image,
+        startDate: startDate,
+        endDate: endDate
+      };
     }
     this.http.put( environment.apiUrl + "news/" + id, newsData)
       .subscribe(response => {
@@ -88,7 +110,9 @@ constructor(
           id: id,
           title: title,
           description: description,
-          imagePath: ""
+          imagePath: "",
+          startDate: startDate,
+          endDate: endDate
         };
         updatedNews[oldNewsIndex] = news;
         this.news = updatedNews;

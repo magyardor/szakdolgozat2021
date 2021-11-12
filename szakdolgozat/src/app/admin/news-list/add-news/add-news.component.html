@@ -15,6 +15,17 @@
       <img [src]="imagePreview" [alt]="form.value.title">
     </div>
     <mat-form-field appearance="outline">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate formControlName="startDate" placeholder="Start date">
+        <input matEndDate formControlName="endDate" placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker color="primary"></mat-date-range-picker>
+    </mat-form-field>
+    
+    <p>Selected range: {{form.value | json}}</p>    
+    <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
       <textarea matInput rows="4" formControlName="description" placeholder="description"></textarea>
       <mat-error *ngIf="form.get('description')?.invalid">Please enter a post description.</mat-error>

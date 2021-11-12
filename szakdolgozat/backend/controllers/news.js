@@ -5,7 +5,9 @@ exports.postNews = (req, res, next) => {
   const news = new News({
     title: req.body.title,
     description: req.body.description,
-    imagePath: url + "/images/news/" + req.file.filename
+    imagePath: url + "/images/news/" + req.file.filename,
+    startDate: req.body.startDate,
+    endDate: req.body.endDate,
   });
   console.log(news);
   news.save().then(result => {
@@ -30,7 +32,9 @@ exports.putNews = (req, res, next) => {
     _id: req.body.id,
     title: req.body.title,
     description: req.body.description,
-    imagePath: req.body.imagePath
+    imagePath: req.body.imagePath,
+    startDate: req.body.startDate,
+    endDate: req.body.endDate,
   });
   console.log(news);
   News.updateOne({_id: req.params.id}, news).then(result => {

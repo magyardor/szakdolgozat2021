@@ -7,7 +7,8 @@
   <!-- todo datum hozzaadasa -->
   <div class="news-profile-img"><img [src]="news.imagePath" [alt]="news.title"></div>
   <div class="news-profile-text">
-    <div class="profile-text">{{news.title}}</div>
+    <div class="profile-text title">{{news.title}}</div>
     <div class="profile-text">{{news.description}}</div>
+    <div *ngIf="news.startDate || news.endDate" class="profile-date">{{news.startDate | date: 'YYYY.MM.dd'}} - {{news.endDate | date: 'YYYY.MM.dd'}}</div>
   </div>
 </div>

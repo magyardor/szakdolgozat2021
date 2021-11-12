@@ -29,7 +29,9 @@ export class AddNewsComponent implements OnInit {
     this.form = new FormGroup({
       title: new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
       description: new FormControl(null, {validators: [Validators.required]}),
-      image: new FormControl(null, {validators: [Validators.required], asyncValidators: [mimeType]})
+      image: new FormControl(null, {validators: [Validators.required], asyncValidators: [mimeType]}),
+      startDate: new FormControl(null, {validators: [Validators.required]}),
+      endDate: new FormControl(null, {validators: [Validators.required]}),
     });
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has("newsId")) {
@@ -38,11 +40,20 @@ export class AddNewsComponent implements OnInit {
         this.isLoading = true;
         this.newsService.getNew(this.newsId).subscribe(newsData => {
           this.isLoading = false;
-          this.news = {id: newsData._id, title: newsData.title, description: newsData.description, imagePath: newsData.imagePath};
+          this.news = {
+            id: newsData._id,
+            title: newsData.title,
+            description: newsData.description,
+            imagePath: newsData.imagePath,
+            startDate: newsData.startDate,
+            endDate: newsData.endDate,
+          };
           this.form.setValue({
             title: this.news.title,
             description: this.news.description,
-            image: this.news.imagePath
+            image: this.news.imagePath,
+            startDate: this.news.startDate,
+            endDate: this.news.endDate,
           });
         });
       } else {
@@ -72,10 +83,23 @@ export class AddNewsComponent implements OnInit {
     }
     this.isLoading = true;
     if(this.mode === 'create') {
-      this.newsService.addNews(this.form.value.title, this.form.value.description, this.form.value.image);
+      this.newsService.addNews(
+        this.form.value.title,
+        this.form.value.description,
+        this.form.value.image,
+        this.form.value.startDate,
+        this.form.value.endDate
+      );
     }
     else {
-      this.newsService.updateNews(this.newsId, this.form.value.title, this.form.value.description, this.form.value.image);
+      this.newsService.updateNews(
+        this.newsId,
+        this.form.value.title,
+        this.form.value.description,
+        this.form.value.image,
+        this.form.value.startDate,
+        this.form.value.endDate
+      );
     }
     this.form.reset();
 
