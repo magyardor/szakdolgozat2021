@@ -9,6 +9,7 @@ import { NewsProfileComponent } from './pages/news/news-profile/news-profile.com
 import { NewsComponent } from './pages/news/news.component';
 import { ProductsProfileComponent } from './pages/products/products-profile/products-profile.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
@@ -43,6 +44,10 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent,
+      },
+      {
+        path: 'carts',
+        component: ShoppingCartComponent,
       },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ]
