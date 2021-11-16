@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { ContainerComponent } from './container/container.component';
+import { AszfComponent } from './container/footer/aszf/aszf.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewsProfileComponent } from './pages/news/news-profile/news-profile.component';
@@ -48,6 +49,10 @@ const routes: Routes = [
       {
         path: 'carts',
         component: ShoppingCartComponent,
+      },
+      {
+        path:'aszf',
+        component: AszfComponent,
       },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ]

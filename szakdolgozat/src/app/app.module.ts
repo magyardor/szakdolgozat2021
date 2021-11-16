@@ -21,6 +21,7 @@ import { NewsProfileComponent } from './pages/news/news-profile/news-profile.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { ProductsProfileComponent } from './pages/products/products-profile/products-profile.component';
+import { AszfComponent } from './container/footer/aszf/aszf.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProductsProfileComponent } from './pages/products/products-profile/prod
     ToolbarComponent,
     NewsProfileComponent,
     ShoppingCartComponent,
-    ProductsProfileComponent
+    ProductsProfileComponent,
+    AszfComponent
   ],
   imports: [
     CommonModule,
