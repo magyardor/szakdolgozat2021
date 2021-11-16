@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Carts } from 'src/app/models/cart.model';
+import { Carts } from 'src/app/models/cart';
 import { CartService } from 'src/app/service/shopping-cart/cart.service';
 
 @Component({
@@ -8,13 +8,15 @@ import { CartService } from 'src/app/service/shopping-cart/cart.service';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
+  displayedColumns: string[] = ['name','description','price','image','quantity'];
   cartsList: Carts[] = [];
+
   constructor(
     private carts: CartService
   ) { }
 
-  async ngOnInit() {
-    this.cartsList = await this.carts.getItems();
+  ngOnInit(): void{
+    this.cartsList = this.carts.productsItem;
   }
 
 

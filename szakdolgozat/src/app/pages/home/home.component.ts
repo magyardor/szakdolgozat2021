@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { Carts } from 'src/app/models/cart';
 import { News } from 'src/app/models/news.model';
 import { Products } from 'src/app/models/products.model';
 import { NewsService } from 'src/app/service/news/news.service';
@@ -57,6 +58,7 @@ export class HomeComponent implements OnInit {
   }
 
   buy(prod: Products){
-    this.cart.addCart(prod);
+    const cartItem = new Carts(prod);
+    this.cart.addCart(cartItem);
   }
 }

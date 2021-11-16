@@ -1,2 +1,34 @@
-<p>shopping-cart works!</p>
+<div style="display: flex; justify-content: center; margin-top: 1rem; margin-bottom: 2rem;">
+  <h1>Shopping Cart</h1>
+</div>
+<div style="display: flex; justify-content: center;" *ngIf="cartsList">
+  <table mat-table [dataSource]="cartsList">
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>Kép</th>
+      <td mat-cell *matCellDef="let prod">
+        <div class="prod-image">
+          <img [src]="prod.imagePath" [alt]="prod.name">
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Neve</th>
+      <td mat-cell *matCellDef="let prod">{{prod.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Leírás</th>
+      <td mat-cell *matCellDef="let prod">{{prod.description}}</td>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Hányszor</th>
+      <td mat-cell *matCellDef="let prod">{{prod.quantity}}</td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Ára</th>
+      <td mat-cell *matCellDef="let prod">{{prod.price | currency :'HUF':'symbol':'4.0'}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
 <pre>{{cartsList | json}}</pre>
