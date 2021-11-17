@@ -10,6 +10,7 @@ import { NewsProfileComponent } from './pages/news/news-profile/news-profile.com
 import { NewsComponent } from './pages/news/news.component';
 import { ProductsProfileComponent } from './pages/products/products-profile/products-profile.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { PayPageComponent } from './pages/shopping-cart/pay-page/pay-page.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { SharedModule } from './shared/shared.module';
 
@@ -49,6 +50,10 @@ const routes: Routes = [
       {
         path: 'carts',
         component: ShoppingCartComponent,
+      },
+      {
+        path: 'pay',
+        component: PayPageComponent
       },
       {
         path:'aszf',

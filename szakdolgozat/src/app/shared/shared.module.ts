@@ -24,6 +24,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatRippleModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -64,6 +65,7 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
      MatNativeDateModule,
      MatPaginatorModule,
      MatProgressSpinnerModule,
+     MatRadioModule,
      MatRippleModule,
      MatSelectModule,
      MatSidenavModule,
@@ -101,6 +103,7 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
      MatMenuModule,
      MatPaginatorModule,
      MatProgressSpinnerModule,
+     MatRadioModule,
      MatRippleModule,
      MatSelectModule,
      MatSidenavModule,

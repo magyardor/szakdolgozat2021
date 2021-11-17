@@ -1,0 +1,131 @@
+<div class="stepper-page">
+  <div [ngSwitch]="stepperOriental | async">
+    <div *ngSwitchCase="'horizontal'">
+      <mat-horizontal-stepper>
+        <mat-step label="Adatok megadása">
+          <form [formGroup]="form" (submit)="addShipOrder()">
+            <div><h2 style="color: white;">Kapcsolattartás</h2></div>
+            <mat-form-field appearance="outline">
+              <mat-label>Email-cím</mat-label>
+              <input matInput type="email" formControlName="email" placeholder="Email-cím">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Telefonszám</mat-label>
+              <input matInput type="phone" formControlName="phone" placeholder="Telefonszám">
+            </mat-form-field>
+            <div><h2 style="color: white;">Számlázási adatok</h2></div>
+            <mat-form-field appearance="outline">
+              <mat-label>Név</mat-label>
+              <input matInput type="text" formControlName="fullName" placeholder="Teljes név">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Ország</mat-label>
+              <mat-select>
+                <mat-option>None</mat-option>
+                <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Irányítószám</mat-label>
+              <input matInput type="text" formControlName="zipCode" placeholder="Teljes név">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Település</mat-label>
+              <input matInput type="text" formControlName="city" placeholder="Teljes név">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Utca, házszám</mat-label>
+              <input matInput type="text" formControlName="street" placeholder="Teljes név">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Adószám (cég esetén)</mat-label>
+              <input matInput type="text" formControlName="taxNumber" placeholder="Teljes név">
+            </mat-form-field>
+            <div><h2 style="color: white;">Szállítási adatok</h2></div>
+            <mat-checkbox value="checked" (click)="changeValue(checked)"><div style="color: white;">A szállítási adatok megegyeznek a számlázási adatokkal.</div></mat-checkbox>
+            <div *ngIf="!checked" style="display: grid;">
+              <mat-form-field appearance="outline">
+                <mat-label>Név</mat-label>
+                <input matInput type="text" formControlName="fullName_transport" placeholder="Teljes név">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Ország</mat-label>
+                <mat-select>
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Irányítószám</mat-label>
+                <input matInput type="text" formControlName="zipCode_transport" placeholder="Teljes név">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Település</mat-label>
+                <input matInput type="text" formControlName="city_transport" placeholder="Teljes név">
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Utca, házszám</mat-label>
+                <input matInput type="text" formControlName="street_transport" placeholder="Teljes név">
+              </mat-form-field>
+            </div>
+            <mat-checkbox #confirmed><div style="color: white;">Elfogadom az Általános szerződési feltételeket és az Adatkezelési tájékoztatót.</div></mat-checkbox>
+            <div style="display: flex; justify-content: flex-end;">
+              <button class="btn-secondary" [disabled]="!confirmed.checked" type="submit" matStepperNext>Tovább</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step label="Szállítás és fizetés">
+          <div style="display: flex; margin-bottom: 2rem;">
+            <div style="width: 100%;">
+              <div><h2 style="color: white;">Szállítás</h2></div>
+              <mat-radio-group style="display: grid;" (change)="radioChange($event)">
+                <mat-radio-button *ngFor="let choice of transport_choice" [value]="choice.value" [disabled]="choice.disabled" style="margin-bottom: 1rem; color: white;">{{choice.name}}</mat-radio-button>
+              </mat-radio-group>
+              <div><h2 style="color: white;">Fizetés</h2></div>
+              <mat-radio-group style="display: grid;" (change)="radioChange($event)">
+                <mat-radio-button *ngFor="let pay of pay_choice" [value]="pay.value" [disabled]="pay.disabled" style="margin-bottom: 1rem; color: white;">{{pay.name}}</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div style="display: flex; width: 100%; min-height: 400px;">
+              <mat-card class="white-box-shadow" style="display: grid; align-items: center;">
+                <div style="display: flex; justify-content: center;"><h2 style="color: var(--secondary-color)">Megrendelés összege</h2></div>
+                <div style="display: grid; color: black;">
+                  <div style="display: flex; justify-content: space-between;">
+                    Összesen (bruttó):
+                    <div></div>
+                  </div>
+                  <div style="display: flex; justify-content: space-between;">
+                    Szállítási költség:
+
+                    <!-- <div *ngIf="transport_check">900Ft</div>
+                    <div *ngIf="!transport_check">-</div> -->
+                  </div>
+                </div>
+                <div style="border: 1px solid var(--secondary-color);"></div>
+                <div style="display: flex; justify-content: space-between; color: black;">
+                  <div style="font-style: bold;">Végösszeg:</div>
+                  <div></div>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: flex-end;">
+            <button class="btn-secondary" matStepperNext>Tovább</button>
+          </div>
+        </mat-step>
+        <mat-step label="Adatok ellenőrzése">
+
+        </mat-step>
+        <mat-step label="Megrendelés">
+
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+    <div *ngSwitchCase="'vertical'">
+      <mat-vertical-stepper>
+        <mat-step></mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,10 @@
+.stepper-page {
+  display: grid;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.mat-stepper-horizontal, .mat-stepper-vertical {
+  background-color: var(--secondary-color) !important;
+  min-height: 623px;
+}

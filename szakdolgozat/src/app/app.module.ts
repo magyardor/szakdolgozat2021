@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { ProductsProfileComponent } from './pages/products/products-profile/products-profile.component';
 import { AszfComponent } from './container/footer/aszf/aszf.component';
+import { PayPageComponent } from './pages/shopping-cart/pay-page/pay-page.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AszfComponent } from './container/footer/aszf/aszf.component';
     NewsProfileComponent,
     ShoppingCartComponent,
     ProductsProfileComponent,
-    AszfComponent
+    AszfComponent,
+    PayPageComponent
   ],
   imports: [
     CommonModule,
