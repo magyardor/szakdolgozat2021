@@ -114,7 +114,60 @@
           </div>
         </mat-step>
         <mat-step label="Megrendelés">
-
+          <div>
+            <div>
+              <div><h2 style="color: white;">Termék lista</h2></div>
+              <div style="display: flex; justify-content: space-between; color: black; font-weight: bold;">
+                <div>Név:</div>
+                <div>Darab:</div>
+                <div>Ára:</div>
+              </div>
+              <div *ngFor="let prod of cartsList" style="display: flex; justify-content: space-between;">
+                <div>
+                  {{prod.name}}
+                </div>
+                <div>
+                  {{prod.quantity}}db
+                </div>
+                <div>
+                  {{prod.total}}Ft
+                </div>
+              </div>
+              <div>
+                <div><h2 style="color: white;">Szállítás és Fizetés</h2></div>
+                <div style="display: flex; justify-content: space-between; color: black; font-weight: bold;">
+                  <div>Szállítás:</div>
+                  <div>{{transportPrice}}Ft</div>
+                </div>
+                <div style="display: flex; justify-content: space-between; color: black; font-weight: bold;">
+                  <div>Fizetés:</div>
+                  <div>{{payChoice}}</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div><h2 style="color: white;">Összesen</h2></div>
+              <div style="display: flex; justify-content: space-between; color: black; font-weight: bold;">
+                Végösszeg:
+                <div>{{grandTotal}} Ft</div>
+              </div>
+            </div>
+            <div>
+              <div><h2 style="color: white;">Kapcsolattartás</h2></div>
+              <div style="display: flex; justify-content: space-between;">
+                <div>Email-cím:</div>
+                <div>{{orderList.email}}</div>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <div>Telefonszám:</div>
+                <div>{{orderList.phone}}</div>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-evenly;">
+              <button class="btn-cancel">Mégse</button>
+              <button class="btn-secondary">Vásárlás</button>
+            </div>
+          </div>
         </mat-step>
         <mat-step label="Kész">
 

@@ -14,7 +14,10 @@ import { TransportService } from 'src/app/service/transport_billing/transport.se
 })
 export class PayPageComponent implements OnInit {
   fullPrice: any;
+  cartsList: any;
+  orderList: any;
   transportPrice: number = 0;
+  payChoice: any;
   grandTotal: number = 0;
   form!: FormGroup;
   checked: boolean = false;
@@ -43,8 +46,10 @@ export class PayPageComponent implements OnInit {
       street_transport: new FormControl(''),
       taxNumber_transport: new FormControl(''),
     });
+    this.cartsList = this.carts.productsItem;
     this.fullPrice = this.carts.totalPrice;
     this.grandTotal = this.transportPrice + this.fullPrice._value;
+    this.orderList = this.transport.getOrder();
   }
 
   changeValue(value: any) {
@@ -56,6 +61,7 @@ export class PayPageComponent implements OnInit {
     this.transport.addOrder(
       this.form.value
     )
+    this.orderList = this.transport.getOrder();
   }
 
   radioChange(e: any){
@@ -65,6 +71,7 @@ export class PayPageComponent implements OnInit {
   }
 
   radioChangePay(e: any){
+    this.payChoice = e.value;
     console.log(e.value);
   }
 

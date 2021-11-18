@@ -9,6 +9,11 @@ export class TransportService {
   constructor(){}
 
   addOrder(value: any){
+    this.all = value;
     console.log(value)
+  }
+
+  getOrder(){
+    return this.all
   }
 }
