@@ -82,8 +82,8 @@
                 <mat-radio-button *ngFor="let choice of transport_choice" [value]="choice.value" [disabled]="choice.disabled" style="margin-bottom: 1rem; color: white;">{{choice.name}}</mat-radio-button>
               </mat-radio-group>
               <div><h2 style="color: white;">Fizetés</h2></div>
-              <mat-radio-group style="display: grid;" (change)="radioChange($event)">
-                <mat-radio-button *ngFor="let pay of pay_choice" [value]="pay.value" [disabled]="pay.disabled" style="margin-bottom: 1rem; color: white;">{{pay.name}}</mat-radio-button>
+              <mat-radio-group style="display: grid;" (change)="radioChangePay($event)">
+                <mat-radio-button *ngFor="let pay of pay_choice" [value]="pay.name" [disabled]="pay.disabled" style="margin-bottom: 1rem; color: white;">{{pay.name}}</mat-radio-button>
               </mat-radio-group>
             </div>
             <div style="display: flex; width: 100%; min-height: 400px;">
@@ -92,19 +92,19 @@
                 <div style="display: grid; color: black;">
                   <div style="display: flex; justify-content: space-between;">
                     Összesen (bruttó):
-                    <div></div>
+                    <div>{{fullPrice._value}} Ft</div>
                   </div>
                   <div style="display: flex; justify-content: space-between;">
                     Szállítási költség:
-
+                    <div>{{transportPrice}} Ft</div>
                     <!-- <div *ngIf="transport_check">900Ft</div>
                     <div *ngIf="!transport_check">-</div> -->
                   </div>
                 </div>
                 <div style="border: 1px solid var(--secondary-color);"></div>
-                <div style="display: flex; justify-content: space-between; color: black;">
-                  <div style="font-style: bold;">Végösszeg:</div>
-                  <div></div>
+                <div style="display: flex; justify-content: space-between; color: black; font-weight: bold;">
+                  Végösszeg:
+                  <div>{{grandTotal}} Ft</div>
                 </div>
               </mat-card>
             </div>
@@ -113,10 +113,10 @@
             <button class="btn-secondary" matStepperNext>Tovább</button>
           </div>
         </mat-step>
-        <mat-step label="Adatok ellenőrzése">
+        <mat-step label="Megrendelés">
 
         </mat-step>
-        <mat-step label="Megrendelés">
+        <mat-step label="Kész">
 
         </mat-step>
       </mat-horizontal-stepper>

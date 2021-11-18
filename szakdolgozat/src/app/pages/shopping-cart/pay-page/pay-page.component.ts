@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CartService } from 'src/app/service/shopping-cart/cart.service';
 import { TransportService } from 'src/app/service/transport_billing/transport.service';
 
 @Component({
@@ -12,13 +13,16 @@ import { TransportService } from 'src/app/service/transport_billing/transport.se
   styleUrls: ['./pay-page.component.scss']
 })
 export class PayPageComponent implements OnInit {
-  cartsList: [] = [];
+  fullPrice: any;
+  transportPrice: number = 0;
+  grandTotal: number = 0;
   form!: FormGroup;
   checked: boolean = false;
   stepperOriental!: Observable<StepperOrientation>;
 
   constructor(
     private transport: TransportService,
+    private carts: CartService,
     breakPoint: BreakpointObserver,
   ) {
     this.stepperOriental = breakPoint.observe('(min-width: 600px)').pipe(map(({matches}) => (matches ? 'horizontal':'vertical')));
@@ -39,6 +43,8 @@ export class PayPageComponent implements OnInit {
       street_transport: new FormControl(''),
       taxNumber_transport: new FormControl(''),
     });
+    this.fullPrice = this.carts.totalPrice;
+    this.grandTotal = this.transportPrice + this.fullPrice._value;
   }
 
   changeValue(value: any) {
@@ -53,15 +59,18 @@ export class PayPageComponent implements OnInit {
   }
 
   radioChange(e: any){
+    this.transportPrice = e.value;
+    this.grandTotal = this.transportPrice + this.fullPrice._value;
     console.log(e.value);
-    console.log(this.pay_choice);
+  }
+
+  radioChangePay(e: any){
+    console.log(e.value);
   }
 
   states: string[] = [
     'Alabama',
     'Alaska',
-    'Arizona',
-    'Arkansas',
     'California',
     'Hungary'
   ]

@@ -5,7 +5,7 @@ import { Carts } from "src/app/models/cart";
 @Injectable({providedIn: 'root'})
 export class CartService {
   existsInCart: boolean = false;
-  existingInCart: Carts | undefined;
+  existingInCart: any;
   quantity: number = 1;
   productsItem: Carts[] = [];
 
@@ -20,13 +20,19 @@ export class CartService {
       this.existsInCart = (this.existingInCart != undefined);
     }
     if(this.existsInCart) {
-      this.quantity++;
+      this.existingInCart.quantity++;
     }
     else {
       this.productsItem.push(products);
     }
 
     this.totalPrices();
+  }
+
+  updateCart(list: any){
+    this.productsItem = list;
+    this.totalPrices();
+    console.log(this.productsItem);
   }
 
   totalPrices() {
@@ -48,7 +54,7 @@ export class CartService {
   } */
 
   reductionQuantity(cartItem: any) {
-    this.quantity--;
+    this.existingInCart.quantity--;
 
     if(this.quantity == 0){
       this.removeCart(cartItem);
@@ -58,12 +64,19 @@ export class CartService {
     }
   }
 
-  removeCart(cartItem: any) {
-    let index = this.productsItem.findIndex(x => x.id === cartItem.id);
-
-    if(index > -1){
-      this.productsItem.splice(index,1);
+  plusQuantity(cartItem: any){
+    this.existingInCart.quantity++;
+    if(this.quantity == 0){
+      this.removeCart(cartItem);
+    }
+    else{
       this.totalPrices();
     }
+  }
+
+  removeCart(cartItem: any){
+    let index = this.productsItem.indexOf(cartItem);
+    this.productsItem.splice(index,1);
+    this.totalPrices();
   }
 }

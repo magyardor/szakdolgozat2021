@@ -1,7 +1,7 @@
 <div style="display: flex; justify-content: center; margin-top: 1rem; margin-bottom: 2rem;">
   <h1>Shopping Cart</h1>
 </div>
-<div style="display: grid; justify-content: center; margin: auto;" *ngIf="cartsList">
+<div style="display: grid; margin: 1rem;" *ngIf="cartsList.length > 0; else emptyList">
   <table mat-table [dataSource]="cartsList">
     <ng-container matColumnDef="image">
       <th mat-header-cell *matHeaderCellDef>Kép</th>
@@ -15,25 +15,21 @@
       <th mat-header-cell *matHeaderCellDef>Neve</th>
       <td mat-cell *matCellDef="let prod">{{prod.name}}</td>
     </ng-container>
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef>Leírás</th>
-      <td mat-cell *matCellDef="let prod">{{prod.description}}</td>
-    </ng-container>
     <ng-container matColumnDef="quantity">
       <th mat-header-cell *matHeaderCellDef>Hányszor</th>
-      <td mat-cell *matCellDef="let prod">{{prod.quantity}}</td>
+      <td mat-cell *matCellDef="let prod">
+        <button mat-button style="border: 1px solid;"(click)="plusButton(prod.id)">+</button>
+        <span style="margin-left: 1rem; margin-right: 1rem;">{{prod.quantity}}</span>
+        <button mat-button style="border: 1px solid;" (click)="minusButton(prod.id)">-</button>
+      </td>
     </ng-container>
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef>Ára</th>
       <td mat-cell *matCellDef="let prod">{{prod.price | currency :'HUF':'symbol':'4.0'}}</td>
     </ng-container>
-    <ng-container matColumnDef="afa">
-      <th mat-header-cell *matHeaderCellDef>Áfa</th>
-      <td mat-cell *matCellDef>27%</td>
-    </ng-container>
-    <ng-container matColumnDef="ar_afa">
-      <th mat-header-cell *matHeaderCellDef>Összeg áfával</th>
-      <td mat-cell *matCellDef>kiszamolni</td>
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef>Ára</th>
+      <td mat-cell *matCellDef="let prod">{{prod.total | currency :'HUF':'symbol':'4.0'}}</td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -43,12 +39,30 @@
     showFirstLastButtons
     aria-label="Select page of periodic elements">
   </mat-paginator>
-  <div>
-    Összes termék és ár:
+  <div style="display: flex; justify-content: flex-end; margin-top: 2rem;">
+    Összes termék darab száma és ára:
+    <div style="display: flex; justify-content: space-between; margin-left: 1rem;">
+      <div style="margin-right: 1rem;">{{fullQuantity._value}} db </div>
+      <div>{{fullPrice._value | currency : 'HUF':'symbol':'4.0'}}</div>
+    </div>
     <!-- TODO AFA ár és oszlopok -->
   </div>
-  <div>
-    <label style="margin-right: 1rem;">Tovább vásárolok</label>
+  <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 2rem;">
+    <label style="margin-right: 1rem;" [routerLink]="['/products']" class="pointer text">Tovább vásárolok</label>
     <button class="btn-main" (click)="buy()">Vásárlás</button>
   </div>
 </div>
+
+<ng-template #emptyList>
+  <div style="display: flex; justify-content: center; max-width: 300px; min-height: 400px; margin: auto;">
+    <mat-card class="light-box-shadow" style="display: grid;">
+      <div style="color: var(--white-color); font-weight: bord; display: flex; justify-content: center;">
+        <h2>Üres kosár</h2>
+      </div>
+      <div [routerLink]="['/products']" class="pointer text">
+        Vásárlás tovább...
+      </div>
+    </mat-card>
+  </div>
+</ng-template>
+

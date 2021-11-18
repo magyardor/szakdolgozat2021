@@ -26,9 +26,8 @@
       <span
         class="material-icons"
         style="color: brown;"
-        matBadgeColor="warn"
-        matBadge="7"
-        [matBadgeHidden]="hidden"
+        matBadgeColor="primary"
+        matBadge="{{this.cartsList.length}}"
         [routerLink]="['/carts']"
         (click)="toggleBadgeVisibility()"
       >

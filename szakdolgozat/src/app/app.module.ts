@@ -23,6 +23,7 @@ import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.compo
 import { ProductsProfileComponent } from './pages/products/products-profile/products-profile.component';
 import { AszfComponent } from './container/footer/aszf/aszf.component';
 import { PayPageComponent } from './pages/shopping-cart/pay-page/pay-page.component';
+import { ShoppingCartModule } from 'ng-shopping-cart';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,14 @@ import { PayPageComponent } from './pages/shopping-cart/pay-page/pay-page.compon
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
+    ShoppingCartModule.forRoot({
+      itemType: ShoppingCartComponent,
+      serviceType: 'localStorage',
+      serviceOptions: {
+        storageKey: 'NgShoppingCart',
+        clearOnError: true
+      }
+    }),
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

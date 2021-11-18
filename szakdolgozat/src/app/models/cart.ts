@@ -6,8 +6,8 @@ export class Carts {
   imageUrl: string;
   description: string;
   price: number;
-
   quantity: number;
+  total:number;
 
   constructor(product: Products){
       this.id = product.id;
@@ -16,5 +16,6 @@ export class Carts {
       this.description = product.description;
       this.price = product.price;
       this.quantity = 1;
+      this.total = this.quantity*this.price;
   }
 }
