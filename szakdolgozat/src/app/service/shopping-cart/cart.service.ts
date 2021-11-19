@@ -18,6 +18,8 @@ export class CartService {
   all: Data[] = [];
   fullOrder: any[] = [];
   orderData: Orders[] = [];
+  orderFull: any;
+  orderFullUpdate: any;
 
   totalPrice: Subject<number> = new BehaviorSubject<number>(0);
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
@@ -103,10 +105,36 @@ export class CartService {
     console.log(list)
     this.http.post<{order: Orders}>(environment.apiUrl + "orders", list)
     .subscribe(responseData => {
-      responseData.order.carts = list[0];
-      responseData.order.data = list[1];
-      responseData.order.transport = list[2];
-      responseData.order.pay = list[3];
+      const orders: Orders = {
+        id: responseData.order.id,
+        carts: [{
+          id: responseData.order.carts[0].id,
+          name: responseData.order.carts[0].name,
+          description: responseData.order.carts[0].description,
+          imagePath: responseData.order.carts[0].imagePath,
+          price: responseData.order.carts[0].price,
+          quantity: responseData.order.carts[0].quantity,
+          total: responseData.order.carts[0].total
+        }],
+        data: [{
+          city: responseData.order.data[0].city,
+          city_transport: responseData.order.data[0].city_transport,
+          email: responseData.order.data[0].email,
+          fullName: responseData.order.data[0].fullName,
+          fullName_transport: responseData.order.data[0].fullName_transport,
+          phone: responseData.order.data[0].phone,
+          street: responseData.order.data[0].street,
+          street_transport: responseData.order.data[0].street_transport,
+          taxNumber: responseData.order.data[0].taxNumber,
+          taxNumber_transport: responseData.order.data[0].taxNumber_transport,
+          zipCode: responseData.order.data[0].zipCode,
+          zipCode_transport: responseData.order.data[0].zipCode_transport,
+        }],
+        transport: responseData.order.transport,
+        pay: responseData.order.pay
+      };
+      this.orderFull.push(orders);
+      this.orderFullUpdate.next([...this.orderFull]);
     });
   }
 

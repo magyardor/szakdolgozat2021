@@ -7,7 +7,7 @@ export interface Orders {
 }
 
 export interface Carts {
-  prod_id: number;
+  id: number;
   name: string;
   description: string;
   imagePath: string;
