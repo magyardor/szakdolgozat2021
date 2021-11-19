@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Subject } from "rxjs";
 import { Cart } from "src/app/models/cart";
-import { Orders } from "src/app/models/orders.model";
+import { Data, Orders } from "src/app/models/orders.model";
 import { Order } from "src/app/models/transport.modul";
 import { environment } from "src/environments/environment";
 import { AlertService } from "../alert.service";
@@ -14,8 +14,8 @@ export class CartService {
   quantity: number = 1;
   payChoice: string = '';
   transportChoice: number = 0;
-  productsItem: any[] = [];
-  all: any[] = [];
+  productsItem: Cart[] = [];
+  all: Data[] = [];
   fullOrder: any[] = [];
   orderData: Orders[] = [];
 
@@ -99,36 +99,20 @@ export class CartService {
 
 
   /* Adatok hozzáadása/lekérdezése/törlése adatbázisba */
-  addFullOrder(
-    id: any,
-    carts: any,
-    data: any,
-    transport: any,
-    pay: string
-  ) {
-    const orderData = new FormData();
-    orderData.append("carts", carts);
-    orderData.append("data", data);
-    orderData.append("transport", transport);
-    orderData.append("transport", pay);
-    /* this.fullOrder.push(this.productsItem, this.all, this.transportChoice, this.payChoice); */
-    this.http.post<{order: Orders}>(environment.apiUrl + "orders", orderData)
+  addFullOrder(list: any) {
+    console.log(list)
+    this.http.post<{order: Orders}>(environment.apiUrl + "orders", list)
     .subscribe(responseData => {
-      const orders: Orders = {
-        /* id: responseData.order.id, */
-        id: id,
-        carts: carts,
-        data: data,
-        transport: transport,
-        pay: pay
-      };
-      this.orderData.push(orders);
-      console.log(orderData)
+      responseData.order.carts = list[0];
+      responseData.order.data = list[1];
+      responseData.order.transport = list[2];
+      responseData.order.pay = list[3];
     });
   }
 
   addFullOrderItem() {
-    this.addFullOrder(0, this.productsItem, this.all, this.transportChoice, this.payChoice);
+    this.fullOrder.push(this.productsItem, this.all, this.transportChoice, this.payChoice);
+    this.addFullOrder(this.fullOrder);
   }
 
 }

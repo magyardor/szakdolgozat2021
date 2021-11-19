@@ -25,6 +25,11 @@ const cellDataSchema = mongoose.Schema({
   zipCode_transport: { type: Number },
 });
 
+/* const cellOrderDataSchema = mongoose.Schema({
+  transport: { type: Number },
+  pay: { type: String }
+}); */
+
 const ordersSchema = mongoose.Schema({
   carts: [cellCartSchema],
   data: [cellDataSchema],
