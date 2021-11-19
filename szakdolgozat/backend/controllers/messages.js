@@ -2,8 +2,8 @@ const Messages = require("../models/pages/messages");
 
 exports.postMessages = (req, res, next) => {
   const msg = new Messages({
+    firstName: req.body.firstName,
     lastName: req.body.lastName,
-    fistName: req.body.fistName,
     email: req.body.email,
     description: req.body.description
   });

@@ -1,6 +1,8 @@
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
+const multer = require("multer");
+const forms = multer();
 const mongoose = require("mongoose");
 
 const authRoutes = require("./routes/auth/auth");
@@ -21,6 +23,7 @@ mongoose.connect("mongodb+srv://dorina:" + process.env.MONGO_DB_PASSWORD + "@web
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(forms.array());
 app.use("/images/news", express.static(path.join("backend/images/news")));
 app.use("/images/products", express.static(path.join("backend/images/products")));
 

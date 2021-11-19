@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const messagesSchema = mongoose.Schema({
-  lastName: {type: String},
   firstName: {type: String},
+  lastName: {type: String},
   email: {type: String},
   description: {type: String},
 });

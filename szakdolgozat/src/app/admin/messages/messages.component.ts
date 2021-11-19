@@ -9,7 +9,7 @@ import { ContactService } from 'src/app/service/contact.service';
   styleUrls: ['./messages.component.scss']
 })
 export class MessagesComponent implements OnInit, OnDestroy {
-  displayedColumns: string [] = ['full name', 'email', 'description', 'menu'];
+  displayedColumns: string [] = ['fullName', 'email', 'description', 'menu'];
   messages: Messages[] = [];
   isLoading = false;
   msgSub!: Subscription;
