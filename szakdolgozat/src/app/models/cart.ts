@@ -1,6 +1,6 @@
 import { Products } from "./products.model";
 
-export class Carts {
+export class Cart {
   id: number;
   name: string;
   imageUrl: string;

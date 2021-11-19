@@ -1,11 +1,10 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CartService } from 'src/app/service/shopping-cart/cart.service';
-import { TransportService } from 'src/app/service/transport_billing/transport.service';
 
 @Component({
   selector: 'app-pay-page',
@@ -24,7 +23,6 @@ export class PayPageComponent implements OnInit {
   stepperOriental!: Observable<StepperOrientation>;
 
   constructor(
-    private transport: TransportService,
     private carts: CartService,
     breakPoint: BreakpointObserver,
   ) {
@@ -33,46 +31,61 @@ export class PayPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl(''),
-      phone: new FormControl(''),
-      fullName: new FormControl(''),
-      zipCode: new FormControl(''),
-      city: new FormControl(''),
-      street: new FormControl(''),
-      taxNumber: new FormControl(''),
-      fullName_transport: new FormControl(''),
-      zipCode_transport: new FormControl(''),
-      city_transport: new FormControl(''),
-      street_transport: new FormControl(''),
-      taxNumber_transport: new FormControl(''),
+      email: new FormControl(null,{validators: [Validators.required]}),
+      phone: new FormControl(null,{validators: [Validators.required]}),
+      fullName: new FormControl(null,{validators: [Validators.required]}),
+      zipCode: new FormControl(null,{validators: [Validators.required]}),
+      city: new FormControl(null),
+      street: new FormControl(null,{validators: [Validators.required]}),
+      taxNumber: new FormControl(null),
+      fullName_transport: new FormControl(null),
+      zipCode_transport: new FormControl(null),
+      city_transport: new FormControl(null),
+      street_transport: new FormControl(null),
+      taxNumber_transport: new FormControl(null),
     });
     this.cartsList = this.carts.productsItem;
     this.fullPrice = this.carts.totalPrice;
     this.grandTotal = this.transportPrice + this.fullPrice._value;
-    this.orderList = this.transport.getOrder();
+    this.orderList = this.carts.getOrder();
   }
 
   changeValue(value: any) {
-      this.checked = !value;
-      console.log(this.checked)
+    this.checked = !value;
   }
 
   addShipOrder() {
-    this.transport.addOrder(
+    if(this.checked) {
+      this.form.value.fullName_transport = this.form.value.fullName;
+      this.form.value.zipCode_transport = this.form.value.zipCode;
+      this.form.value.city_transport = this.form.value.city;
+      this.form.value.street_transport = this.form.value.street;
+      this.form.value.taxNumber_transport = this.form.value.taxNumber;
+      this.carts.addOrder(
       this.form.value
-    )
-    this.orderList = this.transport.getOrder();
+      )
+    }
+    else {
+      this.carts.addOrder(
+        this.form.value
+      )
+    }
+    this.orderList = this.carts.getOrder();
   }
 
   radioChange(e: any){
     this.transportPrice = e.value;
     this.grandTotal = this.transportPrice + this.fullPrice._value;
-    console.log(e.value);
+    this.carts.transportChoice = this.transportPrice;
   }
 
   radioChangePay(e: any){
     this.payChoice = e.value;
-    console.log(e.value);
+    this.carts.payChoice = this.payChoice;
+  }
+
+  fullOrder() {
+    this.carts.addFullOrderItem();
   }
 
   states: string[] = [

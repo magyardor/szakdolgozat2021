@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Carts } from 'src/app/models/cart';
+import { Cart } from 'src/app/models/cart';
 import { CartService } from 'src/app/service/shopping-cart/cart.service';
 
 @Component({
@@ -26,7 +26,6 @@ export class ShoppingCartComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void{
     this.cartsList = this.carts.productsItem;
-    console.log(this.cartsList.length)
     for(let i=0; i < this.cartsList.length; i++){
       this.quantity = this.cartsList[i].quantity;
       /* this.fullPrice = this.cartsList[i].price*this.quantity */
@@ -36,11 +35,10 @@ export class ShoppingCartComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.cartsList.paginator = this.paginator;
+    /* this.cartsList.paginator = this.paginator; */
   }
 
   buy() {
-    console.log(this.cartsList);
     this.carts.updateCart(this.cartsList);
     this.router.navigate(['/pay']);
   }

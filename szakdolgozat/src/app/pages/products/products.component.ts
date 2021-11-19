@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Carts } from 'src/app/models/cart';
+import { Cart } from 'src/app/models/cart';
 import { Group, Products } from 'src/app/models/products.model';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { GroupService } from 'src/app/service/productsGroups/group.service';
@@ -44,7 +44,7 @@ export class ProductsComponent implements OnInit {
   }
 
   buy(prod: Products){
-    const cartItem = new Carts(prod);
+    const cartItem = new Cart(prod);
     this.cart.addCart(cartItem);
   }
 
