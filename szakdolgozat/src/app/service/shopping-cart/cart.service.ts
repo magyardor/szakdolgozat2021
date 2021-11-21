@@ -17,7 +17,6 @@ export class CartService {
   productsItem: Cart[] = [];
   all: Data[] = [];
   fullOrder: any[] = [];
-  orderData: Orders[] = [];
   orderFull: any;
   orderFullUpdate: any;
 
@@ -133,13 +132,22 @@ export class CartService {
         transport: responseData.order.transport,
         pay: responseData.order.pay
       };
+      console.log(orders);
       this.orderFull.push(orders);
       this.orderFullUpdate.next([...this.orderFull]);
-    });
+    }, error => {
+      this.alert.error(error.error.message);
+    }
+    );
   }
 
   addFullOrderItem() {
-    this.fullOrder.push(this.productsItem, this.all, this.transportChoice, this.payChoice);
+    this.fullOrder.push(
+      this.productsItem,
+      this.all,
+      this.transportChoice,
+      this.payChoice
+    );
     this.addFullOrder(this.fullOrder);
   }
 
