@@ -10,10 +10,7 @@
         <li class="nav-item noselect">
           <button mat-button [matMenuTriggerFor]="products" [routerLink]="['/products']" [routerLinkActive]="['selected']"><a>Products</a></button>
           <mat-menu #products="matMenu">
-            <button mat-menu-item>group1</button>
-            <button mat-menu-item>group2</button>
-            <button mat-menu-item>group3</button>
-            <button mat-menu-item>group4</button>
+            <button mat-menu-item *ngFor="let group of groupList">{{group.name}}</button>
           </mat-menu>
         </li>
         <li class="nav-item noselect" [routerLink]="['/contact']" [routerLinkActive]="['selected']">

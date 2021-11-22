@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Group } from 'src/app/models/products.model';
+import { GroupService } from 'src/app/service/productsGroups/group.service';
 import { CartService } from 'src/app/service/shopping-cart/cart.service';
 @Component({
   selector: 'app-toolbar',
@@ -7,13 +9,21 @@ import { CartService } from 'src/app/service/shopping-cart/cart.service';
 })
 export class ToolbarComponent implements OnInit {
   cartsList: any;
+  groupSub: any;
+  groupList: Group[] = [];
 
   constructor(
     private carts: CartService,
+    private group: GroupService,
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.cartsList = this.carts.productsItem;
+    await this.group.getGroups();
+    this.groupSub = this.group.getgroupUpdatedListener()
+    .subscribe(group => {
+      this.groupList = group;
+    });
   }
 
   toggleBadgeVisibility() {
