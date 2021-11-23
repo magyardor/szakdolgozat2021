@@ -1,6 +1,10 @@
+/*
+Author: Maximilian Schwarzmüller
+Github repo: https://github.com/PacktPublishing/Angular-and-Node.js---The-MEAN-Stack-Guide
+Udemy video: https://www.udemy.com/course/angular-2-and-nodejs-the-practical-guide/
+*/
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { Observable } from "rxjs";
 import { AdminService } from "../admin.service";
 
 @Injectable()

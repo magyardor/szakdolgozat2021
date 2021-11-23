@@ -45,17 +45,7 @@ exports.putNews = (req, res, next) => {
 }
 
 exports.getNews = (req, res, next) => {
-  /* const pageSize = +req.query.pagesize;
-  const currentPage = +req.query.page; */
   News.find()
-  /* let fetchNews;
-  if(pageSize && currentPage) {
-    newsQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
-  }
-  newsQuery.then(documents => {
-    fetchNews = documents;
-    return News.count();
-  })*/
   .then(count => {
     res.status(200).json({
       message: "News fetched successfully!",
