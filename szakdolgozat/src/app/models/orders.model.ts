@@ -1,11 +1,13 @@
 export interface Orders {
-  id: number;
+  orders: Order[];
+}
+
+export interface Order {
   carts: Carts[];
   data: Data[];
   transport: number;
   pay: string;
 }
-
 export interface Carts {
   id: number;
   name: string;

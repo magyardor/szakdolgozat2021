@@ -15,6 +15,12 @@
       <img [src]="imagePreview" [alt]="form.value.name">
     </div>
     <mat-form-field appearance="outline">
+      <mat-label>Termék csoport</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let group of groupList" [value]="group.name">{{group.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
       <textarea matInput rows="4" formControlName="description" placeholder="Description"></textarea>
       <mat-error *ngIf="form.get('description')?.invalid">Please enter a products description.</mat-error>

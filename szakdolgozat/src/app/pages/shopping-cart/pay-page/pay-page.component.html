@@ -39,7 +39,6 @@
             <mat-form-field appearance="outline">
               <mat-label>Ország</mat-label>
               <mat-select>
-                <mat-option>None</mat-option>
                 <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
               </mat-select>
             </mat-form-field>
@@ -255,7 +254,14 @@
           </div>
         </mat-step>
         <mat-step label="Kész">
-          Kész is vagyunk megkaptuk a rendelésed!
+          <div class="text-white stepper-page done">
+            <div>
+              Kész is vagyunk megkaptuk a rendelésed!
+            </div>
+            <div>
+              Rendelés azonosítód:
+            </div>
+          </div>
         </mat-step>
       </mat-horizontal-stepper>
     </div>

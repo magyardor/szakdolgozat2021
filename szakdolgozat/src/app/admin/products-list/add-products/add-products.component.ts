@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Products } from 'src/app/models/products.model';
+import { Group, Products } from 'src/app/models/products.model';
 import { AlertService } from 'src/app/service/alert.service';
 import { ProductsService } from 'src/app/service/products/products.service';
+import { GroupService } from 'src/app/service/productsGroups/group.service';
 import { mimeType } from 'src/app/service/validators/mime-type.validator';
 
 @Component({
@@ -16,16 +17,20 @@ export class AddProductsComponent implements OnInit {
   isLoading = false;
   form!: FormGroup;
   imagePreview!: string;
+  groupSub: any;
+  groupList: Group[] = [];
   private mode = "create";
   private productsId!: any;
 
   constructor(
     public productsService: ProductsService,
+    private group: GroupService,
     public route: ActivatedRoute,
     private alertService: AlertService,
   ) {}
 
   ngOnInit() {
+    this.getGroupList();
     this.form = new FormGroup({
       name: new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
       description: new FormControl(null, {validators: [Validators.required]}),
@@ -61,6 +66,13 @@ export class AddProductsComponent implements OnInit {
     });
   }
 
+  async getGroupList() {
+    await this.group.getGroups();
+    this.groupSub = this.group.getgroupUpdatedListener()
+    .subscribe(group => {
+      this.groupList = group;
+    });
+  }
   onImagePicked(event: Event) {
     const file = (event.target as HTMLInputElement).files![0];
     this.form.patchValue({image: file});

@@ -33,6 +33,12 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
   next();
 });
+app.use((req, res, next) => {
+  if (req.headers['content-type'] === 'application/json;') {
+    req.headers['content-type'] = 'application/json';
+  }
+  next();
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/news", newsRoutes);

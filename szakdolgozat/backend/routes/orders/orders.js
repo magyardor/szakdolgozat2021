@@ -7,7 +7,6 @@ const img = require("../../middleware/imgProducts");
 const router = express.Router();
 
 router.post("",
-  img,
   OrdersController.postOrders
 );
 
