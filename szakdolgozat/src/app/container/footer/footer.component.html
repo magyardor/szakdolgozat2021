@@ -3,16 +3,16 @@
     <div class="col">
       <a id="logo_monogram"><img src="../../../assets/logos/logo_monogram_dark.png"></a>
       <div class="text">
-        <p>Készítette: <b>Magyar Dorina</b></p>
+        <p>{{'TEXT.AUTHOR' | translate}}: <b>Magyar Dorina</b></p>
         <p>2021</p>
       </div>
     </div>
     <div class="col list">
       <ul style="list-style-type: none; line-height: 30px;">
-        <li [routerLink]="['/aszf']" class="pointer">ÁSZF</li>
-        <li>Adatkezelési Tájékoztató</li>
-        <li>Vásárlási Útmutató</li>
-        <li>Fizetési Tájékoztató</li>
+        <li [routerLink]="['/aszf']" class="pointer">{{'TEXT.GTC' | translate}}</li>
+        <li>{{'TEXT.PRIVACY' | translate}}</li>
+        <li>{{'TEXT.GUIDE' | translate}}</li>
+        <li>{{'TEXT.PAYMENT' | translate}}</li>
       </ul>
     </div>
   </div>

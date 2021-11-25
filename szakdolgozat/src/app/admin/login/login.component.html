@@ -6,16 +6,19 @@
   <div id="login-container" class="col-md-5 col-sm-12 container">
     <mat-spinner *ngIf="isLoading"></mat-spinner>
     <form [formGroup]="userForm" class="form-group" *ngIf="!isLoading">
-      <div id="add-user-text">Bejelentkezés</div>
+      <div class="title-login">
+        <div id="add-user-text">{{'GENERIC.LOGIN' | translate}}</div>
+        <app-language-selector></app-language-selector>
+      </div>
       <div style="display: grid; justify-content: center;">
         <div class="app-form-field">
-          <label>E-mail</label>
+          <label>{{'FORM.LOGIN.EMAIL' | translate}}</label>
           <div style="display: flex;">
             <input formControlName="email" type="email" placeholder="Email" required email style="padding: 0.6rem 1rem !important;">
           </div>
         </div>
         <div class="app-form-field">
-          <label>Password</label>
+          <label>{{'FORM.LOGIN.PASSWORD' | translate}}</label>
           <div style="display: flex;">
             <input formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Password" required password style="padding: 0.6rem 1rem !important;">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -25,7 +28,7 @@
         </div>
       </div>
       <div id="button-container">
-        <button mat-raised-button class="btn" (click)="login()">Bejelentkezés</button>
+        <button mat-raised-button class="btn" (click)="login()">{{'GENERIC.LOGIN' | translate}}</button>
       </div>
     </form>
   </div>

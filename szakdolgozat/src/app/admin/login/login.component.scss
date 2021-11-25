@@ -29,6 +29,11 @@ img {
   form {
     width: 90%;
 
+    .title-login{
+      display: flex;
+      justify-content: space-between;
+    }
+
     #add-user-text{
       font-size: 32px;
       color:var(--highlighter-color);

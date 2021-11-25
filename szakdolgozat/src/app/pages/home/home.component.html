@@ -12,7 +12,7 @@
       <div class="col" style="width: 500px; margin-left: 2rem;">
         <div class="home-title">{{news.title}}</div>
         <div class="home-description">{{news.description}}</div>
-        <div class="home-button-read"><button class="btn-main-outlined" (click)="onGetNew(news.id)">Read more</button></div>
+        <div class="home-button-read"><button class="btn-main-outlined" (click)="onGetNew(news.id)">{{'PAGE.HOME.READ_MORE' | translate}}</button></div>
 
       </div>
       <div class="col img-carousel-box">
@@ -31,8 +31,8 @@
           <div>{{prod.price | currency :'HUF':'symbol':'4.0'}}</div>
           <div class="description">{{prod.description}}</div>
           <div class="button-read">
-            <div class="pointer products-profile" (click)="onGetProduct(prod.id)">...read more</div>
-            <button class="btn-main" style="max-height: 50px;" (click)="buy(prod)">Buy</button>
+            <div class="pointer products-profile" (click)="onGetProduct(prod.id)">...{{'PAGE.HOME.READ_MORE' | translate}}</div>
+            <button class="btn-main" style="max-height: 50px;" (click)="buy(prod)">{{'PAGE.HOME.BUY' | translate}}</button>
           </div>
         </mat-card>
       </mat-grid-tile>

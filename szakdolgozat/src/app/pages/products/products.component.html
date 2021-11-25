@@ -8,8 +8,8 @@
           <div>{{prod.price | currency :'HUF':'symbol':'4.0'}}</div>
           <div class="description">{{prod.description}}</div>
           <div class="button-read">
-            <div class="pointer products-profile" (click)="onGetProduct(prod.id)">...read more</div>
-            <button class="btn-main" style="max-height: 50px;" (click)="buy(prod)">Buy</button>
+            <div class="pointer products-profile" (click)="onGetProduct(prod.id)">...{{'PAGE.PRODUCTS.READ_MORE' | translate}}</div>
+            <button class="btn-main" style="max-height: 50px;" (click)="buy(prod)">{{'PAGE.PRODUCTS.BUY' | translate}}</button>
           </div>
         </mat-card>
       </mat-grid-tile>

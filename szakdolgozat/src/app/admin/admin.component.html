@@ -1,7 +1,12 @@
 <mat-toolbar class="toolbar" style="box-shadow: 0px -20px 20px 20px #000;">
     <span class="material-icons pointer noselect" (click)="open($event)">menu</span>
-    <div class="logo-name">
-      <img src="../../assets/logos/logo_monogram_dark.png">
+    <div class="toolbar-left">
+      <div>
+      <app-language-selector></app-language-selector>
+      </div>
+      <div class="logo-name">
+        <img src="../../assets/logos/logo_monogram_dark.png">
+      </div>
     </div>
 </mat-toolbar>
 <app-navbar [isExpanded]="isShowing" >

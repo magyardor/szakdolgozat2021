@@ -13,6 +13,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { PayPageComponent } from './pages/shopping-cart/pay-page/pay-page.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { SharedModule } from './shared/shared.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   {
@@ -69,7 +70,9 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     BrowserModule,
-    RouterModule.forRoot(routes)],
+    RouterModule.forRoot(routes),
+    TranslateModule.forRoot(),
+  ],
   exports: [RouterModule, SharedModule]
 })
 export class AppRoutingModule { }

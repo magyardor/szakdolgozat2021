@@ -24,6 +24,7 @@
   .nav-item a:hover,
   label:hover {
     text-decoration: none;
+    color: var(--highlighter-color);
   }
 
   .selected {
@@ -46,4 +47,5 @@
 
   img {
     width: 40%;
+    margin-right: 3rem;
   }

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
 import { GoToTopComponent } from './go-to-top/go-to-top.component';
 import { BackButtonComponent } from './back-button/back-button.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 /* Material import */
 import { MatBadgeModule } from '@angular/material/badge';
@@ -39,6 +40,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { CustomIconComponent } from './custom-icon/custom-icon.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule.forChild(),
      /* Material */
      MatBadgeModule,
      MatButtonModule,
@@ -85,6 +88,8 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     GoToTopComponent,
     CustomIconComponent,
     BackButtonComponent,
+    TranslateModule,
+    LanguageSelectorComponent,
      /* Material */
      MatBadgeModule,
      MatButtonModule,
@@ -122,7 +127,8 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
     AlertComponent,
     CustomIconComponent,
     GoToTopComponent,
-    BackButtonComponent
+    BackButtonComponent,
+    LanguageSelectorComponent
   ],
 })
 export class SharedModule { }
