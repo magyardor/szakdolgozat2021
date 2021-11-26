@@ -8,6 +8,12 @@
     display: flex;
     align-items: center;
     width: 500%;
+    overflow: hidden;
+    float: left;
+  }
+
+  .navbar-collapse .icon {
+    display: none;
   }
 
   .nav-bar{
@@ -39,6 +45,12 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    float: right;
+  }
+
+  .search {
+    color: var(--light-color);
+    margin-right: 2rem;
   }
 
   #logo_monogram {
@@ -49,3 +61,74 @@
     width: 40%;
     margin-right: 3rem;
   }
+
+@media screen and (max-width: 800px){
+  .menu-vertical{
+    display: flex;
+    background-color: var(--main-color);
+    padding: 1rem;
+  }
+
+  .navbar-collapse {
+    display: flex;
+    align-items: center;
+    width: 500%;
+    overflow: hidden;
+    float: left;
+  }
+
+  .navbar-collapse .icon {
+    display: flex;
+    color: var(--light-color);
+  }
+
+  .navbar-collapse .icon:hover {
+    color: var(--white-color);
+    background-color: var(--dark-color);
+    border-radius: 3px;
+  }
+
+  .nav-bar{
+    display: none;
+  }
+
+  .nav-item a{
+    color: var(--highlighter-color);
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .nav-item a:hover,
+  label:hover {
+    text-decoration: none;
+    color: var(--highlighter-color);
+  }
+
+  .selected {
+    background-color: var(--light-color);
+  }
+
+  .mat-menu-item{
+    background-color: var(--main-color) !important;
+  }
+
+  .navbar-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    float: right;
+  }
+
+  .search {
+    display: none;
+  }
+
+  #logo_monogram {
+    display: contents;
+  }
+
+  img {
+    width: 24%;
+    margin-right: 3rem;
+  }
+}

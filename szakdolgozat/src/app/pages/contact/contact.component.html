@@ -2,7 +2,7 @@
   <img id="contact-img" src="../../../assets/logos/logo_name.png">
 </div>
 <div class="contact-text">
-  <div class="col" style="width: 40%; display: flex; align-items: center;">
+  <div class="col contact-text-body">
   What is Lorem Ipsum?
   Lorem Ipsum is simply dummy text of the printing and typesetting industry.
   Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
@@ -22,7 +22,7 @@
     </div>
     <div class="contact-body">
       <div class="author-img">
-        <img src="../../../assets/backgrounds/IMG_0923.JPG">
+        <img src="../../../assets/backgrounds/profile_picture.png">
       </div>
       <div class="name bold">
         Magyar Dorina
@@ -69,9 +69,9 @@
       </mat-form-field>
       <div style="display: flex; align-items: center;">
         <mat-checkbox #confirmed></mat-checkbox>
-        <label style="margin-left: 0.5rem;">ASZF</label>
+        <label style="margin-left: 0.5rem; color: var(--white-color);">*Elfogadom az Általános szerződési feltételeket és az Adatkezelési tájékoztatót.</label>
       </div>
-      <div style="display: flex; justify-content: space-evenly;">
+      <div class="contact-button">
         <button class="btn-cancel"(click)="clear()" >{{'GENERIC.ACTION.CANCEL' | translate}}</button>
         <button class="btn-secondary" type="submit" [disabled]="!confirmed.checked">{{'GENERIC.ACTION.SEND' | translate}}</button>
       </div>

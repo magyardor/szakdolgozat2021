@@ -1,5 +1,15 @@
 <nav class="menu-vertical">
-    <div class="navbar-collapse">
+    <div class="navbar-collapse" id="topNavbar">
+      <span class="material-icons pointer icon" [matMenuTriggerFor]="menu">menu</span>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/home']" [routerLinkActive]="['selected']"><a>{{'PAGE.HOME.TITLE' | translate}}</a></button>
+        <button mat-menu-item [routerLink]="['/news']" [routerLinkActive]="['selected']"><a>{{'PAGE.NEWS.TITLE' | translate}}</a></button>
+        <button mat-menu-item [matMenuTriggerFor]="products" [routerLink]="['/products']" [routerLinkActive]="['selected']"><a>{{'PAGE.PRODUCTS.TITLE' | translate}}</a></button>
+          <mat-menu #products="matMenu">
+            <button mat-menu-item *ngFor="let group of groupList">{{group.name}}</button>
+          </mat-menu>
+        <button mat-menu-item [routerLink]="['/contact']" [routerLinkActive]="['selected']"><a>{{'PAGE.ABOUT_US.TITLE' | translate}}</a></button>
+      </mat-menu>
       <ul class="nav-bar">
         <li class="nav-item noselect">
           <button mat-button [routerLink]="['/home']" [routerLinkActive]="['selected']"><a>{{'PAGE.HOME.TITLE' | translate}}</a></button>
@@ -13,14 +23,14 @@
             <button mat-menu-item *ngFor="let group of groupList">{{group.name}}</button>
           </mat-menu>
         </li>
-        <li class="nav-item noselect" [routerLink]="['/contact']" [routerLinkActive]="['selected']">
-          <button mat-button><a>{{'PAGE.ABOUT_US.TITLE' | translate}}</a></button>
+        <li class="nav-item noselect">
+          <button mat-button [routerLink]="['/contact']" [routerLinkActive]="['selected']"><a>{{'PAGE.ABOUT_US.TITLE' | translate}}</a></button>
         </li>
       </ul>
     </div>
     <div class="navbar-icons">
       <app-language-selector></app-language-selector>
-      <span class="material-icons" style="color: brown; margin-right: 2rem;">search</span>
+      <span class="material-icons search">search</span>
       <span
         class="material-icons"
         style="color: brown; margin-right: 2rem;"

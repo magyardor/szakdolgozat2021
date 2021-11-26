@@ -1,3 +1,11 @@
+.news-box-profile {
+  display: flex;
+
+  @media screen and (max-width: 660px){
+    display: block;
+  }
+}
+
 .news-profile-img {
   margin: auto;
   display: flex;
@@ -9,6 +17,10 @@ img {
   border: 10px solid var(--white-color);
   border-radius: 50%;
   background-color: white;
+
+  @media screen and (max-width: 660px){
+    width: 80%;
+  }
 }
 
 .news-profile-text {
@@ -16,6 +28,10 @@ img {
   display: grid;
   padding: 50px;
   width: fit-content;
+
+  @media screen and (max-width: 660px){
+    min-height: 500px;
+  }
 }
 
 .profile-text{

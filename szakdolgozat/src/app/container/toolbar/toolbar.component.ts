@@ -10,6 +10,7 @@ import { CartService } from 'src/app/service/shopping-cart/cart.service';
 export class ToolbarComponent implements OnInit {
   cartsList: any;
   groupSub: any;
+  x: any;
   groupList: Group[] = [];
 
   constructor(
@@ -28,6 +29,10 @@ export class ToolbarComponent implements OnInit {
 
   toggleBadgeVisibility() {
     this.cartsList = this.carts.productsItem;
+  }
+
+  open(event: any) {
+    console.log(event)
   }
 
 }

@@ -1,5 +1,5 @@
 <div class="img-box">
-  <img src="../../../assets/logos/logo_name.png">
+  <img src="../../../assets/backgrounds/logo_page_header.png">
 </div>
 <carousel class="box-home-shadow"
     [objectFit]="'cover'"
@@ -13,7 +13,6 @@
         <div class="home-title">{{news.title}}</div>
         <div class="home-description">{{news.description}}</div>
         <div class="home-button-read"><button class="btn-main-outlined" (click)="onGetNew(news.id)">{{'PAGE.HOME.READ_MORE' | translate}}</button></div>
-
       </div>
       <div class="col img-carousel-box">
         <img [src]="news.imagePath" [alt]="news.title" class="home-image">
@@ -26,7 +25,7 @@
     <div *ngFor="let prod of productsList">
       <mat-grid-tile>
         <mat-card class="card-box">
-          <div class="products-img"><img [src]="prod.imagePath" style="width: 50%;"></div>
+          <div class="products-img"><img [src]="prod.imagePath" class="home-image"></div>
           <div>{{prod.name}}</div>
           <div>{{prod.price | currency :'HUF':'symbol':'4.0'}}</div>
           <div class="description">{{prod.description}}</div>
