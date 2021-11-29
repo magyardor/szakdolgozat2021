@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Group } from 'src/app/models/products.model';
 import { GroupService } from 'src/app/service/productsGroups/group.service';
 import { CartService } from 'src/app/service/shopping-cart/cart.service';
@@ -16,6 +17,7 @@ export class ToolbarComponent implements OnInit {
   constructor(
     private carts: CartService,
     private group: GroupService,
+    private router: Router
   ) { }
 
   async ngOnInit() {
@@ -33,6 +35,11 @@ export class ToolbarComponent implements OnInit {
 
   open(event: any) {
     console.log(event)
+  }
+
+  selectedGroup(id: any){
+    this.group.selectedGroup(id);
+    this.router.navigateByUrl("/products")
   }
 
 }

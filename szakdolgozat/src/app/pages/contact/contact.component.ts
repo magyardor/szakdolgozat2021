@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/service/alert.service';
 import { ContactService } from 'src/app/service/contact.service';
+import { mimeType } from 'src/app/service/validators/mime-type.validator';
 
 @Component({
   selector: 'app-contact',
@@ -11,6 +12,7 @@ import { ContactService } from 'src/app/service/contact.service';
 export class ContactComponent implements OnInit {
   form!: FormGroup;
   isLoading = false;
+  imagePreview!: string;
 
   constructor(
     private contactService: ContactService,
@@ -21,9 +23,21 @@ export class ContactComponent implements OnInit {
     this.form = new FormGroup({
       firstName: new FormControl(null, {validators: [Validators.required]}),
       lastName: new FormControl(null, {validators: [Validators.required]}),
-      email: new FormControl(null, {validators: [Validators.required]}),
+      email: new FormControl(''),
       description: new FormControl(null, {validators: [Validators.required]}),
+      image: new FormControl(null, {validators: [Validators.required], asyncValidators: [mimeType]}),
     });
+  }
+
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files![0];
+    this.form.patchValue({image: file});
+    this.form.get('image')?.updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 
   onAddMessage(): void {
@@ -39,7 +53,8 @@ export class ContactComponent implements OnInit {
       this.form.value.firstName,
       this.form.value.lastName,
       this.form.value.email,
-      this.form.value.description
+      this.form.value.description,
+      this.form.value.image,
       )
     this.isLoading = false
   }

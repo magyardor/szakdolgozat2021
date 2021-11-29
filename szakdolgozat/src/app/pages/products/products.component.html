@@ -1,5 +1,5 @@
 <div class="products-list">
-  <mat-grid-list cols="4" rowHeight="2:3" style="margin: 1rem;">
+  <mat-grid-list [responsive]="true" (responsiveColsChange)="cols = $event" rowHeight="2:3" style="margin: 1rem;">
     <div *ngFor="let prod of productList">
       <mat-grid-tile>
         <mat-card class="card-box">

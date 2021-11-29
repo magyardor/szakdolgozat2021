@@ -51,12 +51,14 @@ export class AddProductsComponent implements OnInit {
             description: productsData.description,
             imagePath: productsData.imagePath,
             price: productsData.price,
+            productsGroup: productsData.productsGroup
           };
           this.form.setValue({
             name: this.products.name,
             description: this.products.description,
             image: this.products.imagePath,
-            price: this.products.price
+            price: this.products.price,
+            productsGroup: this.products.productsGroup
           });
         });
       } else {
@@ -93,10 +95,24 @@ export class AddProductsComponent implements OnInit {
     }
     this.isLoading = true;
     if(this.mode === 'create') {
-      this.productsService.addProducts(this.form.value.name, this.form.value.description, this.form.value.image, this.form.value.price)
+      console.log(this.form.value)
+      this.productsService.addProducts(
+        this.form.value.name,
+        this.form.value.description,
+        this.form.value.image,
+        this.form.value.price,
+        this.form.value.productsGroup
+      )
     }
     else {
-      this.productsService.updateProducts(this.productsId, this.form.value.name, this.form.value.description, this.form.value.image, this.form.value.price);
+      this.productsService.updateProducts(
+        this.productsId,
+        this.form.value.name,
+        this.form.value.description,
+        this.form.value.image,
+        this.form.value.price,
+        this.form.value.productsGroup
+      );
     }
     this.form.reset();
 

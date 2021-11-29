@@ -1,11 +1,13 @@
 const Messages = require("../models/pages/messages");
 
 exports.postMessages = (req, res, next) => {
+  const url = req.protocol + "://" + req.get("host");
   const msg = new Messages({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    description: req.body.description
+    description: req.body.description,
+    imagePath: url + "/images/messages/" + req.file.filename,
   });
   console.log(req.body)
   msg.save().then(result => {

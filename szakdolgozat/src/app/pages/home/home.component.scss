@@ -5,6 +5,11 @@
 
 img {
  width: 100%;
+ @media screen and (max-width: 470px){
+  justify-content: flex-start;
+  display: flex;
+  width: 100%;
+}
 }
 
 .news {
@@ -43,6 +48,7 @@ img {
   align-items: center;
   display: flex;
   justify-content: space-between;
+  z-index: auto;
 }
 
 .img-carousel-box {
@@ -58,6 +64,7 @@ img {
 
 .home-title {
   margin-bottom: 2rem;
+  margin-left: 2rem;
   font-size: 20px;
   font-style: bold;
   color: var(--highlighter-color);

@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
+
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list'
@@ -41,6 +42,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { CustomIconComponent } from './custom-icon/custom-icon.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
+import { MatGridListResponsive } from './mat-grid-list-responsive.directive';
 
 
 @NgModule({
@@ -102,6 +104,7 @@ import { LanguageSelectorComponent } from './language-selector/language-selector
      MatExpansionModule,
      MatFormFieldModule,
      MatGridListModule,
+     MatGridListResponsive,
      MatIconModule,
      MatInputModule,
      MatListModule,
@@ -128,7 +131,8 @@ import { LanguageSelectorComponent } from './language-selector/language-selector
     CustomIconComponent,
     GoToTopComponent,
     BackButtonComponent,
-    LanguageSelectorComponent
+    LanguageSelectorComponent,
+    MatGridListResponsive
   ],
 })
 export class SharedModule { }

@@ -16,8 +16,8 @@
     </div>
     <mat-form-field appearance="outline">
       <mat-label>{{'FORM.ADD_PRODUCTS.PRODUCTS_GROUP' | translate}}</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let group of groupList" [value]="group.name">{{group.name}}</mat-option>
+      <mat-select formControlName="productsGroup">
+        <mat-option *ngFor="let group of groupList" [value]="group.id">{{group.name}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">

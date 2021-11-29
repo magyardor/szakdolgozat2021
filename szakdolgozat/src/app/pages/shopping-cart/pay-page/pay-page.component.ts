@@ -101,7 +101,7 @@ export class PayPageComponent implements OnInit {
   ]
 
   pay_choice: any[] = [
-    {value: 1, name: "Készpénz", disabled: false},
+    {value: 1, name: "Utánvét", disabled: false},
     {value: 2, name: "Kártya", disabled: true}
   ]
 

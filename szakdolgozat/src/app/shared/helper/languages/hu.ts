@@ -20,6 +20,7 @@ export const locale = {
         YES: 'Igen',
         NO: 'Nem',
         CREATE: 'Létrehozás',
+        VIEW_CART: 'Kosár megtekintése',
       }
     },
     ALERT: {
@@ -137,6 +138,8 @@ export const locale = {
       PRIVACY: 'Adatkezelési Tájékoztató',
       GUIDE: 'Vásárlási útmutató',
       PAYMENT: 'Fizetési Tájékoztató',
+      PRODUCT_ADD_CART: 'Termék sikeresen bekerült a kosárba!',
+      BUY_MORE: 'vásárlás tovább',
     }
   },
 };

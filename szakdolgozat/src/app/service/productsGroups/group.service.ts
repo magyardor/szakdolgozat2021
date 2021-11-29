@@ -11,10 +11,15 @@ import { environment } from "src/environments/environment";
 export class GroupService {
   private group: Group[] = [];
   private groupUpdate = new Subject<Group[]>();
-
+  groupID: number = 0;
   constructor(
     private http: HttpClient,
   ){}
+
+  selectedGroup(id: number) {
+    this.groupID = id;
+    console.log(this.groupID)
+  }
 
   getGroups() {
     this.http.get<{message: string, productsGroups: any}>( environment.apiUrl + "productsGroups")

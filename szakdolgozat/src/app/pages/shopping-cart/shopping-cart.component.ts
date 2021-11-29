@@ -64,7 +64,7 @@ export class ShoppingCartComponent implements OnInit, AfterViewInit {
         if(this.cartsList[i].quantity <= 0){
           console.log(this.cartsList[i].id)
           console.log(i);
-          /* this.carts.removeCart(i); */
+          this.carts.removeCart(this.cartsList[i]);
         }
       }
     }

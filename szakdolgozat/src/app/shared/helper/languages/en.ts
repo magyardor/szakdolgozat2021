@@ -23,6 +23,7 @@ export const locale = {
         CLOSE: 'Close',
         START: 'Start',
         CREATE: 'Create',
+        VIEW_CART: 'View cart',
       }
     },
     ALERT: {
@@ -140,6 +141,8 @@ export const locale = {
       PRIVACY: 'Privacy statement',
       GUIDE: 'Shopping Guide',
       PAYMENT: 'Payment Information',
+      PRODUCT_ADD_CART: 'Product successfully added to your shopping cart!',
+      BUY_MORE: 'buy more'
     }
   },
 };

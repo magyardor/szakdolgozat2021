@@ -24,6 +24,7 @@ import { ProductsProfileComponent } from './pages/products/products-profile/prod
 import { AszfComponent } from './container/footer/aszf/aszf.component';
 import { PayPageComponent } from './pages/shopping-cart/pay-page/pay-page.component';
 import { ShoppingCartModule } from 'ng-shopping-cart';
+import { BuyDialogComponent } from './service/dialog/buy-dialog/buy-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ShoppingCartModule } from 'ng-shopping-cart';
     ShoppingCartComponent,
     ProductsProfileComponent,
     AszfComponent,
-    PayPageComponent
+    PayPageComponent,
+    BuyDialogComponent
   ],
   imports: [
     CommonModule,

@@ -4,6 +4,7 @@ export interface Products {
   description: string;
   imagePath: string;
   price: number;
+  productsGroup: string;
 }
 
 export interface Group {

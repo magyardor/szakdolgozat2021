@@ -178,17 +178,17 @@
                 <div class="transport-box-body">
                   <div class="box-body">
                     Összesen (bruttó):
-                    <div>{{fullPrice._value}} Ft</div>
+                    <div>{{fullPrice._value | currency :'HUF':'symbol':'4.0'}}</div>
                   </div>
                   <div class="box-body">
                     Szállítási költség:
-                    <div>{{transportPrice}} Ft</div>
+                    <div>{{transportPrice | currency :'HUF':'symbol':'4.0'}}</div>
                   </div>
                 </div>
                 <div class="box-line"></div>
                 <div class="box-body final-text">
                   Végösszeg:
-                  <div>{{grandTotal}} Ft</div>
+                  <div>{{grandTotal | currency :'HUF':'symbol':'4.0'}}</div>
                 </div>
               </mat-card>
             </div>
@@ -214,14 +214,14 @@
                   {{prod.quantity}}db
                 </div>
                 <div>
-                  {{prod.total}}Ft
+                  {{prod.total | currency :'HUF':'symbol':'4.0'}}
                 </div>
               </div>
               <div>
                 <div><h2 class="title-h2">Szállítás és Fizetés</h2></div>
                 <div class="box-body final-text">
                   <div>Szállítás:</div>
-                  <div>{{transportPrice}}Ft</div>
+                  <div>{{transportPrice | currency :'HUF':'symbol':'4.0'}}</div>
                 </div>
                 <div class="box-body final-text">
                   <div>Fizetés:</div>
@@ -233,7 +233,7 @@
               <div><h2 class="title-h2">Összesen</h2></div>
               <div class="box-body final-text">
                 Végösszeg:
-                <div>{{grandTotal}} Ft</div>
+                <div>{{grandTotal | currency :'HUF':'symbol':'4.0'}}</div>
               </div>
             </div>
             <div>

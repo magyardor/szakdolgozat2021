@@ -30,7 +30,7 @@ export class CartService {
   /* Kosár információk */
   addCart(products: Cart) {
     if(this.productsItem.length > 0){
-      this.existingInCart = this.productsItem.find(x => x.id === products.id);
+      this.existingInCart = this.productsItem.find(x => x.name === products.name);
       this.existsInCart = (this.existingInCart != undefined);
     }
     if(this.existsInCart) {

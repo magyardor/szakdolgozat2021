@@ -29,7 +29,8 @@ export class ProductsService {
             description: product.description,
             id: product._id,
             imagePath: product.imagePath,
-            price: product.price
+            price: product.price,
+            productsGroup: product.productsGroup
           };
         });
       })
@@ -44,15 +45,16 @@ export class ProductsService {
   }
 
   getProduct(id: any) {
-    return this.http.get<{_id: any, name: string, description: string, imagePath: string, price: number}>( environment.apiUrl + "products/" + id)
+    return this.http.get<{_id: any, name: string, description: string, imagePath: string, price: number, productsGroup: any}>( environment.apiUrl + "products/" + id)
   }
 
-  addProducts(name: string, description: string, image: File | string, price: any) {
+  addProducts(name: string, description: string, image: File | string, price: any, productsGroup: any) {
     const productsData = new FormData();
     productsData.append("name", name);
     productsData.append("description", description);
     productsData.append("image", image, name);
     productsData.append("price", price);
+    productsData.append("productsGroup", productsGroup);
     this.http.post<{message: string, products: Products}>( environment.apiUrl + "products", productsData)
     .subscribe(responseData => {
       const products: Products = {
@@ -60,8 +62,10 @@ export class ProductsService {
         name: name,
         description: description,
         imagePath: responseData.products.imagePath,
-        price: price
+        price: price,
+        productsGroup: productsGroup
       };
+      console.log(this.products)
       this.products.push(products);
       this.prodUpdated.next([...this.products]);
       this.alert.success('ALERT.SUCCESS.ADD')
@@ -71,7 +75,7 @@ export class ProductsService {
     });
   }
 
-  updateProducts(id: any, name: string, description: string, image: File | string, price: any){
+  updateProducts(id: any, name: string, description: string, image: File | string, price: any, productsGroup: any){
     let productsData: Products | FormData;
     if(typeof(image) === "object"){
       productsData = new FormData();
@@ -79,10 +83,18 @@ export class ProductsService {
       productsData.append("name", name),
       productsData.append("description", description),
       productsData.append("image", image, name),
-      productsData.append("price", price)
+      productsData.append("price", price),
+      productsData.append("productsGroup", productsGroup)
     }
     else{
-      productsData = {id: id, name: name, description: description, imagePath: image, price: price};
+      productsData = {
+        id: id,
+        name: name,
+        description: description,
+        imagePath: image,
+        price: price,
+        productsGroup: productsGroup
+      };
     }
     this.http.put( environment.apiUrl + "products/" + id, productsData)
       .subscribe(response => {
@@ -93,7 +105,8 @@ export class ProductsService {
           name: name,
           description: description,
           imagePath: "",
-          price: price
+          price: price,
+          productsGroup: productsGroup
         };
         updatedProducts[oldProductsIndex] = products;
         this.products = updatedProducts;

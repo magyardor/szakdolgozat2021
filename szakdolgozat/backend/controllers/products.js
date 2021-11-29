@@ -6,7 +6,8 @@ exports.postProducts = (req, res, next) => {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    imagePath: url + "/images/products/" + req.file.filename
+    imagePath: url + "/images/products/" + req.file.filename,
+    productsGroup: req.body.productsGroup
   });
   console.log(products);
   products.save().then(result => {
@@ -32,7 +33,8 @@ exports.putProducts = (req, res, next) => {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    imagePath: req.body.imagePath
+    imagePath: req.body.imagePath,
+    productsGroup: req.body.productsGroup
   });
   console.log(products);
   Products.updateOne({_id: req.params.id}, products).then(result => {

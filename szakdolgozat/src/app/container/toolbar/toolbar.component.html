@@ -4,9 +4,10 @@
       <mat-menu #menu="matMenu">
         <button mat-menu-item [routerLink]="['/home']" [routerLinkActive]="['selected']"><a>{{'PAGE.HOME.TITLE' | translate}}</a></button>
         <button mat-menu-item [routerLink]="['/news']" [routerLinkActive]="['selected']"><a>{{'PAGE.NEWS.TITLE' | translate}}</a></button>
-        <button mat-menu-item [matMenuTriggerFor]="products" [routerLink]="['/products']" [routerLinkActive]="['selected']"><a>{{'PAGE.PRODUCTS.TITLE' | translate}}</a></button>
+        <button mat-menu-item [matMenuTriggerFor]="products" [routerLinkActive]="['selected']"><a>{{'PAGE.PRODUCTS.TITLE' | translate}}</a></button>
           <mat-menu #products="matMenu">
-            <button mat-menu-item *ngFor="let group of groupList">{{group.name}}</button>
+            <button mat-menu-item (click)="selectedGroup(0)">Összes</button>
+            <button mat-menu-item *ngFor="let group of groupList"  (click)="selectedGroup(group.id)">{{group.name}}</button>
           </mat-menu>
         <button mat-menu-item [routerLink]="['/contact']" [routerLinkActive]="['selected']"><a>{{'PAGE.ABOUT_US.TITLE' | translate}}</a></button>
       </mat-menu>
@@ -18,9 +19,10 @@
           <button mat-button [routerLink]="['/news']" [routerLinkActive]="['selected']"><a>{{'PAGE.NEWS.TITLE' | translate}}</a></button>
         </li>
         <li class="nav-item noselect">
-          <button mat-button [matMenuTriggerFor]="products" [routerLink]="['/products']" [routerLinkActive]="['selected']"><a>{{'PAGE.PRODUCTS.TITLE' | translate}}</a></button>
+          <button mat-button [matMenuTriggerFor]="products" [routerLinkActive]="['selected']"><a>{{'PAGE.PRODUCTS.TITLE' | translate}}</a></button>
           <mat-menu #products="matMenu">
-            <button mat-menu-item *ngFor="let group of groupList">{{group.name}}</button>
+            <button mat-menu-item (click)="selectedGroup(0)">Összes</button>
+            <button mat-menu-item *ngFor="let group of groupList" (click)="selectedGroup(group.id)">{{group.name}}</button>
           </mat-menu>
         </li>
         <li class="nav-item noselect">
