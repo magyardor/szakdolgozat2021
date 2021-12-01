@@ -25,6 +25,7 @@ export class ShoppingCartComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void{
+    /* this.cartsList = sessionStorage.getItem('products'); */
     this.cartsList = this.carts.productsItem;
     for(let i=0; i < this.cartsList.length; i++){
       this.quantity = this.cartsList[i].quantity;
@@ -65,6 +66,7 @@ export class ShoppingCartComponent implements OnInit, AfterViewInit {
           console.log(this.cartsList[i].id)
           console.log(i);
           this.carts.removeCart(this.cartsList[i]);
+          sessionStorage.removeItem('products');
         }
       }
     }

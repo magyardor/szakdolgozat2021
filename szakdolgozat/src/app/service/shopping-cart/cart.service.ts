@@ -18,7 +18,6 @@ export class CartService {
   fullOrder: Orders[] = [];
   orderFull: any[] = [];
   orderFullUpdate: any;
-
   totalPrice: Subject<number> = new BehaviorSubject<number>(0);
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
 
@@ -38,6 +37,7 @@ export class CartService {
     }
     else {
       this.productsItem.push(products);
+      sessionStorage.setItem('products', JSON.stringify(products));
     }
 
     this.totalPrices();
@@ -46,6 +46,7 @@ export class CartService {
   updateCart(list: any){
     this.productsItem = list;
     this.totalPrices();
+    sessionStorage.setItem('products', JSON.stringify(list));
   }
 
   totalPrices() {
@@ -91,6 +92,7 @@ export class CartService {
   addOrder(value: any){
     this.all = value;
     console.log(value)
+    sessionStorage.setItem('data', JSON.stringify(value));
   }
 
   getOrder(){
@@ -109,6 +111,7 @@ export class CartService {
       }
       console.log(data)
       this.orderFull.push(data);
+      sessionStorage.clear();
     }, error => {
       this.alert.error(error.error.message);
     }
@@ -120,6 +123,7 @@ export class CartService {
       {"orders": [{"carts": this.productsItem, "data": this.all, "transport": this.transportChoice, "pay": this.payChoice}]}
     );
     this.addFullOrder(this.fullOrder);
+    sessionStorage.setItem('fullOrder', JSON.stringify(this.fullOrder));
   }
 
 }
