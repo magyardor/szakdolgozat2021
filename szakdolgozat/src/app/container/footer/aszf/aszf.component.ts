@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslationService } from 'src/app/shared/helper/translation.service';
 
 @Component({
   selector: 'app-aszf',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./aszf.component.scss']
 })
 export class AszfComponent implements OnInit {
+  language: any;
 
-  constructor() { }
+  constructor(
+    private translate: TranslationService,
+  ) {
+    this.language = this.translate.getSelectedLanguage();
+    console.log(this.language)
+   }
 
   ngOnInit(): void {
+      this.language = this.translate.getSelectedLanguage();
+      console.log(this.language)
   }
 
 }

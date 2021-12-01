@@ -12,6 +12,7 @@ router.post("",
 
 router.get("",
   img,
+  checkAuth,
   OrdersController.getOrders
 )
 

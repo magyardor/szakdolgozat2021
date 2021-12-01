@@ -55,19 +55,20 @@ export class ContactComponent implements OnInit {
       this.form.value.email,
       this.form.value.description,
       this.form.value.image,
-      )
+    )
     this.isLoading = false
+    this.form.reset();
   }
 
   clear() {
     if(this.form.invalid) {
       this.form.reset();
-      this.alertService.success('Clear');
+      this.alertService.success('ALERT.SUCCESS.GENERIC');
     }
     else {
       /* dialog */
       this.form.reset();
-      this.alertService.success('Clear');
+      this.alertService.success('ALERT.SUCCESS.GENERIC');
     }
 
   }

@@ -24,6 +24,7 @@ export const locale = {
         START: 'Start',
         CREATE: 'Create',
         VIEW_CART: 'View cart',
+        PDF: 'Download PDF'
       }
     },
     ALERT: {
@@ -33,6 +34,9 @@ export const locale = {
         SAVE: 'Successfully saved',
         DELETE: 'Successfully deleted',
         IMAGE_UPLOAD: 'Successful image upload',
+        LOGIN: 'Login successful',
+        LOGOUT: 'Logout successful',
+        MODIFY: 'Successfully modify'
       },
       ERROR: {
         GENERIC: 'An error occured during the operation',
@@ -78,7 +82,7 @@ export const locale = {
     },
     FORM: {
       LOGIN: {
-        EMAIL: 'Email',
+        EMAIL: 'Email address',
         PASSWORD: 'Password'
       },
       ADD_PRODUCTS: {
@@ -100,8 +104,35 @@ export const locale = {
         TITLE: 'Form',
         FIRST_NAME: 'First name',
         LAST_NAME: 'Last name',
-        EMAIL: 'Email',
+        EMAIL: 'Email address',
         MESSAGE: 'Message'
+      },
+      PAY_PAGE: {
+        CONTACT: 'Contact',
+        EMAIL: 'Email address',
+        PHONE: 'Phone number',
+        BILLING_DATA: 'Billing Data',
+        NAME: 'Name',
+        COUNTRY: 'Country',
+        ZIP_CODE: 'Zip code',
+        SETTLEMENT: 'Settlement',
+        STREET: 'Street, house number',
+        TAX_NUMBER: 'Tax number (for company)',
+        DELIVERY_DATA: 'Delivery data',
+        DELIVERY_DETAILS: 'The delivery details are the same as the billing details.',
+        DELIVERY: 'Delivery',
+        PAYMENT: 'Payment',
+        ORDER_AMOUNT: 'Order amount',
+        TOTAL_GROSS: 'Total (gross)',
+        TOTAL: 'Total',
+        DELIVERY_COST: 'Delivery cost',
+        TOTAL_AMOUNT: 'Total amount',
+        PRODUCT_LIST: 'Product list',
+        PIECE: 'Piece',
+        PRICE: 'Price',
+        DELIVERY_AND_PAYMENT: 'Delivery and payment',
+        RECEIVED: 'We have received your order!',
+        ORDER_ID: 'Order ID'
       }
     },
     TABLE: {
@@ -113,7 +144,8 @@ export const locale = {
       IMAGE: 'Image',
       MENU: 'Menu',
       FULL_NAME: 'Full Name',
-      EMAIL: 'Email',
+      EMAIL: 'Email address',
+      QUANTITY: 'Quantity'
     },
     PAGE:{
       HOME: {
@@ -133,6 +165,13 @@ export const locale = {
       ABOUT_US: {
         TITLE: 'About us',
         CONTACT: 'Contact us'
+      },
+      SHOPPING_CART: {
+        TITLE: 'Shopping cart',
+        TOTAL: 'Total number of products and price',
+        BUY_MORE: 'Continue shopping',
+        SHOPPING: 'Shopping',
+        EMPTY_CART: 'Empty cart'
       }
     },
     TEXT: {
@@ -142,7 +181,8 @@ export const locale = {
       GUIDE: 'Shopping Guide',
       PAYMENT: 'Payment Information',
       PRODUCT_ADD_CART: 'Product successfully added to your shopping cart!',
-      BUY_MORE: 'buy more'
+      BUY_MORE: 'buy more',
+      ASZF: 'I accept the Terms and Conditions and the Privacy Policy.'
     }
   },
 };

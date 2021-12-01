@@ -21,6 +21,7 @@ export const locale = {
         NO: 'Nem',
         CREATE: 'Létrehozás',
         VIEW_CART: 'Kosár megtekintése',
+        PDF: 'Letöltés PDF'
       }
     },
     ALERT: {
@@ -30,6 +31,9 @@ export const locale = {
         SAVE: 'Sikeres mentés',
         DELETE: 'Sikeres törlés',
         IMAGE_UPLOAD: 'Sikeres képfeltöltés',
+        LOGIN: 'Sikeres bejelentkezés',
+        LOGOUT: 'Sikeres kijelentkezés',
+        MODIFY: 'Sikeres módosítás'
       },
       ERROR: {
         GENERIC: 'Hiba történt a művelet közben',
@@ -99,6 +103,33 @@ export const locale = {
         LAST_NAME: 'Vezetéknév',
         EMAIL: 'Email-cím',
         MESSAGE: 'Üzenet'
+      },
+      PAY_PAGE: {
+        CONTACT: 'Kapcsolattartás',
+        EMAIL: 'Email-cím',
+        PHONE: 'Telefonszám',
+        BILLING_DATA: 'Számlázási adatok',
+        NAME: 'Név',
+        COUNTRY: 'Ország',
+        ZIP_CODE: 'Irányítószám',
+        SETTLEMENT: 'Település',
+        STREET: 'utca, házszám',
+        TAX_NUMBER: 'Adószám (cég esetén)',
+        DELIVERY_DATA: 'Szállítási adatok',
+        DELIVERY_DETAILS: 'A szállítási adatok megegyeznek a számlázási adatokkal.',
+        DELIVERY: 'Szállítás',
+        PAYMENT: 'Fizetés',
+        ORDER_AMOUNT: 'Megrendelés összege',
+        TOTAL_GROSS: 'Összesen (bruttó)',
+        TOTAL: 'Összesen',
+        DELIVERY_COST: 'Szállítási költség',
+        TOTAL_AMOUNT: 'Végösszeg',
+        PRODUCT_LIST: 'Termék lista',
+        PIECE: 'Darab',
+        PRICE: 'Ára',
+        DELIVERY_AND_PAYMENT: 'Szállítás és Fizetés',
+        RECEIVED: 'Kész is vagyunk megkaptuk a rendelésed!',
+        ORDER_ID: 'Rendelés azonosítód'
       }
     },
     TABLE: {
@@ -111,6 +142,7 @@ export const locale = {
       MENU: 'Menü',
       FULL_NAME: 'Teljes név',
       EMAIL: 'Email-cím',
+      QUANTITY: 'Mennyiség'
     },
     PAGE:{
       HOME: {
@@ -130,6 +162,13 @@ export const locale = {
       ABOUT_US: {
         TITLE: 'Rólunk',
         CONTACT: 'Kapcsolat felvétel'
+      },
+      SHOPPING_CART: {
+        TITLE: 'Bevásárlókocsi',
+        TOTAL: 'Összes termék darab száma és ára',
+        BUY_MORE: 'Tovább vásárolok',
+        SHOPPING: 'Vásárlás',
+        EMPTY_CART: 'Üres kosár'
       }
     },
     TEXT: {
@@ -140,6 +179,7 @@ export const locale = {
       PAYMENT: 'Fizetési Tájékoztató',
       PRODUCT_ADD_CART: 'Termék sikeresen bekerült a kosárba!',
       BUY_MORE: 'vásárlás tovább',
+      ASZF: 'Elfogadom az Általános szerződési feltételeket és az Adatkezelési tájékoztatót.'
     }
   },
 };
