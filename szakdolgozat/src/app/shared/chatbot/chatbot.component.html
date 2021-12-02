@@ -1,0 +1,36 @@
+<div class="chat-box">
+  <div class="chat-box-shadow dropdown" [@slideInOut]="animationState">
+    <div class="chat" *ngIf="profile === false">
+      <div class="chat-header">
+        <div class="chat-header-title">
+          <h2>Web Beauty</h2>
+        </div>
+        <div class="chat-header-text">
+          Welcome to Web Beauty!
+          We specialize in custom made beauty products and accessories.
+          Please message us if you have questions, or give an idea of what you’re
+          looking for. We’re happy to make recommendations.
+        </div>
+      </div>
+      <div class="chat-body">
+        <div *ngFor="let chat of chatList">
+          <div>{{chat.title}}?</div>
+          <div (click)="loadChatProfile($event)">Option 1</div>
+          <div (click)="loadChatProfile($event)">Option 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-profile" *ngIf="profile === true">
+      <app-chatprofile [profile]="profile" (changeProfile)="profile=$event"></app-chatprofile>
+    </div>
+  </div>
+  <button class="btn-chat" (click)="toggleChat()">
+    <div *ngIf="animationState === 'out'">
+      Chat with us!
+    </div>
+    <div *ngIf="animationState === 'in'">
+      X
+    </div>
+  </button>
+</div>
+

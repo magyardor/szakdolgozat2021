@@ -9,6 +9,7 @@ const productsRoutes = require("./routes/products/products");
 const productsGroupRoutes = require("./routes/productsGroup/productsGroup");
 const messagesRoutes = require("./routes/message/messages");
 const ordersRoutes = require("./routes/orders/orders");
+const chatRoutes = require("./routes/chat/chat");
 
 const app = express();
 mongoose.connect("mongodb+srv://dorina:" + process.env.MONGO_DB_PASSWORD + "@webshop.zaoii.mongodb.net/myFirstDatabase")
@@ -44,5 +45,6 @@ app.use("/api/products", productsRoutes);
 app.use("/api/productsGroups", productsGroupRoutes);
 app.use("/api/messages", messagesRoutes);
 app.use("/api/orders", ordersRoutes);
+app.use("/api/chat", chatRoutes);
 
 module.exports = app;

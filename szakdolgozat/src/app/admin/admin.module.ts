@@ -9,7 +9,6 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { AuthGuard } from "../service/guards/auth.guard";
 import { AdminComponent } from "./admin.component";
 import { MessagesComponent } from './messages/messages.component';
-import { BrowserModule } from "@angular/platform-browser";
 
 const routes: Routes = [
   {

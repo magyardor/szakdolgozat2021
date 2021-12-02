@@ -43,6 +43,8 @@ import { CustomIconComponent } from './custom-icon/custom-icon.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 import { MatGridListResponsive } from './mat-grid-list-responsive.directive';
+import { ChatbotComponent } from './chatbot/chatbot.component';
+import { ChatprofileComponent } from './chatbot/chatprofile/chatprofile.component';
 
 
 @NgModule({
@@ -92,6 +94,8 @@ import { MatGridListResponsive } from './mat-grid-list-responsive.directive';
     BackButtonComponent,
     TranslateModule,
     LanguageSelectorComponent,
+    ChatbotComponent,
+    ChatprofileComponent,
      /* Material */
      MatBadgeModule,
      MatButtonModule,
@@ -132,7 +136,9 @@ import { MatGridListResponsive } from './mat-grid-list-responsive.directive';
     GoToTopComponent,
     BackButtonComponent,
     LanguageSelectorComponent,
-    MatGridListResponsive
+    MatGridListResponsive,
+    ChatbotComponent,
+    ChatprofileComponent
   ],
 })
 export class SharedModule { }

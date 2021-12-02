@@ -3,7 +3,6 @@ const ProductsGroups = require("../models/pages/productsGroup");
 exports.getGroups = (req, res, next) => {
   ProductsGroups.find()
   .then(result => {
-    console.log(result)
     res.status(200).json({
       message: "Group fetched successfully",
       productsGroups: result,
