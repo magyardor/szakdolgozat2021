@@ -6,7 +6,7 @@
     <div class="chat-header-title">Web beauty</div>
   </div>
   <div class="chat-profile-body" *ngIf="selectedChat">
-    <div class="animated">
+    <div class="animated display-message">
       <div class="chat__message chat__message_B" style="--delay: 2s">
         <div class="chat__content">
           {{selectedChat.title}}
@@ -17,13 +17,27 @@
           {{selectedChat.description}}
         </div>
       </div>
+      <div class="chat__message chat__message_B" style="--delay: 2s" *ngIf="message">
+        <div class="chat__content">
+          {{message}}
+        </div>
+      </div>
+      <div class="chat__message chat__message_A" style="--delay: 6s" *ngIf="message">
+        <div class="chat__content">
+          {{selectedChat.contact}}
+        </div>
+      </div>
     </div>
-    <div class="animated">
-      <mat-form-field appearance="outline">
-        <mat-label>Üzenet</mat-label>
-        <input mat-input type="text" placeholder="Message">
-      </mat-form-field>
-      button
+    <div class="animated send-message">
+      <form [formGroup]="form">
+        <mat-form-field appearance="outline">
+          <mat-label>{{'FORM.ADD_NEWS.DESCRIPTION' | translate}}</mat-label>
+          <textarea matInput formControlName="message" rows="1" placeholder="message"></textarea>
+        </mat-form-field>
+      </form>
+      <span class="material-icons" (click)="onSendText($event)">
+        send
+      </span>
     </div>
   </div>
 </div>

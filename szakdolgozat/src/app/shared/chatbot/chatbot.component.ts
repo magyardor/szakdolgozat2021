@@ -12,7 +12,7 @@ import { ChatService } from 'src/app/service/chat.service';
       state(
         'in',
         style({
-          'max-height': '500px',
+          'max-height': '600px',
           opacity: '1',
           visibility: 'visible',
         })
@@ -64,7 +64,7 @@ import { ChatService } from 'src/app/service/chat.service';
           animate(
             '300ms ease-in-out',
             style({
-              'max-height': '500px',
+              'max-height': '600px',
             })
           ),
         ]),

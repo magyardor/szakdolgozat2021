@@ -14,6 +14,11 @@
   padding: 1rem;
 }
 
+.display-message {
+  overflow-y: auto;
+  max-height: 320px;
+}
+
 .chat__content {
   flex: 0 1 auto;
   padding: 1rem;
@@ -67,4 +72,13 @@
     overflow: visible;
     padding-top: 1rem;
   }
+}
+
+.send-message {
+  display: flex;
+  max-height: 120px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--chat-color);
+  color: var(--white-color);
 }

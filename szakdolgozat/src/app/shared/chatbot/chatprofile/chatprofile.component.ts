@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Chat } from 'src/app/models/chat.model';
 import { ChatService } from 'src/app/service/chat.service';
 
@@ -9,6 +10,8 @@ import { ChatService } from 'src/app/service/chat.service';
 })
 export class ChatprofileComponent implements OnInit {
   selectedChat: any;
+  form!: FormGroup;
+  message: any;
 
   @Input() profile!: boolean;
   @Input() chatID!: any;
@@ -21,6 +24,9 @@ export class ChatprofileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      message: new FormControl(null, {validators: [Validators.required]}),
+    });
     this.selectedChat = this.chatList.find((x: { id: any; }) => x.id === this.chatID);
     console.log(this.selectedChat)
   }
@@ -28,5 +34,14 @@ export class ChatprofileComponent implements OnInit {
   backButton() {
     this.profile = false;
     this.changeProfile.emit(this.profile);
+  }
+
+  onSendText(event: any) {
+    console.log(event)
+    if(event.type === "click")
+    {
+      this.message = this.form.value.message;
+    }
+    console.log(this.message)
   }
 }
