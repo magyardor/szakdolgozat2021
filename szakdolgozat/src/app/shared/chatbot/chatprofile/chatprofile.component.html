@@ -3,9 +3,27 @@
     <span class="material-icons" (click)="backButton()">
       arrow_back
     </span>
-    <div><h2>Web beauty</h2></div>
+    <div class="chat-header-title">Web beauty</div>
   </div>
-  <div class="chat-profile-body">
-    Uzenet megjelenítese
+  <div class="chat-profile-body" *ngIf="selectedChat">
+    <div class="animated">
+      <div class="chat__message chat__message_B" style="--delay: 2s">
+        <div class="chat__content">
+          {{selectedChat.title}}
+        </div>
+      </div>
+      <div class="chat__message chat__message_A" style="--delay: 6s">
+        <div class="chat__content">
+          {{selectedChat.description}}
+        </div>
+      </div>
+    </div>
+    <div class="animated">
+      <mat-form-field appearance="outline">
+        <mat-label>Üzenet</mat-label>
+        <input mat-input type="text" placeholder="Message">
+      </mat-form-field>
+      button
+    </div>
   </div>
 </div>

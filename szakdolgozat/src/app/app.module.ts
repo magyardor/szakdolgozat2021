@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import 'animate.css';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

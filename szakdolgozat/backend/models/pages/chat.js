@@ -6,4 +6,4 @@ const chatSchema = mongoose.Schema({
   contact: { type: String, require: true },
 });
 
-module.exports = mongoose.model('Chat', chatSchema);
+module.exports = mongoose.model('Chat', chatSchema, "chat");

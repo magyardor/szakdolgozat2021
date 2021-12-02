@@ -75,8 +75,8 @@ import { ChatService } from 'src/app/service/chat.service';
 export class ChatbotComponent implements OnInit {
   animationState = 'out';
   profile: boolean = false;
-  selected: any;
   chatSub: any;
+  chatID: any;
   chatList: Chat[] = [];
 
   constructor(
@@ -98,8 +98,7 @@ export class ChatbotComponent implements OnInit {
 
   loadChatProfile(event: any) {
     this.profile = true
-    console.log(event);
-    console.log(this.selected);
+    this.chatID = event
   }
 
 }

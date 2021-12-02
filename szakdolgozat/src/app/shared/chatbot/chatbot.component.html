@@ -13,15 +13,19 @@
         </div>
       </div>
       <div class="chat-body">
-        <div *ngFor="let chat of chatList">
-          <div>{{chat.title}}?</div>
-          <div (click)="loadChatProfile($event)">Option 1</div>
-          <div (click)="loadChatProfile($event)">Option 2</div>
+        <div class="chat-link" *ngFor="let chat of chatList">
+          <div (click)="loadChatProfile(chat.id)">{{chat.title}}</div>
         </div>
       </div>
     </div>
-    <div class="chat-profile" *ngIf="profile === true">
-      <app-chatprofile [profile]="profile" (changeProfile)="profile=$event"></app-chatprofile>
+    <div class="chat-profile" *ngIf="profile === true && chatList">
+      <app-chatprofile
+        [profile]="profile"
+        (changeProfile)="profile=$event"
+        [chatID]="chatID"
+        [chatList]="chatList"
+      >
+      </app-chatprofile>
     </div>
   </div>
   <button class="btn-chat" (click)="toggleChat()">
