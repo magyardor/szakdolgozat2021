@@ -1,0 +1,16 @@
+input[type=file] {
+  visibility: hidden;
+}
+
+/* input[type=text] {
+  color: #0066CC !important;
+} */
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+
+  img {
+    height: 100%;
+  }
+}

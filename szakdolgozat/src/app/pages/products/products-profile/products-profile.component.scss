@@ -1,0 +1,37 @@
+.box-products {
+  width: 60%;
+  display: grid;
+  margin: auto !important;
+  color: var(--white-color);
+}
+
+.product-profile {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem;
+  height: 100%;
+}
+
+.box-left {
+  width: 90%;
+  display: grid;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.box-right {
+  display: flex;
+  justify-content: center;
+}
+
+.product-price {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.product-button {
+  display: flex;
+  justify-content: space-evenly;
+}

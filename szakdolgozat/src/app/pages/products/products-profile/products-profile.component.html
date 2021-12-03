@@ -1,0 +1,26 @@
+<app-back-button></app-back-button>
+<div class="secondary-box-shadow box-products" *ngIf="product">
+  <div class="product-profile">
+    <div class="box-left">
+      <div class="product-name default"><h1>{{product.name}}</h1></div>
+      <div class="product-text default">{{product.description}}</div>
+    </div>
+    <div class="box-right">
+      <img [src]="product.imagePath" style="width: 50%;">
+    </div>
+  </div>
+  <div class="product-price">
+    <div>
+      <div class="default"><h2>{{product.price | currency :'HUF':'symbol':'4.0'}}</h2></div>
+    </div>
+    <div>
+      <button mat-button style="border: 1px solid;">+</button>
+        <span style="margin-left: 1rem; margin-right: 1rem; cursor: default;">{{quantity}}</span>
+        <button mat-button style="border: 1px solid;">-</button>
+    </div>
+  </div>
+  <div class="product-button">
+    <div></div>
+    <button class="btn-main-outlined" style="max-height: 50px;" (click)="buy(product)">{{'PAGE.PRODUCTS.BUY' | translate}}</button>
+  </div>
+</div>

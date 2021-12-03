@@ -1,0 +1,273 @@
+<div class="stepper-page">
+  <div [ngSwitch]="stepperOriental | async">
+    <div *ngSwitchCase="'horizontal'">
+      <mat-horizontal-stepper>
+        <mat-step label="Adatok megadása">
+          <form [formGroup]="form" (submit)="addShipOrder()">
+            <div><h2 class="title-h2">{{'FORM.PAY_PAGE.CONTACT' | translate}}</h2></div>
+            <mat-form-field appearance="outline">
+              <mat-label>{{'FORM.PAY_PAGE.EMAIL' | translate}}</mat-label>
+              <input
+                matInput
+                type="email"
+                formControlName="email"
+                placeholder="Email-cím"
+                required email
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>{{'FORM.PAY_PAGE.PHONE' | translate}}</mat-label>
+              <input
+                matInput
+                type="phone"
+                formControlName="phone"
+                placeholder="pl: 06201111111"
+                required
+              >
+            </mat-form-field>
+            <div><h2 class="title-h2">{{'FORM.PAY_PAGE.BILLING_DATA' | translate}}</h2></div>
+            <mat-form-field appearance="outline">
+              <mat-label>{{'FORM.PAY_PAGE.NAME' | translate}}</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="fullName"
+                placeholder="Teljes név"
+                required
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>{{'FORM.PAY_PAGE.COUNTRY' | translate}}</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>{{'FORM.PAY_PAGE.ZIP_CODE' | translate}}</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="zipCode"
+                placeholder="Irányítószám"
+                required
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>{{'FORM.PAY_PAGE.SETTLEMENT' | translate}}</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="city"
+                placeholder="Település"
+                required
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>{{'FORM.PAY_PAGE.STREET' | translate}}</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="street"
+                placeholder="pl: teszt utca 6"
+                required
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>{{'FORM.PAY_PAGE.TAX_NUMBER' | translate}}</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="taxNumber"
+                placeholder="Adószám"
+              >
+            </mat-form-field>
+            <div><h2 class="title-h2">{{'FORM.PAY_PAGE.DELIVERY_DATA' | translate}}</h2></div>
+            <mat-checkbox value="checked" (click)="changeValue(checked)">
+              <div class="text-white">{{'FORM.PAY_PAGE.DELIVERY_DETAILS' | translate}}</div>
+            </mat-checkbox>
+            <div *ngIf="!checked" style="display: grid;">
+              <mat-form-field appearance="outline">
+                <mat-label>{{'FORM.PAY_PAGE.NAME' | translate}}</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  formControlName="fullName_transport"
+                  placeholder="Teljes név"
+                >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>{{'FORM.PAY_PAGE.COUNTRY' | translate}}</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>{{'FORM.PAY_PAGE.ZIP_CODE' | translate}}</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  formControlName="zipCode_transport"
+                  placeholder="Irányítószám"
+                >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>{{'FORM.PAY_PAGE.SETTLEMENT' | translate}}</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  formControlName="city_transport"
+                  placeholder="Település"
+                >
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>{{'FORM.PAY_PAGE.STREET' | translate}}</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  formControlName="street_transport"
+                  placeholder="pl: teszt utca 6"
+                >
+              </mat-form-field>
+            </div>
+            <mat-checkbox #confirmed>
+              <div class="text-white">*{{'TEXT.ASZF' | translate}}</div>
+            </mat-checkbox>
+            <div class="data-page-btn">
+              <button
+                class="btn-secondary"
+                [disabled]="!confirmed.checked"
+                type="submit" matStepperNext
+              >
+                {{'GENERIC.ACTION.NEXT' | translate}}
+              </button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step label="Szállítás és fizetés">
+          <div class="transport-page-body">
+            <div class="transport-left">
+              <div><h2 class="title-h2">{{'FORM.PAY_PAGE.DELIVERY' | translate}}</h2></div>
+              <mat-radio-group class="radio-btn-group" (change)="radioChange($event)">
+                <mat-radio-button
+                  *ngFor="let choice of transport_choice"
+                  [value]="choice.value"
+                  [disabled]="choice.disabled"
+                  class="radio-btn"
+                >
+                  {{choice.name}}
+                </mat-radio-button>
+              </mat-radio-group>
+              <div><h2 class="title-h2">{{'FORM.PAY_PAGE.PAYMENT' | translate}}</h2></div>
+              <mat-radio-group class="radio-btn-group" (change)="radioChangePay($event)">
+                <mat-radio-button
+                  *ngFor="let pay of pay_choice"
+                  [value]="pay.name"
+                  [disabled]="pay.disabled"
+                  class="radio-btn"
+                >
+                  {{pay.name}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="transport-right">
+              <mat-card class="white-box-shadow transport-box">
+                <div class="transport-box-title">
+                  <h2 class="text-secondary">{{'FORM.PAY_PAGE.ORDER_AMOUNT' | translate}}</h2>
+                </div>
+                <div class="transport-box-body">
+                  <div class="box-body">
+                    {{'FORM.PAY_PAGE.TOTAL_GROSS' | translate}}:
+                    <div>{{fullPrice._value | currency :'HUF':'symbol':'4.0'}}</div>
+                  </div>
+                  <div class="box-body">
+                    {{'FORM.PAY_PAGE.DELIVERY_COST' | translate}}:
+                    <div>{{transportPrice | currency :'HUF':'symbol':'4.0'}}</div>
+                  </div>
+                </div>
+                <div class="box-line"></div>
+                <div class="box-body final-text">
+                  {{'FORM.PAY_PAGE.TOTAL_AMOUNT' | translate}}:
+                  <div>{{grandTotal | currency :'HUF':'symbol':'4.0'}}</div>
+                </div>
+              </mat-card>
+            </div>
+          </div>
+          <div class="data-page-btn">
+            <button class="btn-secondary" matStepperNext>{{'GENERIC.ACTION.NEXT' | translate}}</button>
+          </div>
+        </mat-step>
+        <mat-step label="Megrendelés">
+          <div>
+            <div>
+              <div><h2 class="title-h2">{{'FORM.PAY_PAGE.PRODUCT_LIST' | translate}}</h2></div>
+              <div class="box-body final-text">
+                <div>{{'FORM.PAY_PAGE.NAME' | translate}}:</div>
+                <div>{{'FORM.PAY_PAGE.PIECE' | translate}}:</div>
+                <div>{{'FORM.PAY_PAGE.PRICE' | translate}}:</div>
+              </div>
+              <div *ngFor="let prod of cartsList" class="box-body text-white">
+                <div>
+                  {{prod.name}}
+                </div>
+                <div>
+                  {{prod.quantity}}db
+                </div>
+                <div>
+                  {{prod.total | currency :'HUF':'symbol':'4.0'}}
+                </div>
+              </div>
+              <div>
+                <div><h2 class="title-h2">{{'FORM.PAY_PAGE.DELIVERY_AND_PAYMENT' | translate}}</h2></div>
+                <div class="box-body final-text">
+                  <div>{{'FORM.PAY_PAGE.DELIVERY' | translate}}:</div>
+                  <div>{{transportPrice | currency :'HUF':'symbol':'4.0'}}</div>
+                </div>
+                <div class="box-body final-text">
+                  <div>{{'FORM.PAY_PAGE.PAYMENT' | translate}}:</div>
+                  <div>{{payChoice}}</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div><h2 class="title-h2">{{'FORM.PAY_PAGE.TOTAL' | translate}}</h2></div>
+              <div class="box-body final-text">
+                {{'FORM.PAY_PAGE.TOTAL_AMOUNT' | translate}}:
+                <div>{{grandTotal | currency :'HUF':'symbol':'4.0'}}</div>
+              </div>
+            </div>
+            <div>
+              <div><h2 class="title-h2">{{'FORM.PAY_PAGE.CONTACT' | translate}}</h2></div>
+              <div class="box-body text-white">
+                <div>{{'FORM.PAY_PAGE.EMAIL' | translate}}:</div>
+                <div>{{orderList.email}}</div>
+              </div>
+              <div class="box-body text-white">
+                <div>{{'FORM.PAY_PAGE.PHONE' | translate}}:</div>
+                <div>{{orderList.phone}}</div>
+              </div>
+            </div>
+            <div class="order-page-btn">
+              <button class="btn-cancel">{{'GENERIC.ACTION.CANCEL' | translate}}</button>
+              <button class="btn-secondary" matStepperNext (click)="fullOrder()">{{'PAGE.PRODUCTS.BUY' | translate}}</button>
+            </div>
+          </div>
+        </mat-step>
+        <mat-step label="Kész">
+          <div class="text-white stepper-page done">
+            <div>
+              {{'FORM.PAY_PAGE.RECEIVED' | translate}}
+            </div>
+            <div>
+              {{'FORM.PAY_PAGE.ORDER_ID' | translate}}:
+            </div>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+    <div *ngSwitchCase="'vertical'">
+      <mat-vertical-stepper>
+        <mat-step></mat-step>
+      </mat-vertical-stepper>
+    </div>
+  </div>
+</div>

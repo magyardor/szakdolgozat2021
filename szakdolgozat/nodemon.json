@@ -1,0 +1,6 @@
+{
+  "env": {
+    "MONGO_DB_PASSWORD": "34QZvkfYLLLhpCaP",
+    "JWTOKEN_KEY": "secret_message_token_validation_should_be_longer"
+  }
+}

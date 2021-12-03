@@ -1,0 +1,21 @@
+<div class="products-list">
+  <mat-grid-list [responsive]="true" (responsiveColsChange)="cols = $event" rowHeight="2:3" style="margin: 1rem;">
+    <div *ngFor="let prod of productList">
+      <mat-grid-tile>
+        <mat-card class="card-box">
+          <div class="products-img"><img [src]="prod.imagePath" style="width: 50%;"></div>
+          <div>{{prod.name}}</div>
+          <div>{{prod.price | currency :'HUF':'symbol':'4.0'}}</div>
+          <div class="description">{{prod.description}}</div>
+          <div class="button-read">
+            <div class="pointer products-profile" (click)="onGetProduct(prod.id)">...{{'PAGE.PRODUCTS.READ_MORE' | translate}}</div>
+            <button class="btn-main" style="max-height: 50px;" (click)="buy(prod)">{{'PAGE.PRODUCTS.BUY' | translate}}</button>
+          </div>
+        </mat-card>
+      </mat-grid-tile>
+    </div>
+  </mat-grid-list>
+</div>
+<!-- <div *ngFor="let group of groupList">
+  <pre>{{group | json}}</pre>
+</div> -->

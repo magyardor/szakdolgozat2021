@@ -1,0 +1,56 @@
+<div class="mat-elevation-z8 box-shadow">
+  <table mat-table [dataSource]="news">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>{{'TABLE.ID' | translate}}</th>
+      <td mat-cell *matCellDef="let post">{{post.id}}</td>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>{{'TABLE.TITLE' | translate}}</th>
+      <td mat-cell *matCellDef="let post">{{post.title}}</td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>{{'TABLE.DESCRIPTION' | translate}}</th>
+      <td mat-cell *matCellDef="let post">{{post.description}}</td>
+    </ng-container>
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>{{'TABLE.IMAGE' | translate}}</th>
+      <td mat-cell *matCellDef="let post">
+        <div class="post-image">
+          <img [src]="post.imagePath" [alt]="post.title">
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="menu">
+      <th mat-header-cell *matHeaderCellDef>{{'TABLE.MENU' | translate}}</th>
+      <td mat-cell *matCellDef="let post">
+        <button mat-button [matMenuTriggerFor]="menu">...</button>
+          <mat-menu #menu="matMenu" class="btn-main">
+            <button mat-menu-item class="d-flex align-item-center" (click)="onModify(post.id)">
+              <span class="material-icons">
+                edit
+              </span>
+              {{'GENERIC.ACTION.EDIT' | translate}}
+            </button>
+            <button mat-menu-item class="d-flex align-item-center" (click)="onDelete(post.id)">
+              <span class="material-icons">
+                delete
+              </span>
+              {{'GENERIC.ACTION.DELETE' | translate}}
+            </button>
+          </mat-menu>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+<!-- <div style="background-color: black;" *ngFor="let post of news">
+  <img [src]="post.imagePath" [alt]="post.title">
+  {{post | json}}
+</div> -->
+

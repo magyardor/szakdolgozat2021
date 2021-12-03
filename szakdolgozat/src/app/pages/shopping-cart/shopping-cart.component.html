@@ -1,0 +1,68 @@
+<app-back-button></app-back-button>
+<div style="display: flex; justify-content: center; margin-top: 1rem; margin-bottom: 2rem;">
+  <h1>{{'PAGE.SHOPPING_CART.TITLE' | translate}}</h1>
+</div>
+<div style="display: grid; margin: 1rem;" *ngIf="cartsList.length > 0; else emptyList">
+  <table mat-table [dataSource]="cartsList">
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef>{{'TABLE.IMAGE' | translate}}</th>
+      <td mat-cell *matCellDef="let prod" style="width: 20%;">
+        <div class="prod-image">
+          <img [src]="prod.imagePath" [alt]="prod.name">
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>{{'TABLE.NAME' | translate}}</th>
+      <td mat-cell *matCellDef="let prod">{{prod.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>{{'TABLE.QUANTITY' | translate}}</th>
+      <td mat-cell *matCellDef="let prod">
+        <button mat-button style="border: 1px solid;"(click)="plusButton(prod.id)">+</button>
+        <span style="margin-left: 1rem; margin-right: 1rem;">{{prod.quantity}}</span>
+        <button mat-button style="border: 1px solid;" (click)="minusButton(prod.id)">-</button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>{{'TABLE.PRICE' | translate}}</th>
+      <td mat-cell *matCellDef="let prod">{{prod.price | currency :'HUF':'symbol':'4.0'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef>{{'TABLE.PRICE' | translate}}</th>
+      <td mat-cell *matCellDef="let prod">{{prod.total | currency :'HUF':'symbol':'4.0'}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[2, 5, 10]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements">
+  </mat-paginator>
+  <div style="display: flex; justify-content: flex-end; margin-top: 2rem;">
+    {{'PAGE.SHOPPING_CART.TOTAL' | translate}}:
+    <div style="display: flex; justify-content: space-between; margin-left: 1rem;">
+      <div style="margin-right: 1rem;">{{fullQuantity._value}} db </div>
+      <div>{{fullPrice._value | currency : 'HUF':'symbol':'4.0'}}</div>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 2rem;">
+    <label style="margin-right: 1rem;" [routerLink]="['/products']" class="pointer text">{{'PAGE.SHOPPING_CART.BUY_MORE' | translate}}</label>
+    <button class="btn-main" (click)="buy()">{{'PAGE.SHOPPING_CART.SHOPPING' | translate}}</button>
+  </div>
+</div>
+
+<ng-template #emptyList>
+  <div style="display: flex; justify-content: center; max-width: 300px; min-height: 400px; margin: auto;">
+    <mat-card class="light-box-shadow" style="display: grid;">
+      <div style="color: var(--white-color); font-weight: bord; display: flex; justify-content: center;">
+        <h2>{{'PAGE.SHOPPING_CART.EMPTY_CART' | translate}}</h2>
+      </div>
+      <div [routerLink]="['/products']" class="pointer text">
+        {{'TEXT.BUY_MORE' | translate}}...
+      </div>
+    </mat-card>
+  </div>
+</ng-template>
+

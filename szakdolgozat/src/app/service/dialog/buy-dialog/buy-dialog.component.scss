@@ -1,0 +1,16 @@
+.dialog-box {
+  display: grid;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.dialog-text {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 4rem;
+  align-items: center;
+}
+
+label:hover {
+  color: var(--main-color);
+}

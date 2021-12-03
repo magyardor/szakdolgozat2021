@@ -1,0 +1,123 @@
+.img-box {
+    display: flex;
+    justify-content: center;
+}
+
+img {
+ width: 100%;
+ @media screen and (max-width: 470px){
+  justify-content: flex-start;
+  display: flex;
+  width: 100%;
+}
+}
+
+.news {
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: 660px){
+        justify-content: center;
+    }
+}
+
+.news-box {
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 660px){
+        /* display: grid; */
+    }
+}
+
+.home-image{
+    width: 50% !important;
+}
+
+.box-home-shadow {
+  -webkit-box-shadow: 0px 4px 10px 0px rgba(var(--dark-color-v), 0.3);
+  -moz-box-shadow: 0px 4px 10px 0px rgba(var(--dark-color-v), 0.3);
+  box-shadow: 0px 4px 10px 0px rgba(var(--dark-color-v), 0.3);
+  background-color: var(--main-color);
+  padding: 30px;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  max-width: 1040px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  z-index: auto;
+}
+
+.img-carousel-box {
+  display: flex;
+  justify-content: center;
+
+  @media screen and (max-width: 660px){
+    justify-content: flex-start;
+    display: flex;
+    width: 100%;
+  }
+}
+
+.home-title {
+  margin-bottom: 2rem;
+  margin-left: 2rem;
+  font-size: 20px;
+  font-style: bold;
+  color: var(--highlighter-color);
+}
+
+.home-description{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+}
+
+.home-button-read {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.products-box {
+    margin: auto;
+}
+
+.card-box {
+  background-color: var(--light-color);
+  display: grid;
+  justify-items: center;
+  min-height: 500px;
+  max-width: 320px;
+  align-items: end;
+  margin: 1rem;
+}
+
+.products-img {
+  display: flex;
+  justify-content: center;
+}
+
+.description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.products-profile:hover{
+  color: var(--main-color);
+}
+
+.button-read {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}

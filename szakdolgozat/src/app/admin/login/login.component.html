@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div id="page-login">
+  <div id="logo-bg" class="col-md-7 d-none d-sm-flex">
+    <img src="..\..\..\assets\logos\logo_monogram.png" id="logo-monogram">
+  </div>
+  <div style="border: 1px solid #C4C4C4; height: 50%; display: flex; align-self: center;"></div>
+  <div id="login-container" class="col-md-5 col-sm-12 container">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form [formGroup]="userForm" class="form-group" *ngIf="!isLoading">
+      <div class="title-login">
+        <div id="add-user-text">{{'GENERIC.LOGIN' | translate}}</div>
+        <app-language-selector></app-language-selector>
+      </div>
+      <div style="display: grid; justify-content: center;">
+        <div class="app-form-field">
+          <label>{{'FORM.LOGIN.EMAIL' | translate}}</label>
+          <div style="display: flex;">
+            <input formControlName="email" type="email" placeholder="Email" required email style="padding: 0.6rem 1rem !important;">
+          </div>
+        </div>
+        <div class="app-form-field">
+          <label>{{'FORM.LOGIN.PASSWORD' | translate}}</label>
+          <div style="display: flex;">
+            <input formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Password" required password style="padding: 0.6rem 1rem !important;">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="button-container">
+        <button mat-raised-button class="btn" (click)="login()">{{'GENERIC.LOGIN' | translate}}</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+.mat-list-base .mat-list-item {
+  color: var(--light-color);
+}
+
+.mat-sidenav-content {
+  display: contents;
+}
+
+.mat-drawer {
+  background-color: var(--main-color);
+  color: var(--light-color);
+  justify-content: space-between;
+}
+
+.example-container {
+  height: calc(100vh - 64px);
+  background-color: var(--white-color);
+}
+
+.example-sidenav {
+  user-select: none;
+  width: 50px;
+  transition: ease-in-out 300ms;
+  box-shadow: -20px 0px 20px 20px #000;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.menu-button {
+  transition: 300ms ease-in-out;
+  transform: rotate(0deg);
+}
+
+.menu-button.rotated {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  overflow-y: hidden;
+  transition: transform 300ms ease;
+  transform: scaleY(0);
+  transform-origin: top;
+  padding-right: 30px;
+}
+
+.submenu.expanded {
+  transform: scaleY(1);
+}
+
+#sidenav {
+  height: 100%;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+mat-list-item:hover {
+  background-color: var(--input-color) !important;
+  color: var(--light-color) !important;
+  transition: background-color 0.5s ease !important;
+}
+
+.selected {
+  transition: background-color 300ms ease-in-out;
+  background-color: var(--light-color) !important;
+  color: var(--white-color) !important;
+}
+
+/* .logout {
+  position: absolute;
+  bottom: 20px;
+} */
+
+::ng-deep .example-sidenav-content {
+  height: initial !important;
+}
+
+.subMenuTitle {
+  color:var(--highlighter-color);
+  font-style: bold;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  padding-left: 10px;
+  margin: 25px 0 0 10px;
+  border-bottom: 1px solid rgba(185, 185, 185, 0.3);
+}
+
+.opened {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.animated-text {
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms ease-in-out;
+}
+
+.opened-menu {
+  width: 220px !important;
+}

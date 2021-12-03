@@ -1,0 +1,14 @@
+<div class="news-page">
+  <div *ngFor="let news of newsList" class="white-box-shadow">
+    <div class="news-header">
+      <div class="news-title">{{news.title}}</div>
+      <div class="news-image"><img [src]="news.imagePath" [alt]="news.title"></div>
+    </div>
+    <div class="news-body">
+      {{news.description}}
+    </div>
+    <div class="news-button">
+      <button class="btn-main" (click)="onGetNew(news.id)">{{'PAGE.NEWS.READ_MORE' | translate}}</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<mat-card class="secondary-box-shadow">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onAddNews()" *ngIf="!isLoading">
+    <div><h2>{{'FORM.ADD_NEWS.TITLE' | translate}}</h2></div>
+    <mat-form-field appearance="outline">
+      <mat-label>{{'FORM.ADD_NEWS.TITLE_NEWS' | translate}}</mat-label>
+      <input matInput type="text" formControlName="title" placeholder="Title">
+      <mat-error *ngIf="form.get('title')?.invalid">Please enter a post title.</mat-error>
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" class="btn-secondary" (click)="filePicker.click()">{{'FORM.ADD_NEWS.PICK_IMAGE' | translate}}</button>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image')?.valid">
+      <img [src]="imagePreview" [alt]="form.value.title">
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>{{'FORM.ADD_NEWS.DATE_RANGE' | translate}}</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate formControlName="startDate" placeholder="Start date">
+        <input matEndDate formControlName="endDate" placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker color="primary"></mat-date-range-picker>
+    </mat-form-field>
+
+    <p>Selected range: {{form.value | json}}</p>
+    <mat-form-field appearance="outline">
+      <mat-label>{{'FORM.ADD_NEWS.DESCRIPTION' | translate}}</mat-label>
+      <textarea matInput rows="4" formControlName="description" placeholder="description"></textarea>
+      <mat-error *ngIf="form.get('description')?.invalid">Please enter a post description.</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      class="btn-secondary"
+      type="submit">{{'GENERIC.ACTION.SAVE' | translate}}</button>
+  </form>
+</mat-card>

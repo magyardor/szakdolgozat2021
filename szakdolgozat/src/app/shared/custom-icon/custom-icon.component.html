@@ -1,0 +1,17 @@
+<p>custom-icon works!</p>
+<span [ngSwitch]="name" class="wrapperClasses" popperPlacement="top">
+  <!-- Check-circled -->
+  <svg *ngSwitchCase="'check-circled'" attr.width="{{width}}" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M10 0C15.523 0 20 4.477 20 10C20 15.523 15.523 20 10 20C4.477 20 0 15.523 0 10C0 4.477 4.477 0 10 0ZM10 1.5C7.74566 1.5 5.58365 2.39553 3.98959 3.98959C2.39553 5.58365 1.5 7.74566 1.5 10C1.5 12.2543 2.39553 14.4163 3.98959 16.0104C5.58365 17.6045 7.74566 18.5 10 18.5C12.2543 18.5 14.4163 17.6045 16.0104 16.0104C17.6045 14.4163 18.5 12.2543 18.5 10C18.5 7.74566 17.6045 5.58365 16.0104 3.98959C14.4163 2.39553 12.2543 1.5 10 1.5ZM8.75 11.44L13.22 6.97C13.354 6.83704 13.5332 6.75951 13.7219 6.75286C13.9105 6.74622 14.0947 6.81096 14.2378 6.93416C14.3808 7.05736 14.4721 7.22996 14.4934 7.41752C14.5148 7.60508 14.4647 7.79379 14.353 7.946L14.28 8.03L9.28 13.03C9.15301 13.157 8.98466 13.2342 8.80555 13.2476C8.62644 13.261 8.44847 13.2097 8.304 13.103L8.22 13.03L5.72 10.53C5.58704 10.396 5.5095 10.2168 5.50286 10.0281C5.49622 9.83949 5.56096 9.65527 5.68416 9.51225C5.80736 9.36923 5.97996 9.27793 6.16752 9.25656C6.35508 9.2352 6.54379 9.28535 6.696 9.397L6.78 9.47L8.75 11.44L13.22 6.97L8.75 11.44Z"
+      attr.fill="{{color}}"
+    />
+  </svg>
+  <!-- Bold arror upward -->
+  <svg *ngSwitchCase="'bold-arrow-upward'" attr.width="{{width}}" [style]="rotate ? 'transform: rotate(' + rotate + 'deg); ' : '' + 'transition: ' + transition" viewBox="0 0 13 13" fill="none">
+    <path d="M12 1L1 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    attr.stroke="{{color}}"/>
+    <path d="M2.83301 1H11.9997V10.1667" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    attr.stroke="{{color}}"/>
+  </svg>
+</span>

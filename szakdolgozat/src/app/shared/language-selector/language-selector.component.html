@@ -1,0 +1,20 @@
+<div class="d-flex" style="display: flex; align-items: center; margin-right: 2rem;">
+  <div class="lang-selector mx-2">
+    <span class="d-none d-md-flex lang lang-selected">{{ language.name }}</span>
+    <div class="langs white-box-shadow" [@slideInOut]="animationState">
+      <ng-container *ngFor="let language of languages">
+        <div class="lang" [ngClass]="{ 'lang-selected': language.active }">
+          <span
+            class="my-auto mx-auto pointer"
+            (click)="setLanguage(language.lang); toggleShowDiv()"
+          >
+            {{ language.name }}
+          </span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <span class="material-icons my-auto noselect" (click)="toggleShowDiv()">
+    language
+  </span>
+</div>

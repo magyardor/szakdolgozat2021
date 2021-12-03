@@ -1,0 +1,51 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav [ngClass]="{'opened-menu': isExpanded || isShowing}" class="example-sidenav" mode="side"
+    opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+    <div id="sidenav">
+      <mat-nav-list class="p-0">
+        <mat-list-item [routerLink]="['/home']">
+          <span class="material-icons m-3 noselect"> home </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.GENERIC.HOME' | translate}}</span>
+        </mat-list-item>
+        <div class="subMenuTitle animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.PRODUCTS.TITLE' | translate}}</div>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/products-list/add-products']">
+          <span class="material-icons m-3 noselect"> add </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.PRODUCTS.ADD_PRODUCT' | translate}}</span>
+        </mat-list-item>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/products-list']">
+          <span class="material-icons m-3 noselect"> list </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.PRODUCTS.MANAGE_PRODUCTS' | translate}}</span>
+        </mat-list-item>
+        <div class="subMenuTitle animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.NEWS.TITLE' | translate}}</div>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/news-list/create']">
+          <span class="material-icons m-3 noselect"> add </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.NEWS.ADD_NEWS' | translate}}</span>
+        </mat-list-item>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/news-list']">
+          <span class="material-icons m-3 noselect"> list </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.NEWS.MANAGE_NEWS' | translate}}</span>
+        </mat-list-item>
+        <div class="subMenuTitle animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.MESSAGES.TITLE' | translate}}</div>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/messages-list']">
+          <span class="material-icons m-3 noselect"> list </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.MESSAGES.MENAGE_MESSAGES' | translate}}</span>
+        </mat-list-item>
+      </mat-nav-list>
+      <mat-nav-list class="pb-2">
+        <div class="subMenuTitle animated-text"  [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.ACCOUNT.TITLE' | translate}}</div>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/add-user']">
+          <span class="material-icons m-3 noselect"> add </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.ACCOUNT.ADD_USER' | translate}}</span>
+        </mat-list-item>
+        <mat-list-item (click)="logOut()">
+          <span class="material-icons m-3 noselect logout"> power_off </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'GENERIC.LOGOUT' | translate}}</span>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content" style="margin: 15px;">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

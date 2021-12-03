@@ -1,0 +1,55 @@
+<nav class="menu-vertical">
+    <div class="navbar-collapse" id="topNavbar">
+      <span class="material-icons pointer icon" [matMenuTriggerFor]="menu">menu</span>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/home']" [routerLinkActive]="['selected']"><a>{{'PAGE.HOME.TITLE' | translate}}</a></button>
+        <button mat-menu-item [routerLink]="['/news']" [routerLinkActive]="['selected']"><a>{{'PAGE.NEWS.TITLE' | translate}}</a></button>
+        <button mat-menu-item [matMenuTriggerFor]="products" [routerLinkActive]="['selected']"><a>{{'PAGE.PRODUCTS.TITLE' | translate}}</a></button>
+          <mat-menu #products="matMenu">
+            <button mat-menu-item (click)="selectedGroup(0)">Összes</button>
+            <button mat-menu-item *ngFor="let group of groupList"  (click)="selectedGroup(group.id)">{{group.name}}</button>
+          </mat-menu>
+        <button mat-menu-item [routerLink]="['/contact']" [routerLinkActive]="['selected']"><a>{{'PAGE.ABOUT_US.TITLE' | translate}}</a></button>
+      </mat-menu>
+      <ul class="nav-bar">
+        <li class="nav-item noselect">
+          <button mat-button [routerLink]="['/home']" [routerLinkActive]="['selected']"><a>{{'PAGE.HOME.TITLE' | translate}}</a></button>
+        </li>
+        <li class="nav-item noselect">
+          <button mat-button [routerLink]="['/news']" [routerLinkActive]="['selected']"><a>{{'PAGE.NEWS.TITLE' | translate}}</a></button>
+        </li>
+        <li class="nav-item noselect">
+          <button mat-button [matMenuTriggerFor]="products" [routerLinkActive]="['selected']"><a>{{'PAGE.PRODUCTS.TITLE' | translate}}</a></button>
+          <mat-menu #products="matMenu">
+            <button mat-menu-item (click)="selectedGroup(0)">Összes</button>
+            <button mat-menu-item *ngFor="let group of groupList" (click)="selectedGroup(group.id)">{{group.name}}</button>
+          </mat-menu>
+        </li>
+        <li class="nav-item noselect">
+          <button mat-button [routerLink]="['/contact']" [routerLinkActive]="['selected']"><a>{{'PAGE.ABOUT_US.TITLE' | translate}}</a></button>
+        </li>
+      </ul>
+    </div>
+    <div class="navbar-icons">
+      <app-language-selector></app-language-selector>
+      <span class="material-icons search">search</span>
+      <span
+        class="material-icons"
+        style="color: brown; margin-right: 2rem;"
+        matBadgeColor="primary"
+        matBadge="{{this.cartsList.length}}"
+        [routerLink]="['/carts']"
+        (click)="toggleBadgeVisibility()"
+      >
+        shopping_cart
+      </span>
+      <a id="logo_monogram"><img src="../../../assets/logos/logo_monogram_dark.png" class="pointer" [routerLink]="['/home']"></a>
+    </div>
+  </nav>
+  <!--
+  <div class="d-flex flex-wrap justify-content-around pt-5">
+    <button class="btn btn-success" (click)="alert.success('ALERT.SUCC_SAVE')">Success</button>
+    <button class="btn btn-danger" (click)="alert.error('ALERT.ERR_GENERIC')">Error</button>
+    <button class="btn btn-warn" (click)="alert.warn('ALERT.INVALID_FORM')">Warn</button>
+    <button class="btn btn-info" (click)="alert.info('ALERT.INFO')">Info</button>
+  </div> -->

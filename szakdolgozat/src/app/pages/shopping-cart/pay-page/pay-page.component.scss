@@ -1,0 +1,90 @@
+.stepper-page {
+  display: grid;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.mat-stepper-horizontal, .mat-stepper-vertical {
+  background-color: var(--secondary-color) !important;
+  min-height: 623px;
+}
+
+.title-h2 {
+  color: var(--white-color);
+}
+
+.text-white {
+  color: var(--white-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.data-page-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.transport-page-body {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.transport-left {
+  width: 100%;
+}
+
+.radio-btn-group {
+  display: grid;
+}
+
+.radio-btn {
+  color: var(--white-color);
+  margin-bottom: 1rem;
+}
+
+.transport-right {
+  display: flex;
+  width: 100%;
+  min-height: 400px;
+}
+
+.transport-box {
+  display: grid;
+  align-items: center;
+}
+
+.transport-box-title {
+  display: flex;
+  justify-content: center;
+}
+
+.transport-box-body {
+  display: grid;
+  color: var(--dark-color);
+}
+
+.box-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.box-line {
+  border: 1px solid var(--secondary-color);
+}
+
+.final-text {
+  color: var(--dark-color);
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.order-page-btn {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.done {
+  font-size: 20px;
+}

@@ -1,0 +1,12 @@
+.text:hover {
+  color: var(--highlighter-color);
+}
+
+.prod-image {
+ /*  width: 100%; */
+  display: flex;
+}
+
+.prod-image img {
+  width: 20%;
+}
