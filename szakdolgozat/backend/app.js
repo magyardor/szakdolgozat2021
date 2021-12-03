@@ -22,9 +22,10 @@ mongoose.connect("mongodb+srv://dorina:" + process.env.MONGO_DB_PASSWORD + "@web
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use("/images/news", express.static(path.join("backend/images/news")));
-app.use("/images/products", express.static(path.join("backend/images/products")));
-app.use("/images/messages", express.static(path.join("backend/images/messages")));
+app.use("/images/news", express.static(path.join(__dirname, "images/news")));
+app.use("/images/products", express.static(path.join(__dirname, "images/products")));
+app.use("/images/messages", express.static(path.join(__dirname, "images/messages")));
+app.use("/", express.static(path.join(__dirname, "angular")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -46,5 +47,8 @@ app.use("/api/productsGroups", productsGroupRoutes);
 app.use("/api/messages", messagesRoutes);
 app.use("/api/orders", ordersRoutes);
 app.use("/api/chat", chatRoutes);
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, "angular", "index.html"));
+});
 
 module.exports = app;
