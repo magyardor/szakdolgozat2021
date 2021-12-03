@@ -3,7 +3,7 @@ Author: Maximilian Schwarzmüller
 Github repo: https://github.com/PacktPublishing/Angular-and-Node.js---The-MEAN-Stack-Guide
 Udemy video: https://www.udemy.com/course/angular-2-and-nodejs-the-practical-guide/
 */
-const bcrypt = require("bcrypt"); // package that offers encryption functionalities
+const bcrypt = require("bcryptjs"); // package that offers encryption functionalities
 const jsonwt = require("jsonwebtoken"); //webtoken - login validation
 
 const User = require("../models/auth/auth");
