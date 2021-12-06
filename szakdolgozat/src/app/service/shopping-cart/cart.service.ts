@@ -102,12 +102,12 @@ export class CartService {
 
   /* Adatok hozzáadása/lekérdezése/törlése adatbázisba */
   addFullOrder(list: any) {
-    const listData = JSON.stringify(list);
+    const listData = JSON.stringify(list[0].orders);
     console.log(list)
     this.http.post<{order: Orders}>(environment.apiUrl + "orders", listData)
     .subscribe(responseData => {
       const data: Orders = {
-        orders: list.orders
+        orders: list[0].orders
       }
       console.log(data)
       this.orderFull.push(data);

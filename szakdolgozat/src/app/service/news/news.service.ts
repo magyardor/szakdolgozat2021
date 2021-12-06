@@ -81,7 +81,7 @@ constructor(
     });
   }
 
-  updateNews(id: any, title: string, description: string, image: File | string, startDate: any, endDate: any){
+  updateNews(id: any, title: string, description: string, image: any, startDate: any, endDate: any){
     let newsData: News | FormData;
     if(typeof(image) === "object"){
       newsData = new FormData();
@@ -104,19 +104,20 @@ constructor(
     }
     this.http.put( environment.apiUrl + "news/" + id, newsData)
       .subscribe(response => {
-        const updatedNews = [...this.news];
+        this.router.navigate(["/admin/news-list"]);
+        /* const updatedNews = [...this.news];
         const oldNewsIndex = updatedNews.findIndex(p => p.id === id);
         const news: News = {
           id: id,
           title: title,
           description: description,
-          imagePath: "",
+          imagePath: image,
           startDate: startDate,
-          endDate: endDate
-        };
-        updatedNews[oldNewsIndex] = news;
+          endDate: endDate };*/
+
+        /* updatedNews[oldNewsIndex] = news;
         this.news = updatedNews;
-        this.newsUpdated.next([...this.news]);
+        this.newsUpdated.next([...this.news]); */
         this.alert.success('ALERT.SUCCESS.MODIFY');
         this.router.navigate(["/admin/news-list"]);
       }, error => {

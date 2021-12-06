@@ -32,7 +32,7 @@ exports.putNews = (req, res, next) => {
     _id: req.body.id,
     title: req.body.title,
     description: req.body.description,
-    imagePath: req.body.imagePath,
+    imagePath: imagePath,
     startDate: req.body.startDate,
     endDate: req.body.endDate,
   });

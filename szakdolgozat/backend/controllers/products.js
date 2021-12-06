@@ -33,7 +33,7 @@ exports.putProducts = (req, res, next) => {
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    imagePath: req.body.imagePath,
+    imagePath: imagePath,
     productsGroup: req.body.productsGroup
   });
   console.log(products);

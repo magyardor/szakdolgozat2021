@@ -66,7 +66,7 @@ export class AddNewsComponent implements OnInit {
   onImagePicked(event: Event) {
     const file = (event.target as HTMLInputElement).files![0];
     this.form.patchValue({image: file});
-    this.form.get('image')?.updateValueAndValidity();
+    this.form.get("image")?.updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result as string;
@@ -82,7 +82,7 @@ export class AddNewsComponent implements OnInit {
       return;
     }
     this.isLoading = true;
-    if(this.mode === 'create') {
+    if(this.mode === "create") {
       this.newsService.addNews(
         this.form.value.title,
         this.form.value.description,
