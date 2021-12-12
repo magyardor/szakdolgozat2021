@@ -22,7 +22,11 @@ export const locale = {
         CREATE: 'Létrehozás',
         VIEW_CART: 'Kosár megtekintése',
         PDF: 'Letöltés PDF'
-      }
+      },
+      CHAT: {
+        CHAT_WITH_US: 'Csevegjen velünk!',
+        TEXT: 'Üdvözöljük a Web Beauty-nál! Egyedi szépségápolási termékekre és kiegészítőkre specializálódtunk. Kérjük, írjon nekünk üzenetet, ha kérdése van, vagy adjon ötletet, hogy mit keres. Szívesen teszünk ajánlásokat.',
+      },
     },
     ALERT: {
       SUCCESS: {

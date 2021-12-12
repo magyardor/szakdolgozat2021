@@ -25,7 +25,11 @@ export const locale = {
         CREATE: 'Create',
         VIEW_CART: 'View cart',
         PDF: 'Download PDF'
-      }
+      },
+      CHAT: {
+        CHAT_WITH_US: 'Chat with us!',
+        TEXT: 'Welcome to Web Beauty! We specialize in custom made beauty products and accessories. Please message us if you have questions, or give an idea of what you are looking for. We are happy to make recommendations.',
+      },
     },
     ALERT: {
       SUCCESS: {
