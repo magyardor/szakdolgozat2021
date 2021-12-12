@@ -20,6 +20,7 @@ export class PayPageComponent implements OnInit {
   grandTotal: number = 0;
   form!: FormGroup;
   checked: boolean = false;
+  isLinear = true;
   stepperOriental!: Observable<StepperOrientation>;
 
   constructor(

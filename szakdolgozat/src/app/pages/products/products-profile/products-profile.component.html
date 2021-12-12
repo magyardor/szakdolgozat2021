@@ -6,17 +6,17 @@
       <div class="product-text default">{{product.description}}</div>
     </div>
     <div class="box-right">
-      <img [src]="product.imagePath" style="width: 50%;">
+      <img [src]="product.imagePath" style="width: 42%;">
     </div>
   </div>
   <div class="product-price">
     <div>
-      <div class="default"><h2>{{product.price | currency :'HUF':'symbol':'4.0'}}</h2></div>
+      <div class="default"><h2>{{product.price * quantity | currency :'HUF':'symbol':'4.0'}}</h2></div>
     </div>
     <div>
-      <button mat-button matTooltip="Boost quantity" style="border: 1px solid;">+</button>
+      <button mat-button matTooltip="Boost quantity" style="border: 1px solid;" (click)="plusButton()" >+</button>
         <span style="margin-left: 1rem; margin-right: 1rem; cursor: default;">{{quantity}}</span>
-        <button mat-button matTooltip="Cuts quantity" style="border: 1px solid;">-</button>
+        <button mat-button matTooltip="Cuts quantity" style="border: 1px solid;" (click)="minusButton()">-</button>
     </div>
   </div>
   <div class="product-button">

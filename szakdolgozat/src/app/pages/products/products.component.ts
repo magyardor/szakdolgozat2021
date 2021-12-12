@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Cart } from 'src/app/models/cart';
 import { Group, Products } from 'src/app/models/products.model';
 import { BuyDialogComponent } from 'src/app/service/dialog/buy-dialog/buy-dialog.component';
@@ -26,22 +26,26 @@ export class ProductsComponent implements OnInit {
     private group: GroupService,
     private router: Router,
     private cart: CartService,
-    private dialog: MatDialog
-  ) { }
+    private dialog: MatDialog,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => {
+      this.groupID = params['id'];
+      this.ngOnInit();
+    })
+   }
 
-  async ngOnInit(){
-    this.groupID = await this.group.groupID;
-    console.log(this.groupID)
-
-    if(this.groupID === 0){
-      await this.productService.getProducts();
+  ngOnInit(){
+    if(this.groupID == 0){
+      this.productService.getProducts();
       this.prodSub = this.productService.getprodUpdatedListener()
       .subscribe(prod => {
         this.productList = prod;
       });
+      console.log(this.productList)
     }
     else{
-      await this.productService.getProducts();
+      this.productService.getProducts();
       this.prodSub = this.productService.getprodUpdatedListener()
       .subscribe(prod => {
         this.productList = prod;
@@ -63,7 +67,7 @@ export class ProductsComponent implements OnInit {
   buy(prod: Products){
     console.log(prod)
     const cartItem = new Cart(prod);
-    this.cart.addCart(cartItem);
+    this.cart.addCart(cartItem, 1);
     const dialogRef = this.dialog.open(BuyDialogComponent, {
       height: '300px',
       width: '500px',

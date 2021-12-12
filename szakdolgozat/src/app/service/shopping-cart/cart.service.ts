@@ -27,7 +27,7 @@ export class CartService {
   ){}
 
   /* Kosár információk */
-  addCart(products: Cart) {
+  addCart(products: Cart, quantity: number) {
     if(this.productsItem.length > 0){
       this.existingInCart = this.productsItem.find(x => x.name === products.name);
       this.existsInCart = (this.existingInCart != undefined);
@@ -36,6 +36,7 @@ export class CartService {
       this.existingInCart.quantity++;
     }
     else {
+      products.quantity = quantity;
       this.productsItem.push(products);
       sessionStorage.setItem('products', JSON.stringify(products));
     }
@@ -46,7 +47,7 @@ export class CartService {
   updateCart(list: any){
     this.productsItem = list;
     this.totalPrices();
-    sessionStorage.setItem('products', JSON.stringify(list));
+    sessionStorage.setItem('updateProducts', JSON.stringify(list));
   }
 
   totalPrices() {
@@ -62,30 +63,38 @@ export class CartService {
   }
 
   reductionQuantity(cartItem: any) {
-    this.existingInCart.quantity--;
-
-    if(this.quantity == 0){
+    this.existingInCart = this.productsItem.find(x => x.id === cartItem);
+    console.log(this.existingInCart)
+    if(this.existingInCart.quantity === 0)
+    {
       this.removeCart(cartItem);
     }
     else{
+      this.existingInCart.quantity--;
       this.totalPrices();
     }
   }
 
   plusQuantity(cartItem: any){
-    this.existingInCart.quantity++;
-    if(this.quantity == 0){
+    this.existingInCart = this.productsItem.find(x => x.id === cartItem);
+    console.log(this.existingInCart.quantity)
+    if(this.existingInCart.quantity === 0){
       this.removeCart(cartItem);
     }
     else{
+      this.existingInCart.quantity++;
       this.totalPrices();
     }
   }
 
   removeCart(cartItem: any){
-    let index = this.productsItem.indexOf(cartItem);
-    this.productsItem.splice(index,1);
-    this.totalPrices();
+    this.productsItem.forEach((value,index) => {
+      console.log(value)
+      if(value.id === cartItem){
+        this.productsItem.splice(index,1);
+        this.totalPrices();
+      }
+    });
   }
 
   /* Vásárló adatai */
