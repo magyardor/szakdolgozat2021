@@ -32,11 +32,12 @@
     </div>
     <div class="navbar-icons">
       <app-language-selector></app-language-selector>
-      <span class="material-icons search">search</span>
+      <span matTooltip="Search" class="material-icons search">search</span>
       <span
         class="material-icons"
         style="color: brown; margin-right: 2rem;"
         matBadgeColor="primary"
+        matTooltip="Shopping cart"
         matBadge="{{this.cartsList.length}}"
         [routerLink]="['/carts']"
         (click)="toggleBadgeVisibility()"

@@ -29,13 +29,13 @@
       <td mat-cell *matCellDef="let prod">
         <button mat-button [matMenuTriggerFor]="menu">...</button>
           <mat-menu #menu="matMenu" class="btn-main">
-            <button mat-menu-item (click)="onModify(prod.id)">
+            <button mat-menu-item matTooltip="Edit this product" (click)="onModify(prod.id)">
               <span class="material-icons">
                 edit
               </span>
               {{'GENERIC.ACTION.EDIT' | translate}}
             </button>
-            <button mat-menu-item (click)="onDelete(prod.id)">
+            <button mat-menu-item matTooltip="Delete this product" (click)="onDelete(prod.id)">
               <span class="material-icons">
                 delete
               </span>

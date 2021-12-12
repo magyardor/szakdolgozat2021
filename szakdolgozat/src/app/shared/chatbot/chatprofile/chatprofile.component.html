@@ -1,6 +1,6 @@
 <div class="chat-profile-box">
   <div class="chat-profile-header">
-    <span class="material-icons" (click)="backButton()">
+    <span matTooltip="Back" class="material-icons" (click)="backButton()">
       arrow_back
     </span>
     <div class="chat-header-title">Web beauty</div>
@@ -35,7 +35,7 @@
           <textarea matInput formControlName="message" rows="1" placeholder="message"></textarea>
         </mat-form-field>
       </form>
-      <span class="material-icons" (click)="onSendText($event)">
+      <span matTooltip="Send message" class="material-icons" (click)="onSendText($event)">
         send
       </span>
     </div>

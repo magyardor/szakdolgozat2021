@@ -19,9 +19,9 @@
     <ng-container matColumnDef="quantity">
       <th mat-header-cell *matHeaderCellDef>{{'TABLE.QUANTITY' | translate}}</th>
       <td mat-cell *matCellDef="let prod">
-        <button mat-button style="border: 1px solid;"(click)="plusButton(prod.id)">+</button>
+        <button mat-button matTooltip="Boost quantity" style="border: 1px solid;"(click)="plusButton(prod.id)">+</button>
         <span style="margin-left: 1rem; margin-right: 1rem;">{{prod.quantity}}</span>
-        <button mat-button style="border: 1px solid;" (click)="minusButton(prod.id)">-</button>
+        <button mat-button matTooltip="Cuts quantity" style="border: 1px solid;" (click)="minusButton(prod.id)">-</button>
       </td>
     </ng-container>
     <ng-container matColumnDef="price">

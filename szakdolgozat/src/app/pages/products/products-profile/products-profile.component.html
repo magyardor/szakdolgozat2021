@@ -14,9 +14,9 @@
       <div class="default"><h2>{{product.price | currency :'HUF':'symbol':'4.0'}}</h2></div>
     </div>
     <div>
-      <button mat-button style="border: 1px solid;">+</button>
+      <button mat-button matTooltip="Boost quantity" style="border: 1px solid;">+</button>
         <span style="margin-left: 1rem; margin-right: 1rem; cursor: default;">{{quantity}}</span>
-        <button mat-button style="border: 1px solid;">-</button>
+        <button mat-button matTooltip="Cuts quantity" style="border: 1px solid;">-</button>
     </div>
   </div>
   <div class="product-button">
