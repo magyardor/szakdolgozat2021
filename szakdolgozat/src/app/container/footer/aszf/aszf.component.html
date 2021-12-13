@@ -1,6 +1,6 @@
 <div class="aszf-body">
   <div class="aszf-button">
-    <button class="btn-main">{{'GENERIC.ACTION.PDF' | translate}}</button>
+    <button class="btn-main" (click)="downloadPdf()">{{'GENERIC.ACTION.PDF' | translate}}</button>
   </div>
   <div *ngIf="language === 'hu'; else en">
     <div><h1>Általános Szerződési Feltételek (ÁSZF) minta</h1></div>

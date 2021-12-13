@@ -8,11 +8,11 @@
       </div>
     </div>
     <div class="col list">
-      <ul style="list-style-type: none; line-height: 30px;">
+      <ul style="list-style-type: none; line-height: 30px; z-index: 11;">
         <li [routerLink]="['/aszf']" class="pointer">{{'TEXT.GTC' | translate}}</li>
-        <li>{{'TEXT.PRIVACY' | translate}}</li>
-        <li>{{'TEXT.GUIDE' | translate}}</li>
-        <li>{{'TEXT.PAYMENT' | translate}}</li>
+        <li [routerLink]="['/privacy']" class="pointer">{{'TEXT.PRIVACY' | translate}}</li>
+        <li [routerLink]="['/guide']" class="pointer">{{'TEXT.GUIDE' | translate}}</li>
+        <li [routerLink]="['/payment']" class="pointer">{{'TEXT.PAYMENT' | translate}}</li>
       </ul>
     </div>
   </div>
