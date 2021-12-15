@@ -59,9 +59,7 @@ export class ContactService {
         description: description,
         imagePath: responseData.messages.imagePath,
       };
-      console.log(messages);
       this.messages.push(messages);
-      console.log(this.messages);
       this.msgUpdate.next([...this.messages]);
       this.alert.success('ALERT.SUCCESS.ADD');
       this.router.navigate(["/contact"]);

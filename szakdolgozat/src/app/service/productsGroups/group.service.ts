@@ -18,7 +18,6 @@ export class GroupService {
 
   selectedGroup(id: number) {
     this.groupID = id;
-    console.log(this.groupID)
   }
 
   getGroups() {

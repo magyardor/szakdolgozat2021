@@ -9,7 +9,7 @@
 >
   <div *ngFor="let news of newsList" class="news carousel-cell">
     <div class="news-box">
-      <div class="col" style="width: 500px; margin-left: 2rem;">
+      <div class="col home-news">
         <div class="home-title">{{news.title}}</div>
         <div class="home-description">{{news.description}}</div>
         <div class="home-button-read"><button class="btn-main-outlined" (click)="onGetNew(news.id)">{{'PAGE.HOME.READ_MORE' | translate}}</button></div>

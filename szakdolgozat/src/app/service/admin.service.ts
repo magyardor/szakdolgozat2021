@@ -47,7 +47,6 @@ export class AdminService {
       this.alert.success('ALERT.SUCCESS.ADD');
       this.router.navigate(["/admin/add-user"]);
     }, error => {
-      console.log(error);
       this.alert.error(error.error.message)
     });
   }
@@ -71,7 +70,6 @@ export class AdminService {
         this.router.navigate(["/admin/products-list"]);
       }
     }, error => {
-      console.log(error)
       this.alert.error(error.error.message);
     });
   }

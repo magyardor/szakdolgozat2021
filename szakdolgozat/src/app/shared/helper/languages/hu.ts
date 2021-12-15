@@ -79,6 +79,10 @@ export const locale = {
       ACCOUNT: {
         TITLE: 'Fiók',
         ADD_USER: 'Felhasználó hozzáadása'
+      },
+      ORDERS: {
+        TITLE: 'Rendelések',
+        MENAGE_ORDERS: 'Rendelések lista'
       }
     },
     FORM: {
@@ -178,9 +182,9 @@ export const locale = {
     TEXT: {
       AUTHOR: 'Készítette',
       GTC: 'ÁSZF',
-      PRIVACY: 'Adatkezelési Tájékoztató',
+      PRIVACY: 'Adatkezelési tájékoztató',
       GUIDE: 'Vásárlási útmutató',
-      PAYMENT: 'Fizetési Tájékoztató',
+      PAYMENT: 'Fizetési tájékoztató',
       PRODUCT_ADD_CART: 'Termék sikeresen bekerült a kosárba!',
       BUY_MORE: 'vásárlás tovább',
       ASZF: 'Elfogadom az Általános szerződési feltételeket és az Adatkezelési tájékoztatót.'

@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="chat-body">
-        <div class="chat-link" *ngFor="let chat of chatList">
+        <div class="chat-link pointer" *ngFor="let chat of chatList">
           <div (click)="loadChatProfile(chat.id)">{{chat.title}}</div>
         </div>
       </div>

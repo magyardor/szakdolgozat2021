@@ -18,7 +18,7 @@ exports.createUser = (req, res, next) => {
       });
     })
     .catch(err => {
-      res.status(500).json({ //todo: all status explane
+      res.status(500).json({
         error: err
       });
     });
@@ -29,7 +29,7 @@ exports.loginUser = (req, res, next) => {
   let fetchedUser;
   User.findOne({email: req.body.email}).then(user => {
     if(!user){
-      return res.status(401).json({
+      return res.status(403).json({
         message: "Auth failed"
       });
     }
@@ -38,7 +38,7 @@ exports.loginUser = (req, res, next) => {
     return bcrypt.compare(req.body.password, user.password);
   }).then(result => {
     if(!result){
-      return res.status(401).json({
+      return res.status(403).json({
         message: "Auth failed"
       });
     }
@@ -52,8 +52,7 @@ exports.loginUser = (req, res, next) => {
       expiresIn: 3600
     });
   }).catch(err => {
-    /* console.log(err, req.body.password, fetchedUser.password); */
-    return res.status(401).json({
+    return res.status(403).json({
       message: "Auth failed"
     });
   });

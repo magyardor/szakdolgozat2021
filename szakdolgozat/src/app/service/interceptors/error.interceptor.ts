@@ -28,8 +28,6 @@ export class ErrorInterceptor implements HttpInterceptor {
         else {
           errorMessage = `Error code: ${err.status}\n Message: ${err.message}`;
         }
-        console.log(err);
-        console.log(errorMessage);
       }
 
       const error = err?.error?.message || err?.statusText;

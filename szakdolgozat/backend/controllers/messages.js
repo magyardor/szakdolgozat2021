@@ -9,9 +9,7 @@ exports.postMessages = (req, res, next) => {
     description: req.body.description,
     imagePath: url + "/images/messages/" + req.file.filename,
   });
-  console.log(req.body)
   msg.save().then(result => {
-    console.log(result)
     res.status(201).json({
       message: "Message added successfully",
       messages: {

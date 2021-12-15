@@ -6,9 +6,7 @@ exports.postOrders = (req, res, next) => {
     _id: new mongoose.Types.ObjectId(),
     orders: req.body.orders
   });
-  console.log(order);
   order.save().then(result => {
-    console.log(result);
     if(result) {
       res.status(201).json({
         message: "Products added successfully",
@@ -30,6 +28,19 @@ exports.postOrders = (req, res, next) => {
   });
 }
 
-exports.getOrders = (req, res, next) => {}
+exports.getOrders = (req, res, next) => {
+    Orders.find().then(count => {
+      res.status(200).json({
+        message: "Orders fetched successfully!",
+        orders: count,
+      });
+    });
+}
 
-exports.deleteOrders = (req, res, next) => {}
+exports.deleteOrders = (req, res, next) => {
+  Orders.deleteOne({_id: req.params.id}).then( result => {
+    res.status(200).json({
+      message: "Order deleted!"
+    });
+  });
+}

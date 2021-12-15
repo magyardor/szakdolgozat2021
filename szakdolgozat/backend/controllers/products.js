@@ -9,9 +9,7 @@ exports.postProducts = (req, res, next) => {
     imagePath: url + "/images/products/" + req.file.filename,
     productsGroup: req.body.productsGroup
   });
-  console.log(products);
   products.save().then(result => {
-    console.log(result);
     res.status(201).json({
       message: "Products added successfully",
       products: {
@@ -36,11 +34,10 @@ exports.putProducts = (req, res, next) => {
     imagePath: imagePath,
     productsGroup: req.body.productsGroup
   });
-  console.log(products);
   Products.updateOne({_id: req.params.id}, products).then(result => {
     if(result.n > 0){
       res.status(200).json(
-        {message: "Update succsessful!"}
+        {message: "Update successful!"}
       );
     }
     else {

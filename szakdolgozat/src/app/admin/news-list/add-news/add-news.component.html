@@ -23,8 +23,6 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-date-range-picker #picker color="primary"></mat-date-range-picker>
     </mat-form-field>
-
-    <p>Selected range: {{form.value | json}}</p>
     <mat-form-field appearance="outline">
       <mat-label>{{'FORM.ADD_NEWS.DESCRIPTION' | translate}}</mat-label>
       <textarea matInput rows="4" formControlName="description" placeholder="description"></textarea>

@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AlertService } from 'src/app/service/alert.service';
 import { CartService } from 'src/app/service/shopping-cart/cart.service';
 
 @Component({
@@ -25,6 +26,7 @@ export class PayPageComponent implements OnInit {
 
   constructor(
     private carts: CartService,
+    private alertService: AlertService,
     breakPoint: BreakpointObserver,
   ) {
     this.stepperOriental = breakPoint.observe('(min-width: 600px)').pipe(map(({matches}) => (matches ? 'horizontal':'vertical')));
@@ -56,20 +58,32 @@ export class PayPageComponent implements OnInit {
   }
 
   addShipOrder() {
-    if(this.checked) {
-      this.form.value.fullName_transport = this.form.value.fullName;
-      this.form.value.zipCode_transport = this.form.value.zipCode;
-      this.form.value.city_transport = this.form.value.city;
-      this.form.value.street_transport = this.form.value.street;
-      this.form.value.taxNumber_transport = this.form.value.taxNumber;
-      this.carts.addOrder(
-      this.form.value
-      )
+    if(this.checked){
+      if(this.form.invalid) {
+        this.alertService.warn('ALERT.WARN.INVALID_FORM');
+        this.form.markAllAsTouched();
+        return;
+      }
+      else{
+        this.form.value.fullName_transport = this.form.value.fullName;
+        this.form.value.zipCode_transport = this.form.value.zipCode;
+        this.form.value.city_transport = this.form.value.city;
+        this.form.value.street_transport = this.form.value.street;
+        this.form.value.taxNumber_transport = this.form.value.taxNumber;
+        this.carts.addOrder(this.form.value)
+      }
     }
     else {
-      this.carts.addOrder(
-        this.form.value
-      )
+      if(this.form.invalid) {
+        this.alertService.warn('ALERT.WARN.INVALID_FORM');
+        this.form.markAllAsTouched();
+        return;
+      }
+      else{
+        this.carts.addOrder(
+          this.form.value
+        )
+      }
     }
     this.orderList = this.carts.getOrder();
   }

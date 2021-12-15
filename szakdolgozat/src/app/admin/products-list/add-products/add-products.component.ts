@@ -95,7 +95,6 @@ export class AddProductsComponent implements OnInit {
     }
     this.isLoading = true;
     if(this.mode === 'create') {
-      console.log(this.form.value)
       this.productsService.addProducts(
         this.form.value.name,
         this.form.value.description,

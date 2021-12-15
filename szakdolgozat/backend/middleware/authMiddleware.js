@@ -6,6 +6,6 @@ module.exports = (req, res, next) => {
     jsonwt.verify(token, process.env.JWTOKEN_KEY)
     next();
   } catch (err) {
-    res.status(401).json({message: "Auth failed!"});
+    res.status(403).json({message: "Auth failed!"});
   }
 }

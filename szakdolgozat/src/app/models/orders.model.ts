@@ -1,5 +1,6 @@
 export interface Orders {
-  orders: Order[];
+  id: number;
+  orders: any;
 }
 
 export interface Order {

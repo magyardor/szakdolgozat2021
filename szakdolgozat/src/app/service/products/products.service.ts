@@ -65,7 +65,6 @@ export class ProductsService {
         price: price,
         productsGroup: productsGroup
       };
-      console.log(this.products)
       this.products.push(products);
       this.prodUpdated.next([...this.products]);
       this.alert.success('ALERT.SUCCESS.ADD')

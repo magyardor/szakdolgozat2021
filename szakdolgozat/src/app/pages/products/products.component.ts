@@ -42,7 +42,6 @@ export class ProductsComponent implements OnInit {
       .subscribe(prod => {
         this.productList = prod;
       });
-      console.log(this.productList)
     }
     else{
       this.productService.getProducts();
@@ -65,7 +64,6 @@ export class ProductsComponent implements OnInit {
   }
 
   buy(prod: Products){
-    console.log(prod)
     const cartItem = new Cart(prod);
     this.cart.addCart(cartItem, 1);
     const dialogRef = this.dialog.open(BuyDialogComponent, {

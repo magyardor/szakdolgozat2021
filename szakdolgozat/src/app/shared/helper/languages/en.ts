@@ -82,6 +82,10 @@ export const locale = {
       ACCOUNT: {
         TITLE: 'Account',
         ADD_USER: 'Add user'
+      },
+      ORDERS: {
+        TITLE: 'Orders',
+        MENAGE_ORDERS: 'Menage orders'
       }
     },
     FORM: {

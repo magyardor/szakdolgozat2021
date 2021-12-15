@@ -15,7 +15,7 @@ export class CartService {
   transportChoice: number = 0;
   productsItem: Cart[] = [];
   all: Data[] = [];
-  fullOrder: Orders[] = [];
+  fullOrder: any[] = [];
   orderFull: any[] = [];
   orderFullUpdate: any;
   totalPrice: Subject<number> = new BehaviorSubject<number>(0);
@@ -64,7 +64,6 @@ export class CartService {
 
   reductionQuantity(cartItem: any) {
     this.existingInCart = this.productsItem.find(x => x.id === cartItem);
-    console.log(this.existingInCart)
     if(this.existingInCart.quantity === 0)
     {
       this.removeCart(cartItem);
@@ -77,7 +76,6 @@ export class CartService {
 
   plusQuantity(cartItem: any){
     this.existingInCart = this.productsItem.find(x => x.id === cartItem);
-    console.log(this.existingInCart.quantity)
     if(this.existingInCart.quantity === 0){
       this.removeCart(cartItem);
     }
@@ -89,7 +87,6 @@ export class CartService {
 
   removeCart(cartItem: any){
     this.productsItem.forEach((value,index) => {
-      console.log(value)
       if(value.id === cartItem){
         this.productsItem.splice(index,1);
         this.totalPrices();
@@ -100,7 +97,6 @@ export class CartService {
   /* Vásárló adatai */
   addOrder(value: any){
     this.all = value;
-    console.log(value)
     sessionStorage.setItem('data', JSON.stringify(value));
   }
 
@@ -111,12 +107,30 @@ export class CartService {
 
   /* Adatok hozzáadása/lekérdezése/törlése adatbázisba */
   addFullOrder(list: any) {
-    const listData = JSON.stringify(list[0].orders);
-    console.log(list)
+/*     const listData = JSON.stringify(list[0].orders);
     this.http.post<{order: Orders}>(environment.apiUrl + "orders", listData)
     .subscribe(responseData => {
       const data: Orders = {
         orders: list[0].orders
+      }
+      this.orderFull.push(data);
+      sessionStorage.clear();
+    }, error => {
+      this.alert.error(error.error.message);
+    }
+    ); */
+  }
+
+  addFullOrderItem() {
+    this.fullOrder.push(
+      {"orders": [{"carts": this.productsItem, "data": this.all, "transport": this.transportChoice, "pay": this.payChoice}]}
+    );
+    const listData = this.fullOrder;
+    this.http.post<{order: Orders}>(environment.apiUrl + "orders", listData)
+    .subscribe(responseData => {
+      const data: Orders = {
+        id: responseData.order.id,
+        orders: listData[0].orders[0]
       }
       console.log(data)
       this.orderFull.push(data);
@@ -125,14 +139,6 @@ export class CartService {
       this.alert.error(error.error.message);
     }
     );
-  }
-
-  addFullOrderItem() {
-    this.fullOrder.push(
-      {"orders": [{"carts": this.productsItem, "data": this.all, "transport": this.transportChoice, "pay": this.payChoice}]}
-    );
-    this.addFullOrder(this.fullOrder);
-    sessionStorage.setItem('fullOrder', JSON.stringify(this.fullOrder));
   }
 
 }

@@ -9,9 +9,7 @@ exports.postNews = (req, res, next) => {
     startDate: req.body.startDate,
     endDate: req.body.endDate,
   });
-  console.log(news);
   news.save().then(result => {
-    console.log(result);
     res.status(201).json({
       message: "News added successfully",
       news: {
@@ -36,10 +34,9 @@ exports.putNews = (req, res, next) => {
     startDate: req.body.startDate,
     endDate: req.body.endDate,
   });
-  console.log(news);
   News.updateOne({_id: req.params.id}, news).then(result => {
     res.status(200).json(
-      {message: "Update succsessful!"}
+      {message: "Update successful!"}
     );
   });
 }

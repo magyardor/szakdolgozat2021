@@ -31,12 +31,10 @@ export class ProductsProfileComponent implements OnInit {
     })
     this.prodSub = this.productService.getProduct(this.productID).subscribe((prod) => {
       this.product = prod;
-      console.log(prod)
     });
   }
 
   buy(prod: Products){
-    console.log(prod)
     const cartItem = new Cart(prod);
     this.cart.addCart(cartItem, this.quantity);
     const dialogRef = this.dialog.open(BuyDialogComponent, {

@@ -16,12 +16,10 @@ export class AszfComponent implements OnInit {
     private translate: TranslationService,
   ) {
     this.language = this.translate.getSelectedLanguage();
-    console.log(this.language)
    }
 
   ngOnInit(): void {
       this.language = this.translate.getSelectedLanguage();
-      console.log(this.language)
   }
 
   downloadPdf() {
