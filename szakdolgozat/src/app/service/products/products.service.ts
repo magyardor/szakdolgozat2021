@@ -21,14 +21,14 @@ export class ProductsService {
   ) { }
 
   getProducts() {
-    this.http.get<{message: string, products: any}>( environment.apiUrl + "products")
+    this.http.get<{message: string, products: any}>( environment.apiUrl + "/api/products")
     .pipe(map(productsData => {
         return productsData.products.map((product: any) => {
           return {
             name: product.name,
             description: product.description,
             id: product._id,
-            imagePath: product.imagePath,
+            imagePath: environment.apiUrl + product.imagePath,
             price: product.price,
             productsGroup: product.productsGroup
           };
@@ -55,7 +55,7 @@ export class ProductsService {
     productsData.append("image", image, name);
     productsData.append("price", price);
     productsData.append("productsGroup", productsGroup);
-    this.http.post<{message: string, products: Products}>( environment.apiUrl + "products", productsData)
+    this.http.post<{message: string, products: Products}>( environment.apiUrl + "/api/products", productsData)
     .subscribe(responseData => {
       const products: Products = {
         id: responseData.products.id,
@@ -95,7 +95,7 @@ export class ProductsService {
         productsGroup: productsGroup
       };
     }
-    this.http.put( environment.apiUrl + "products/" + id, productsData)
+    this.http.put( environment.apiUrl + "/api/products/" + id, productsData)
       .subscribe(response => {
         const updatedProducts = [...this.products];
         const oldProductsIndex = updatedProducts.findIndex(p => p.id === id);
@@ -118,7 +118,7 @@ export class ProductsService {
   }
 
   deleteProducts(productsID: any) {
-    return this.http.delete( environment.apiUrl + "products/" + productsID).subscribe(() =>{
+    return this.http.delete( environment.apiUrl + "/api/products/" + productsID).subscribe(() =>{
       const updatedProducts = this.products.filter(post => post.id !== productsID);
       this.products = updatedProducts;
       this.prodUpdated.next([...this.products]);

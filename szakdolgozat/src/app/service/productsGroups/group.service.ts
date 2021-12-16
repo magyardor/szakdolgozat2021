@@ -21,7 +21,7 @@ export class GroupService {
   }
 
   getGroups() {
-    this.http.get<{message: string, productsGroups: any}>( environment.apiUrl + "productsGroups")
+    this.http.get<{message: string, productsGroups: any}>( environment.apiUrl + "/api/productsGroups")
     .pipe(map(groupData => {
         return groupData.productsGroups.map((group: any) => {
           return {
@@ -41,6 +41,6 @@ export class GroupService {
   }
 
   getGroup(id: any) {
-    return this.http.get<{_id: any, name: string}>( environment.apiUrl + "productsGroups/" + id)
+    return this.http.get<{_id: any, name: string}>( environment.apiUrl + "/api/productsGroups/" + id)
   }
 }

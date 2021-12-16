@@ -21,14 +21,14 @@ constructor(
 ) { }
 
   getNews() {
-    this.http.get<{message: string, news: any}>( environment.apiUrl + "news")
+    this.http.get<{message: string, news: any}>( environment.apiUrl + "/api/news")
       .pipe(map(newsData => {
           return newsData.news.map((news: any) => {
             return {
               title: news.title,
               description: news.description,
               id: news._id,
-              imagePath: news.imagePath,
+              imagePath: environment.apiUrl + news.imagePath,
               startDate: news.startDate,
               endDate: news.endDate
             };
@@ -52,7 +52,7 @@ constructor(
       imagePath: string,
       startDate: Date,
       endDate: Date
-    }>( environment.apiUrl + "news/" + id);
+    }>( environment.apiUrl + "/api/news/" + id);
   }
 
   addNews(title: string, description: string, image: File | string, startDate: any, endDate: any) {
@@ -62,7 +62,7 @@ constructor(
     newsData.append("image", image, title);
     newsData.append("startDate", startDate);
     newsData.append("endDate", endDate);
-    this.http.post<{message: string, news: News}>( environment.apiUrl + "news", newsData)
+    this.http.post<{message: string, news: News}>( environment.apiUrl + "/api/news", newsData)
     .subscribe(responseData => {
       const news: News = {
         id: responseData.news.id,
@@ -102,7 +102,7 @@ constructor(
         endDate: endDate
       };
     }
-    this.http.put( environment.apiUrl + "news/" + id, newsData)
+    this.http.put( environment.apiUrl + "/api/news/" + id, newsData)
       .subscribe(response => {
         this.router.navigate(["/admin/news-list"]);
         /* const updatedNews = [...this.news];
@@ -126,7 +126,7 @@ constructor(
   }
 
   deleteNews(newsID: any) {
-    return this.http.delete( environment.apiUrl + "news/" + newsID).subscribe(() =>{
+    return this.http.delete( environment.apiUrl + "/api/news/" + newsID).subscribe(() =>{
       const updatedNews = this.news.filter(post => post.id !== newsID);
       this.news = updatedNews;
       this.alert.success('ALERT.SUCCESS.DELETE');

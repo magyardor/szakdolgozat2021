@@ -1,12 +1,11 @@
 const Products = require("../models/pages/products");
 
 exports.postProducts = (req, res, next) => {
-  const url = req.protocol + "://" + req.get("host");
   const products = new Products({
     name: req.body.name,
     description: req.body.description,
     price: req.body.price,
-    imagePath: url + "/images/products/" + req.file.filename,
+    imagePath: "/images/products/" + req.file.filename,
     productsGroup: req.body.productsGroup
   });
   products.save().then(result => {
@@ -23,8 +22,7 @@ exports.postProducts = (req, res, next) => {
 exports.putProducts = (req, res, next) => {
   let imagePath = req.body.imagePath;
   if(req.file) {
-    const url = req.protocol + "://" + req.get("host");
-    imagePath = url + "/images/products/" + req.file.filename
+    imagePath = "/images/products/" + req.file.filename
   }
   const products = new Products({
     _id: req.body.id,

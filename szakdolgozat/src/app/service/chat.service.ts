@@ -20,7 +20,7 @@ export class ChatService {
   ){}
 
   getChat() {
-    this.http.get<{message: string, chat: any}>(environment.apiUrl + "chat")
+    this.http.get<{message: string, chat: any}>(environment.apiUrl + "/api/chat")
     .pipe(map(response => {
         return response.chat.map((chats: any) => {
           return {
@@ -42,7 +42,7 @@ export class ChatService {
   }
 
   getChatID(id: any){
-    return this.http.get<{_id: any, title: string, description: string, contact: string}>(environment.apiUrl + "chat/" + id)
+    return this.http.get<{_id: any, title: string, description: string, contact: string}>(environment.apiUrl + "/api/chat/" + id)
   }
 
 }

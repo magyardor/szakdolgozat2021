@@ -42,7 +42,7 @@ export class AdminService {
 
   async addUser(email: string, password: string){
     const authData: UserData = {email: email, password: password};
-    return await this.http.post( environment.apiUrl + "auth/adduser",authData)
+    return await this.http.post( environment.apiUrl + "/api/auth/adduser",authData)
     .subscribe(res => {
       this.alert.success('ALERT.SUCCESS.ADD');
       this.router.navigate(["/admin/add-user"]);
@@ -53,7 +53,7 @@ export class AdminService {
 
   logIn(email: string, password: string){
     const authData: UserData = {email: email, password: password};
-    this.http.post<{token: string, expiresIn: number}>(  environment.apiUrl + "auth/login", authData)
+    this.http.post<{token: string, expiresIn: number}>(  environment.apiUrl + "/api/auth/login", authData)
     .subscribe(res => {
       const tokens = res.token;
       this.token = tokens;

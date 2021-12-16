@@ -1,11 +1,10 @@
 const News = require("../models/pages/news");
 
 exports.postNews = (req, res, next) => {
-  const url = req.protocol + "://" + req.get("host");
   const news = new News({
     title: req.body.title,
     description: req.body.description,
-    imagePath: url + "/images/news/" + req.file.filename,
+    imagePath: "/images/news/" + req.file.filename,
     startDate: req.body.startDate,
     endDate: req.body.endDate,
   });
@@ -23,8 +22,7 @@ exports.postNews = (req, res, next) => {
 exports.putNews = (req, res, next) => {
   let imagePath = req.body.imagePath;
   if(req.file) {
-    const url = req.protocol + "://" + req.get("host");
-    imagePath = url + "/images/news/" + req.file.filename
+    imagePath = "/images/news/" + req.file.filename
   }
   const news = new News({
     _id: req.body.id,

@@ -19,7 +19,7 @@ export class OrdersService {
   ){}
 
   getOrders(){
-    this.http.get<{message: string, orders: any}>(environment.apiUrl + "orders")
+    this.http.get<{message: string, orders: any}>(environment.apiUrl + "/api/orders")
     .pipe(map(ordersData => {
       return ordersData.orders.map((order: any) => {
         return {
@@ -44,7 +44,7 @@ export class OrdersService {
 
 
   deleteOrders(id: any){
-    return this.http.delete(environment.apiUrl + "orders/" + id)
+    return this.http.delete(environment.apiUrl + "/api/orders/" + id)
     .subscribe(() => {
       const updateOrder = this.orders.filter(x => x.id !== id);
       this.orders = updateOrder;
