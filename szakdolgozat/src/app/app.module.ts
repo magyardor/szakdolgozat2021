@@ -26,6 +26,9 @@ import { AszfComponent } from './container/footer/aszf/aszf.component';
 import { PayPageComponent } from './pages/shopping-cart/pay-page/pay-page.component';
 import { ShoppingCartModule } from 'ng-shopping-cart';
 import { BuyDialogComponent } from './service/dialog/buy-dialog/buy-dialog.component';
+import { PrivacyComponent } from './container/footer/privacy/privacy.component';
+import { GuideComponent } from './container/footer/guide/guide.component';
+import { PaymentComponent } from './container/footer/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { BuyDialogComponent } from './service/dialog/buy-dialog/buy-dialog.compo
     ProductsProfileComponent,
     AszfComponent,
     PayPageComponent,
-    BuyDialogComponent
+    BuyDialogComponent,
+    PrivacyComponent,
+    GuideComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,

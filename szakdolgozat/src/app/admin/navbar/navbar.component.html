@@ -30,6 +30,11 @@
           <span class="material-icons m-3 noselect"> list </span>
           <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.MESSAGES.MENAGE_MESSAGES' | translate}}</span>
         </mat-list-item>
+        <div class="subMenuTitle animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.ORDERS.TITLE' | translate}}</div>
+        <mat-list-item [routerLinkActive]="['selected']" [routerLink]="['/admin/orders-list']">
+          <span class="material-icons m-3 noselect"> list </span>
+          <span class="full-width animated-text" [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.ORDERS.MENAGE_ORDERS' | translate}}</span>
+        </mat-list-item>
       </mat-nav-list>
       <mat-nav-list class="pb-2">
         <div class="subMenuTitle animated-text"  [ngClass]="{'opened': isExpanded || isShowing}">{{'SIDE_MENU.ACCOUNT.TITLE' | translate}}</div>

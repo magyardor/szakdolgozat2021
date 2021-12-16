@@ -1,4 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Products } from 'src/app/models/products.model';
@@ -11,9 +13,10 @@ import { ProductsService } from 'src/app/service/products/products.service';
 })
 export class ProductsListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id','name','description','price','image','menu'];
-  products: Products[] = [];
+  products!: MatTableDataSource<Products>;
   isLoading = false;
   productsSub!: Subscription;
+  @ViewChild('paginator') paginator!: MatPaginator;
 
   constructor(
     private prodService: ProductsService,
@@ -26,7 +29,8 @@ export class ProductsListComponent implements OnInit, OnDestroy {
     this.productsSub = this.prodService.getprodUpdatedListener()
     .subscribe((post: Products[]) => {
         this.isLoading = false;
-        this.products = post;
+        this.products = new MatTableDataSource(post);
+        this.products.paginator = this.paginator;
     });
   }
 

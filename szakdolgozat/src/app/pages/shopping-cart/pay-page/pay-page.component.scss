@@ -50,6 +50,20 @@
   min-height: 400px;
 }
 
+input[type=file] {
+  visibility: hidden;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+
+  img {
+    height: 100%;
+    width: auto;
+  }
+}
+
 .transport-box {
   display: grid;
   align-items: center;

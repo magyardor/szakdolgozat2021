@@ -1,0 +1,27 @@
+.mat-accordion .mat-expansion-panel {
+  background-color: var(--light-color);
+  color: var(--white-color);
+  margin-bottom: 2rem;
+}
+
+.order-box-transport {
+  display: flex;
+  justify-content: space-around;
+}
+
+.order-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-box-contact {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.transport-box {
+  display: grid;
+  align-items: center;
+  width: auto;
+  color: var(--light-color);
+}

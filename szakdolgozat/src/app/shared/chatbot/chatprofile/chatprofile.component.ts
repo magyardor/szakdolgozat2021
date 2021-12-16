@@ -28,7 +28,6 @@ export class ChatprofileComponent implements OnInit {
       message: new FormControl(null, {validators: [Validators.required]}),
     });
     this.selectedChat = this.chatList.find((x: { id: any; }) => x.id === this.chatID);
-    console.log(this.selectedChat)
   }
 
   backButton() {
@@ -37,11 +36,9 @@ export class ChatprofileComponent implements OnInit {
   }
 
   onSendText(event: any) {
-    console.log(event)
     if(event.type === "click")
     {
       this.message = this.form.value.message;
     }
-    console.log(this.message)
   }
 }

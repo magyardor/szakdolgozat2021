@@ -47,7 +47,6 @@ export class ContactComponent implements OnInit {
       this.isLoading = false;
       return;
     }
-    console.log(this.form);
     this.isLoading = true;
     this.contactService.sendMessage(
       this.form.value.firstName,

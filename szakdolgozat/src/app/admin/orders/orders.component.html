@@ -1,0 +1,124 @@
+<div>
+  <mat-accordion *ngFor="let order of orderList">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{'SIDE_MENU.ORDERS.ORDER_NUMBER' | translate}} {{order.id}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <div class="primary-box-shadow" style="color: var(--light-color); min-width: 600px;">
+          <h2>{{'SIDE_MENU.ORDERS.PRODUCTS_ORDERED' | translate}}</h2>
+          <div>
+            <ol style="margin-bottom: 2rem;">
+              <li *ngFor="let cart of order.orders[0].carts; let i=index">
+                <div style="display: flex; justify-content: space-between;">
+                  <div>
+                    {{'SIDE_MENU.ORDERS.PRODUCT_NAME' | translate}} {{cart.name}}
+                  </div>
+                  <div>
+                    {{'SIDE_MENU.ORDERS.UNIT_PRICE' | translate}} {{cart.price | currency :'HUF':'symbol':'4.0'}}
+                  </div>
+                  <div>
+                    {{'SIDE_MENU.ORDERS.QUANTITY' | translate}} {{cart.quantity}} db
+                  </div>
+                  <div>
+                    {{'SIDE_MENU.ORDERS.TOTAL_PRICE' | translate}} {{cart.price * cart.quantity | currency :'HUF':'symbol':'4.0'}}
+                  </div>
+                </div>
+              </li>
+            </ol>
+            <div style="display: flex; justify-content: space-between;">
+              <h3>{{'SIDE_MENU.ORDERS.ORDER_AMOUNT' | translate}}</h3>
+              {{order.orders[0].orderTotal | currency :'HUF':'symbol':'4.0'}}
+            </div>
+          </div>
+        </div>
+        <div class="order-box-transport">
+          <div class="order-box">
+            <mat-card class="white-box-shadow transport-box">
+              <h2>{{'SIDE_MENU.ORDERS.BILLING_ADDRESS' | translate}}</h2>
+              <div style="display: flex; justify-content: space-between;">
+                <div style="margin-right: 2rem;">{{'SIDE_MENU.ORDERS.FULL_NAME' | translate}}</div>
+                {{order.orders[0].data.fullName}}
+              </div>
+              <div style="display: flex;justify-content: space-between;">
+                <div style="margin-right: 2rem;">{{'SIDE_MENU.ORDERS.ZIP_CODE' | translate}}</div>
+                {{order.orders[0].data.zipCode}}
+              </div>
+              <div style="display: flex;justify-content: space-between;">
+                <div style="margin-right: 2rem;">{{'SIDE_MENU.ORDERS.CITY' | translate}}</div>
+                {{order.orders[0].data.city}}
+              </div>
+              <div style="display: flex;justify-content: space-between;">
+                <div style="margin-right: 2rem;">{{'SIDE_MENU.ORDERS.STREET' | translate}}</div>
+                {{order.orders[0].data.street}}
+              </div>
+              <div style="display: flex;justify-content: space-between;" *ngIf="order.orders[0].data.taxNumber != null">
+                <div style="margin-right: 2rem;">{{'SIDE_MENU.ORDERS.TAX_NUMBER' | translate}}</div>
+                {{order.orders[0].data.taxNumber}}
+              </div>
+            </mat-card>
+          </div>
+          <div class="order-box">
+            <mat-card class="white-box-shadow transport-box">
+              <h2>{{'SIDE_MENU.ORDERS.DELIVERY_ADDRESS' | translate}}</h2>
+              <div style="display: flex; justify-content: space-between;">
+                <div>{{'SIDE_MENU.ORDERS.FULL_NAME' | translate}}</div>
+                {{order.orders[0].data.fullName_transport}}
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <div>{{'SIDE_MENU.ORDERS.ZIP_CODE' | translate}}</div>
+                {{order.orders[0].data.zipCode_transport}}
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <div>{{'SIDE_MENU.ORDERS.CITY' | translate}}</div>
+                {{order.orders[0].data.city_transport}}
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <div>{{'SIDE_MENU.ORDERS.STREET' | translate}}</div>
+                {{order.orders[0].data.street_transport}}
+              </div>
+              <div *ngIf="order.orders[0].data.taxNumber != null" style="display: flex; justify-content: space-between;">
+                <div>{{'SIDE_MENU.ORDERS.TAX_NUMBER' | translate}}</div>
+                {{order.orders[0].data.taxNumber_transport}}
+              </div>
+            </mat-card>
+          </div>
+        </div>
+        <div class="order-box-contact">
+          <h2>{{'SIDE_MENU.ORDERS.DELIVERY_PAYMANT' | translate}}</h2>
+          <div style="display: flex; justify-content: space-between;">
+            <div>{{'SIDE_MENU.ORDERS.PAYMANT_TYPE' | translate}}</div>
+            {{order.orders[0].pay}}
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <div>{{'SIDE_MENU.ORDERS.DELIVERY_FEE' | translate}}</div>
+            {{order.orders[0].transport | currency :'HUF':'symbol':'4.0'}}
+          </div>
+        </div>
+        <div class="order-box-contact">
+          <h2>{{'SIDE_MENU.ORDERS.TOTAL_AMOUNT' | translate}}</h2>
+          <div style="display: flex; justify-content: flex-end;">
+            <h3>{{order.orders[0].grandTotal | currency :'HUF':'symbol':'4.0'}}</h3>
+          </div>
+        </div>
+        <div class="order-box-contact">
+          <h2>{{'SIDE_MENU.ORDERS.CONTACT_DETAILS' | translate}}</h2>
+          <div style="display: flex; justify-content: space-between;">
+            <div>{{'SIDE_MENU.ORDERS.EMAIL' | translate}}</div>
+            {{order.orders[0].data.email}}
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <div>{{'SIDE_MENU.ORDERS.PHONE' | translate}}</div>
+            {{order.orders[0].data.phone}}
+          </div>
+        </div>
+      </div>
+      <mat-action-row>
+        <button mat-button class="btn-main" (click)="onDelete(order.id)">{{'GENERIC.ACTION.DELETE' | translate}}</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

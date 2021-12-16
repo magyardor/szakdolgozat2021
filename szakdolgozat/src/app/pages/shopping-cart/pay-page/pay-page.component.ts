@@ -4,7 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AlertService } from 'src/app/service/alert.service';
 import { CartService } from 'src/app/service/shopping-cart/cart.service';
+import { mimeType } from 'src/app/service/validators/mime-type.validator';
 
 @Component({
   selector: 'app-pay-page',
@@ -20,10 +22,13 @@ export class PayPageComponent implements OnInit {
   grandTotal: number = 0;
   form!: FormGroup;
   checked: boolean = false;
+  isLinear = true;
+  imagePreview!: string;
   stepperOriental!: Observable<StepperOrientation>;
 
   constructor(
     private carts: CartService,
+    private alertService: AlertService,
     breakPoint: BreakpointObserver,
   ) {
     this.stepperOriental = breakPoint.observe('(min-width: 600px)').pipe(map(({matches}) => (matches ? 'horizontal':'vertical')));
@@ -55,20 +60,32 @@ export class PayPageComponent implements OnInit {
   }
 
   addShipOrder() {
-    if(this.checked) {
-      this.form.value.fullName_transport = this.form.value.fullName;
-      this.form.value.zipCode_transport = this.form.value.zipCode;
-      this.form.value.city_transport = this.form.value.city;
-      this.form.value.street_transport = this.form.value.street;
-      this.form.value.taxNumber_transport = this.form.value.taxNumber;
-      this.carts.addOrder(
-      this.form.value
-      )
+    if(this.checked){
+      if(this.form.invalid) {
+        this.alertService.warn('ALERT.WARN.INVALID_FORM');
+        this.form.markAllAsTouched();
+        return;
+      }
+      else{
+        this.form.value.fullName_transport = this.form.value.fullName;
+        this.form.value.zipCode_transport = this.form.value.zipCode;
+        this.form.value.city_transport = this.form.value.city;
+        this.form.value.street_transport = this.form.value.street;
+        this.form.value.taxNumber_transport = this.form.value.taxNumber;
+        this.carts.addOrder(this.form.value)
+      }
     }
     else {
-      this.carts.addOrder(
-        this.form.value
-      )
+      if(this.form.invalid) {
+        this.alertService.warn('ALERT.WARN.INVALID_FORM');
+        this.form.markAllAsTouched();
+        return;
+      }
+      else{
+        this.carts.addOrder(
+          this.form.value
+        )
+      }
     }
     this.orderList = this.carts.getOrder();
   }
@@ -85,7 +102,18 @@ export class PayPageComponent implements OnInit {
   }
 
   fullOrder() {
-    this.carts.addFullOrderItem();
+    this.carts.addFullOrderItem(this.grandTotal, this.fullPrice._value);
+  }
+
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files![0];
+    this.form.patchValue({image: file});
+    this.form.get('image')?.updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 
   states: string[] = [

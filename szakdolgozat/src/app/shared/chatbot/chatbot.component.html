@@ -6,14 +6,11 @@
           <h2>Web Beauty</h2>
         </div>
         <div class="chat-header-text">
-          Welcome to Web Beauty!
-          We specialize in custom made beauty products and accessories.
-          Please message us if you have questions, or give an idea of what you’re
-          looking for. We’re happy to make recommendations.
+          {{'GENERIC.CHAT.TEXT' | translate}}
         </div>
       </div>
       <div class="chat-body">
-        <div class="chat-link" *ngFor="let chat of chatList">
+        <div class="chat-link pointer" *ngFor="let chat of chatList">
           <div (click)="loadChatProfile(chat.id)">{{chat.title}}</div>
         </div>
       </div>
@@ -30,7 +27,7 @@
   </div>
   <button class="btn-chat" (click)="toggleChat()">
     <div *ngIf="animationState === 'out'">
-      Chat with us!
+      {{'GENERIC.CHAT.CHAT_WITH_US' | translate}}
     </div>
     <div *ngIf="animationState === 'in'">
       X

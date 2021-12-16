@@ -39,7 +39,7 @@ export class ToolbarComponent implements OnInit {
 
   selectedGroup(id: any){
     this.group.selectedGroup(id);
-    this.router.navigateByUrl("/products")
+    this.router.navigateByUrl("products/" + id)
   }
 
 }

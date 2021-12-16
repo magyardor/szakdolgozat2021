@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
   }
 
   onGetNew(newsID: any) {
-    console.log(newsID);
     this.router.navigateByUrl("/news-profile/" + newsID);
   }
 
@@ -52,7 +51,7 @@ export class HomeComponent implements OnInit {
 
   buy(prod: Products){
     const cartItem = new Cart(prod);
-    this.cart.addCart(cartItem);
+    this.cart.addCart(cartItem, 1);
     const dialogRef = this.dialog.open(BuyDialogComponent, {
       height: '300px',
       width: '500px',

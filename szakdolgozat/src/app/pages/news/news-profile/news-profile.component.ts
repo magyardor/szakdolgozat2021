@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { News } from 'src/app/models/news.model';
 import { NewsService } from 'src/app/service/news/news.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-news-profile',
@@ -12,6 +13,7 @@ export class NewsProfileComponent implements OnInit {
   news: any;
   newsSub: any;
   newsID: any;
+  imagePath: any;
 
   constructor(
     private newsService: NewsService,
@@ -25,6 +27,7 @@ export class NewsProfileComponent implements OnInit {
     this.newsSub = this.newsService.getNew(this.newsID)
     .subscribe((news) => {
       this.news = news;
+      this.imagePath = environment.apiUrl +  news.imagePath
     });
   }
 }

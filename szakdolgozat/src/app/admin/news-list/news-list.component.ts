@@ -1,4 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { News } from 'src/app/models/news.model';
@@ -11,9 +13,10 @@ import { NewsService } from 'src/app/service/news/news.service';
 })
 export class NewsListComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['id','title','description','image','menu'];
-  news: News[] = [];
+  news!: MatTableDataSource<News>;
   isLoading = false;
   newsSub!: Subscription;
+  @ViewChild('paginator') paginator!: MatPaginator;
 
   constructor(
     private newsService: NewsService,
@@ -26,7 +29,8 @@ export class NewsListComponent implements OnInit, OnDestroy {
     this.newsSub = this.newsService.getNewsUpdateListener()
     .subscribe((post: News[]) => {
         this.isLoading = false;
-        this.news = post;
+        this.news = new MatTableDataSource(post);
+        this.news.paginator = this.paginator;
     });
   }
 

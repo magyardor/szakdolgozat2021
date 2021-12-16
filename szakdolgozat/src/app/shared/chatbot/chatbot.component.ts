@@ -89,7 +89,6 @@ export class ChatbotComponent implements OnInit {
     .subscribe(chat => {
       this.chatList = chat;
     });
-    console.log(this.chatList)
   }
 
   toggleChat() {

@@ -22,6 +22,7 @@ export class NewsComponent implements OnInit {
     this.newsSubs = this.newsService.getNewsUpdateListener().subscribe((news: News[]) => {
       this.newsList = news;
     });
+    console.log(this.newsList)
   }
 
   onGetNew(newsID: any) {

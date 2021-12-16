@@ -6,6 +6,7 @@ import { Products } from 'src/app/models/products.model';
 import { BuyDialogComponent } from 'src/app/service/dialog/buy-dialog/buy-dialog.component';
 import { ProductsService } from 'src/app/service/products/products.service';
 import { CartService } from 'src/app/service/shopping-cart/cart.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-products-profile',
@@ -17,6 +18,7 @@ export class ProductsProfileComponent implements OnInit {
   prodSub: any;
   productID: any;
   quantity: number = 1;
+  imagePath: any;
 
   constructor(
     private productService: ProductsService,
@@ -31,17 +33,29 @@ export class ProductsProfileComponent implements OnInit {
     })
     this.prodSub = this.productService.getProduct(this.productID).subscribe((prod) => {
       this.product = prod;
+      this.imagePath = environment.apiUrl +  prod.imagePath
     });
   }
 
   buy(prod: Products){
-    console.log(prod)
     const cartItem = new Cart(prod);
-    this.cart.addCart(cartItem);
+    cartItem.imagePath = environment.apiUrl + prod.imagePath;
+    this.cart.addCart(cartItem, this.quantity);
     const dialogRef = this.dialog.open(BuyDialogComponent, {
       height: '300px',
       width: '500px',
     });
+  }
+
+  plusButton(){
+    this.quantity++;
+  }
+
+  minusButton(){
+    if(this.quantity > 1)
+    {
+      this.quantity--;
+    }
   }
 
 }

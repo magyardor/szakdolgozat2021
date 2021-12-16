@@ -1,5 +1,5 @@
 .box-products {
-  width: 60%;
+  width: 90%;
   display: grid;
   margin: auto !important;
   color: var(--white-color);
@@ -20,8 +20,7 @@
 }
 
 .box-right {
-  display: flex;
-  justify-content: center;
+  display: contents;
 }
 
 .product-price {

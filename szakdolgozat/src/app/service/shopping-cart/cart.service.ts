@@ -15,7 +15,7 @@ export class CartService {
   transportChoice: number = 0;
   productsItem: Cart[] = [];
   all: Data[] = [];
-  fullOrder: Orders[] = [];
+  fullOrder: any[] = [];
   orderFull: any[] = [];
   orderFullUpdate: any;
   totalPrice: Subject<number> = new BehaviorSubject<number>(0);
@@ -27,7 +27,7 @@ export class CartService {
   ){}
 
   /* Kosár információk */
-  addCart(products: Cart) {
+  addCart(products: Cart, quantity: number) {
     if(this.productsItem.length > 0){
       this.existingInCart = this.productsItem.find(x => x.name === products.name);
       this.existsInCart = (this.existingInCart != undefined);
@@ -36,6 +36,7 @@ export class CartService {
       this.existingInCart.quantity++;
     }
     else {
+      products.quantity = quantity;
       this.productsItem.push(products);
       sessionStorage.setItem('products', JSON.stringify(products));
     }
@@ -46,7 +47,7 @@ export class CartService {
   updateCart(list: any){
     this.productsItem = list;
     this.totalPrices();
-    sessionStorage.setItem('products', JSON.stringify(list));
+    sessionStorage.setItem('updateProducts', JSON.stringify(list));
   }
 
   totalPrices() {
@@ -62,36 +63,40 @@ export class CartService {
   }
 
   reductionQuantity(cartItem: any) {
-    this.existingInCart.quantity--;
-
-    if(this.quantity == 0){
+    this.existingInCart = this.productsItem.find(x => x.id === cartItem);
+    if(this.existingInCart.quantity === 1)
+    {
       this.removeCart(cartItem);
     }
     else{
+      this.existingInCart.quantity--;
       this.totalPrices();
     }
   }
 
   plusQuantity(cartItem: any){
-    this.existingInCart.quantity++;
-    if(this.quantity == 0){
+    this.existingInCart = this.productsItem.find(x => x.id === cartItem);
+    if(this.existingInCart.quantity === 0){
       this.removeCart(cartItem);
     }
     else{
+      this.existingInCart.quantity++;
       this.totalPrices();
     }
   }
 
   removeCart(cartItem: any){
-    let index = this.productsItem.indexOf(cartItem);
-    this.productsItem.splice(index,1);
-    this.totalPrices();
+    this.productsItem.forEach((value,index) => {
+      if(value.id === cartItem){
+        this.productsItem.splice(index,1);
+        this.totalPrices();
+      }
+    });
   }
 
   /* Vásárló adatai */
   addOrder(value: any){
     this.all = value;
-    console.log(value)
     sessionStorage.setItem('data', JSON.stringify(value));
   }
 
@@ -99,31 +104,26 @@ export class CartService {
     return this.all
   }
 
-
-  /* Adatok hozzáadása/lekérdezése/törlése adatbázisba */
-  addFullOrder(list: any) {
-    const listData = JSON.stringify(list);
-    console.log(list)
-    this.http.post<{order: Orders}>(environment.apiUrl + "orders", listData)
+  addFullOrderItem(grandTotal: any, orderTotal: any) {
+    this.fullOrder.push(
+      {"orders": [{"carts": this.productsItem, "data": this.all, "transport": this.transportChoice, "pay": this.payChoice, "grandTotal": grandTotal, "orderTotal": orderTotal}]}
+    );
+    const listData = this.fullOrder;
+    console.log(listData)
+    this.http.post<{order: Orders}>(environment.apiUrl + "/api/orders", listData[0])
     .subscribe(responseData => {
       const data: Orders = {
-        orders: list.orders
+        id: responseData.order.id,
+        orders: listData[0].orders[0],
       }
       console.log(data)
       this.orderFull.push(data);
+      this.alert.success('ALERT.SUCCESS.ADD')
       sessionStorage.clear();
     }, error => {
       this.alert.error(error.error.message);
     }
     );
-  }
-
-  addFullOrderItem() {
-    this.fullOrder.push(
-      {"orders": [{"carts": this.productsItem, "data": this.all, "transport": this.transportChoice, "pay": this.payChoice}]}
-    );
-    this.addFullOrder(this.fullOrder);
-    sessionStorage.setItem('fullOrder', JSON.stringify(this.fullOrder));
   }
 
 }

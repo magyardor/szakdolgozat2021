@@ -14,6 +14,9 @@ import { PayPageComponent } from './pages/shopping-cart/pay-page/pay-page.compon
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { SharedModule } from './shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { PrivacyComponent } from './container/footer/privacy/privacy.component';
+import { GuideComponent } from './container/footer/guide/guide.component';
+import { PaymentComponent } from './container/footer/payment/payment.component';
 
 const routes: Routes = [
   {
@@ -29,7 +32,7 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'products',
+        path: 'products/:id',
         component: ProductsComponent,
       },
       {
@@ -59,6 +62,18 @@ const routes: Routes = [
       {
         path:'aszf',
         component: AszfComponent,
+      },
+      {
+        path: 'privacy',
+        component: PrivacyComponent
+      },
+      {
+        path: 'guide',
+        component: GuideComponent
+      },
+      {
+        path: 'payment',
+        component: PaymentComponent
       },
       { path: '**', redirectTo: 'home', pathMatch: 'full' },
     ]

@@ -22,7 +22,11 @@ export const locale = {
         CREATE: 'Létrehozás',
         VIEW_CART: 'Kosár megtekintése',
         PDF: 'Letöltés PDF'
-      }
+      },
+      CHAT: {
+        CHAT_WITH_US: 'Csevegjen velünk!',
+        TEXT: 'Üdvözöljük a Web Beauty-nál! Egyedi szépségápolási termékekre és kiegészítőkre specializálódtunk. Kérjük, írjon nekünk üzenetet, ha kérdése van, vagy adjon ötletet, hogy mit keres. Szívesen teszünk ajánlásokat.',
+      },
     },
     ALERT: {
       SUCCESS: {
@@ -75,6 +79,31 @@ export const locale = {
       ACCOUNT: {
         TITLE: 'Fiók',
         ADD_USER: 'Felhasználó hozzáadása'
+      },
+      ORDERS: {
+        TITLE: 'Rendelések',
+        MENAGE_ORDERS: 'Rendelések lista',
+        ORDER_NUMBER: 'Rendelés száma:',
+        PRODUCTS_ORDERED: 'Rendelt termékek:',
+        PRODUCT_NAME: 'Termék neve:',
+        UNIT_PRICE: 'Egység ára:',
+        QUANTITY: 'Darab szám:',
+        TOTAL_PRICE: 'Teljes ár:',
+        ORDER_AMOUNT: 'Rendelés összege:',
+        BILLING_ADDRESS: 'Számlázási cím:',
+        FULL_NAME: 'Teljes név:',
+        ZIP_CODE: 'Irányítószám:',
+        CITY: 'Város:',
+        STREET: 'Utca, házszám:',
+        TAX_NUMBER: 'Adószám:',
+        DELIVERY_ADDRESS: 'Szállítási cím:',
+        DELIVERY_PAYMANT: 'Szállítás és fizetés:',
+        PAYMANT_TYPE: 'Fizetés típusa:',
+        DELIVERY_FEE: 'Szállítási díj:',
+        TOTAL_AMOUNT: 'Végösszeg:',
+        CONTACT_DETAILS: 'Adatok kapcsolatfelvételhez:',
+        EMAIL: 'Email-cím:',
+        PHONE: 'Telefonszám:'
       }
     },
     FORM: {
@@ -174,9 +203,9 @@ export const locale = {
     TEXT: {
       AUTHOR: 'Készítette',
       GTC: 'ÁSZF',
-      PRIVACY: 'Adatkezelési Tájékoztató',
+      PRIVACY: 'Adatkezelési tájékoztató',
       GUIDE: 'Vásárlási útmutató',
-      PAYMENT: 'Fizetési Tájékoztató',
+      PAYMENT: 'Fizetési tájékoztató',
       PRODUCT_ADD_CART: 'Termék sikeresen bekerült a kosárba!',
       BUY_MORE: 'vásárlás tovább',
       ASZF: 'Elfogadom az Általános szerződési feltételeket és az Adatkezelési tájékoztatót.'

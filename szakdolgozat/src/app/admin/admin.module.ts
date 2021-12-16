@@ -9,6 +9,7 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { AuthGuard } from "../service/guards/auth.guard";
 import { AdminComponent } from "./admin.component";
 import { MessagesComponent } from './messages/messages.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
         path: 'messages-list',
         component: MessagesComponent,
       },
+      {
+        path: 'orders-list',
+        component: OrdersComponent,
+      },
       { path: '**', redirectTo: 'products-list', pathMatch: 'full' },
     ]
   },
@@ -61,6 +66,7 @@ const routes: Routes = [
     LoginComponent,
     AddUserComponent,
     MessagesComponent,
+    OrdersComponent,
   ],
   providers: [AuthGuard]
 })

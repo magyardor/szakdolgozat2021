@@ -1,8 +1,8 @@
 <div class="stepper-page">
   <div [ngSwitch]="stepperOriental | async">
     <div *ngSwitchCase="'horizontal'">
-      <mat-horizontal-stepper>
-        <mat-step label="Adatok megadása">
+      <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <mat-step label="Adatok megadása" [stepControl]="form">
           <form [formGroup]="form" (submit)="addShipOrder()">
             <div><h2 class="title-h2">{{'FORM.PAY_PAGE.CONTACT' | translate}}</h2></div>
             <mat-form-field appearance="outline">

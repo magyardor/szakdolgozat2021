@@ -25,7 +25,11 @@ export const locale = {
         CREATE: 'Create',
         VIEW_CART: 'View cart',
         PDF: 'Download PDF'
-      }
+      },
+      CHAT: {
+        CHAT_WITH_US: 'Chat with us!',
+        TEXT: 'Welcome to Web Beauty! We specialize in custom made beauty products and accessories. Please message us if you have questions, or give an idea of what you are looking for. We are happy to make recommendations.',
+      },
     },
     ALERT: {
       SUCCESS: {
@@ -78,6 +82,31 @@ export const locale = {
       ACCOUNT: {
         TITLE: 'Account',
         ADD_USER: 'Add user'
+      },
+      ORDERS: {
+        TITLE: 'Orders',
+        MENAGE_ORDERS: 'Menage orders',
+        ORDER_NUMBER: 'Order number:',
+        PRODUCTS_ORDERED: 'Products ordered:',
+        PRODUCT_NAME: 'Product name:',
+        UNIT_PRICE: 'Unit price:',
+        QUANTITY: 'Quantity:',
+        TOTAL_PRICE: 'Total price:',
+        ORDER_AMOUNT: 'Order amount:',
+        BILLING_ADDRESS: 'Billing address:',
+        FULL_NAME: 'Full name:',
+        ZIP_CODE: 'Zip code:',
+        CITY: 'City:',
+        STREET: 'Street, house number:',
+        TAX_NUMBER: 'Tax number:',
+        DELIVERY_ADDRESS: 'Delivery address:',
+        DELIVERY_PAYMANT: 'Delivery payment:',
+        PAYMANT_TYPE: 'Payment type:',
+        DELIVERY_FEE: 'Delivery fee:',
+        TOTAL_AMOUNT: 'Total amount:',
+        CONTACT_DETAILS: 'Contact details:',
+        EMAIL: 'Email address:',
+        PHONE: 'Phone number:'
       }
     },
     FORM: {
