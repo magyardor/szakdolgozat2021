@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 exports.postOrders = (req, res, next) => {
   const order = new Orders({
     _id: new mongoose.Types.ObjectId(),
-    orders: req.body.orders
+    orders: req.body.orders,
   });
   order.save().then(result => {
     if(result) {

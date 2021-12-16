@@ -2,11 +2,12 @@ const express = require("express");
 const OrdersController = require("../../controllers/orders");
 
 const checkAuth = require("../../middleware/authMiddleware");
-const img = require("../../middleware/imgProducts");
+const img = require("../../middleware/orders");
 
 const router = express.Router();
 
 router.post("",
+  img,
   OrdersController.postOrders
 );
 

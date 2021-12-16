@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AlertService } from 'src/app/service/alert.service';
 import { CartService } from 'src/app/service/shopping-cart/cart.service';
+import { mimeType } from 'src/app/service/validators/mime-type.validator';
 
 @Component({
   selector: 'app-pay-page',
@@ -22,6 +23,7 @@ export class PayPageComponent implements OnInit {
   form!: FormGroup;
   checked: boolean = false;
   isLinear = true;
+  imagePreview!: string;
   stepperOriental!: Observable<StepperOrientation>;
 
   constructor(
@@ -100,7 +102,18 @@ export class PayPageComponent implements OnInit {
   }
 
   fullOrder() {
-    this.carts.addFullOrderItem();
+    this.carts.addFullOrderItem(this.grandTotal, this.fullPrice._value);
+  }
+
+  onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files![0];
+    this.form.patchValue({image: file});
+    this.form.get('image')?.updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 
   states: string[] = [

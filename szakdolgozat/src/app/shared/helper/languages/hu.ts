@@ -82,7 +82,28 @@ export const locale = {
       },
       ORDERS: {
         TITLE: 'Rendelések',
-        MENAGE_ORDERS: 'Rendelések lista'
+        MENAGE_ORDERS: 'Rendelések lista',
+        ORDER_NUMBER: 'Rendelés száma:',
+        PRODUCTS_ORDERED: 'Rendelt termékek:',
+        PRODUCT_NAME: 'Termék neve:',
+        UNIT_PRICE: 'Egység ára:',
+        QUANTITY: 'Darab szám:',
+        TOTAL_PRICE: 'Teljes ár:',
+        ORDER_AMOUNT: 'Rendelés összege:',
+        BILLING_ADDRESS: 'Számlázási cím:',
+        FULL_NAME: 'Teljes név:',
+        ZIP_CODE: 'Irányítószám:',
+        CITY: 'Város:',
+        STREET: 'Utca, házszám:',
+        TAX_NUMBER: 'Adószám:',
+        DELIVERY_ADDRESS: 'Szállítási cím:',
+        DELIVERY_PAYMANT: 'Szállítás és fizetés:',
+        PAYMANT_TYPE: 'Fizetés típusa:',
+        DELIVERY_FEE: 'Szállítási díj:',
+        TOTAL_AMOUNT: 'Végösszeg:',
+        CONTACT_DETAILS: 'Adatok kapcsolatfelvételhez:',
+        EMAIL: 'Email-cím:',
+        PHONE: 'Telefonszám:'
       }
     },
     FORM: {

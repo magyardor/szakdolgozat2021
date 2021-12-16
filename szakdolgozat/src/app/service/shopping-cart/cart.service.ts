@@ -64,7 +64,7 @@ export class CartService {
 
   reductionQuantity(cartItem: any) {
     this.existingInCart = this.productsItem.find(x => x.id === cartItem);
-    if(this.existingInCart.quantity === 0)
+    if(this.existingInCart.quantity === 1)
     {
       this.removeCart(cartItem);
     }
@@ -104,36 +104,21 @@ export class CartService {
     return this.all
   }
 
-
-  /* Adatok hozzáadása/lekérdezése/törlése adatbázisba */
-  addFullOrder(list: any) {
-/*     const listData = JSON.stringify(list[0].orders);
-    this.http.post<{order: Orders}>(environment.apiUrl + "orders", listData)
-    .subscribe(responseData => {
-      const data: Orders = {
-        orders: list[0].orders
-      }
-      this.orderFull.push(data);
-      sessionStorage.clear();
-    }, error => {
-      this.alert.error(error.error.message);
-    }
-    ); */
-  }
-
-  addFullOrderItem() {
+  addFullOrderItem(grandTotal: any, orderTotal: any) {
     this.fullOrder.push(
-      {"orders": [{"carts": this.productsItem, "data": this.all, "transport": this.transportChoice, "pay": this.payChoice}]}
+      {"orders": [{"carts": this.productsItem, "data": this.all, "transport": this.transportChoice, "pay": this.payChoice, "grandTotal": grandTotal, "orderTotal": orderTotal}]}
     );
     const listData = this.fullOrder;
-    this.http.post<{order: Orders}>(environment.apiUrl + "/api/orders", listData)
+    console.log(listData)
+    this.http.post<{order: Orders}>(environment.apiUrl + "/api/orders", listData[0])
     .subscribe(responseData => {
       const data: Orders = {
         id: responseData.order.id,
-        orders: listData[0].orders[0]
+        orders: listData[0].orders[0],
       }
       console.log(data)
       this.orderFull.push(data);
+      this.alert.success('ALERT.SUCCESS.ADD')
       sessionStorage.clear();
     }, error => {
       this.alert.error(error.error.message);

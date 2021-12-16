@@ -85,7 +85,28 @@ export const locale = {
       },
       ORDERS: {
         TITLE: 'Orders',
-        MENAGE_ORDERS: 'Menage orders'
+        MENAGE_ORDERS: 'Menage orders',
+        ORDER_NUMBER: 'Order number:',
+        PRODUCTS_ORDERED: 'Products ordered:',
+        PRODUCT_NAME: 'Product name:',
+        UNIT_PRICE: 'Unit price:',
+        QUANTITY: 'Quantity:',
+        TOTAL_PRICE: 'Total price:',
+        ORDER_AMOUNT: 'Order amount:',
+        BILLING_ADDRESS: 'Billing address:',
+        FULL_NAME: 'Full name:',
+        ZIP_CODE: 'Zip code:',
+        CITY: 'City:',
+        STREET: 'Street, house number:',
+        TAX_NUMBER: 'Tax number:',
+        DELIVERY_ADDRESS: 'Delivery address:',
+        DELIVERY_PAYMANT: 'Delivery payment:',
+        PAYMANT_TYPE: 'Payment type:',
+        DELIVERY_FEE: 'Delivery fee:',
+        TOTAL_AMOUNT: 'Total amount:',
+        CONTACT_DETAILS: 'Contact details:',
+        EMAIL: 'Email address:',
+        PHONE: 'Phone number:'
       }
     },
     FORM: {

@@ -45,7 +45,7 @@ export class ProductsService {
   }
 
   getProduct(id: any) {
-    return this.http.get<{_id: any, name: string, description: string, imagePath: string, price: number, productsGroup: any}>( environment.apiUrl + "products/" + id)
+    return this.http.get<{_id: any, name: string, description: string, imagePath: string, price: number, productsGroup: any}>( environment.apiUrl + "/api/products/" + id)
   }
 
   addProducts(name: string, description: string, image: File | string, price: any, productsGroup: any) {

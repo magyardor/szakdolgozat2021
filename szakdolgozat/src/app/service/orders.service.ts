@@ -24,11 +24,7 @@ export class OrdersService {
       return ordersData.orders.map((order: any) => {
         return {
           id: order._id,
-          firstName: order.firstName,
-          lastName: order.lastName,
-          email: order.email,
-          description: order.description,
-          imagePath: order.imagePath,
+          orders: order.orders
         };
       });
     })
