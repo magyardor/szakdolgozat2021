@@ -126,7 +126,7 @@ export class CartService {
       {"orders": [{"carts": this.productsItem, "data": this.all, "transport": this.transportChoice, "pay": this.payChoice}]}
     );
     const listData = this.fullOrder;
-    this.http.post<{order: Orders}>(environment.apiUrl + "orders", listData)
+    this.http.post<{order: Orders}>(environment.apiUrl + "/api/orders", listData)
     .subscribe(responseData => {
       const data: Orders = {
         id: responseData.order.id,

@@ -1,7 +1,7 @@
 const express = require("express");
 const messageController = require("../../controllers/messages");
 const checkAuth = require("../../middleware/authMiddleware");
-const img = require("../../middleware/imgProducts");
+const img = require("../../middleware/imgMessages");
 
 const router = express.Router();
 

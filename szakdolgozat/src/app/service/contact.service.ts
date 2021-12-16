@@ -11,15 +11,19 @@ import { AlertService } from "./alert.service";
 export class ContactService {
   private messages: Messages[] = [];
   private msgUpdate = new Subject<Messages[]>();
+  baseUrl: any;
 
   constructor(
     private http: HttpClient,
     private alert: AlertService,
     private router: Router,
-  ){}
+  ){
+    this.baseUrl = window.location.origin;
+    console.log(this.baseUrl)
+  }
 
   getMessage(){
-    this.http.get<{message: string, messages: any}>(environment.apiUrl + "messages")
+    this.http.get<{message: string, messages: any}>(environment.apiUrl + "/api/messages")
     .pipe(map(messagesData => {
       return messagesData.messages.map((msg: any) => {
         return {
@@ -28,7 +32,7 @@ export class ContactService {
           lastName: msg.lastName,
           email: msg.email,
           description: msg.description,
-          imagePath: msg.imagePath,
+          imagePath: environment.apiUrl + msg.imagePath,
         };
       });
     })
@@ -49,7 +53,7 @@ export class ContactService {
     messagesData.append("email", email);
     messagesData.append("description", description);
     messagesData.append("image", image, firstName);
-    this.http.post<{message: string, messages: Messages}>(environment.apiUrl + "messages", messagesData)
+    this.http.post<{message: string, messages: Messages}>(environment.apiUrl + "/api/messages", messagesData)
     .subscribe(responseData => {
       const messages: Messages = {
         id: responseData.messages.id,
@@ -69,7 +73,7 @@ export class ContactService {
   }
 
   deleteMessages(msgID: any){
-    return this.http.delete(environment.apiUrl + "messages/" + msgID)
+    return this.http.delete(environment.apiUrl + "/api/messages/" + msgID)
     .subscribe(() => {
       const updateMsg = this.messages.filter(x => x.id !== msgID);
       this.messages = updateMsg;
