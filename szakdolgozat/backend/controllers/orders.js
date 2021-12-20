@@ -37,6 +37,17 @@ exports.getOrders = (req, res, next) => {
     });
 }
 
+exports.getOrderID =  (req, res, next) => {
+  Orders.findById(req.params.id).then(order => {
+    if(order) {
+      res.status(200).json(order);
+    }
+    else{
+      res.status(404).json({message: "Order not found!"});
+    }
+  });
+}
+
 exports.deleteOrders = (req, res, next) => {
   Orders.deleteOne({_id: req.params.id}).then( result => {
     res.status(200).json({

@@ -17,7 +17,8 @@ export class CartService {
   all: Data[] = [];
   fullOrder: any[] = [];
   orderFull: any[] = [];
-  orderFullUpdate: any;
+  orderFullUpdate = new Subject<Orders[]>();
+  orderID: any;
   totalPrice: Subject<number> = new BehaviorSubject<number>(0);
   totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
 
@@ -94,6 +95,10 @@ export class CartService {
     });
   }
 
+  getprodUpdatedListener() {
+    return this.orderFullUpdate.asObservable();
+  }
+
   /* Vásárló adatai */
   addOrder(value: any){
     this.all = value;
@@ -110,14 +115,15 @@ export class CartService {
     );
     const listData = this.fullOrder;
     console.log(listData)
-    this.http.post<{order: Orders}>(environment.apiUrl + "/api/orders", listData[0])
+    this.http.post<{orders: Orders}>(environment.apiUrl + "/api/orders", listData[0])
     .subscribe(responseData => {
       const data: Orders = {
-        id: responseData.order.id,
         orders: listData[0].orders[0],
+        id: responseData.orders.id
       }
-      console.log(data)
       this.orderFull.push(data);
+      this.orderID = this.orderFull[0].id;
+      this.orderFullUpdate.next([...this.orderFull]);
       this.alert.success('ALERT.SUCCESS.ADD')
       sessionStorage.clear();
     }, error => {
