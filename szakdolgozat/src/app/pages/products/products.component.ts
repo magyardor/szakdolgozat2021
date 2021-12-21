@@ -51,11 +51,12 @@ export class ProductsComponent implements OnInit {
         this.productList = this.productList.filter(x => x.productsGroup === this.groupID);
       })
     }
-    /* await this.group.getGroups();
+    this.group.getGroups();
     this.groupSub = this.group.getgroupUpdatedListener()
     .subscribe(group => {
       this.groupList = group;
-    }); */
+      this.groupList = this.groupList.filter(x => x.id === this.groupID);
+    });
 
   }
 

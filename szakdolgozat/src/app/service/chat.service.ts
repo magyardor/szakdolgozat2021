@@ -11,6 +11,7 @@ import { AlertService } from "./alert.service";
 export class ChatService {
   private chat: Chat[] = [];
   private chatUpdate = new Subject<Chat[]>();
+  chatList: any[] = [];
   chatID: number = 0;
 
   constructor(
@@ -43,6 +44,10 @@ export class ChatService {
 
   getChatID(id: any){
     return this.http.get<{_id: any, title: string, description: string, contact: string}>(environment.apiUrl + "/api/chat/" + id)
+  }
+
+  addMessage(message: any) {
+    this.chatList.push(message);
   }
 
 }
