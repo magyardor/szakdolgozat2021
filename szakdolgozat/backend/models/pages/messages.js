@@ -5,7 +5,6 @@ const messagesSchema = mongoose.Schema({
   lastName: {type: String},
   email: {type: String},
   description: {type: String},
-  imagePath: { type: String },
 });
 
 module.exports = mongoose.model('Messages', messagesSchema);

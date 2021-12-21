@@ -25,7 +25,6 @@ export class ContactComponent implements OnInit {
       lastName: new FormControl(null, {validators: [Validators.required]}),
       email: new FormControl(''),
       description: new FormControl(null, {validators: [Validators.required]}),
-      image: new FormControl(null, {validators: [Validators.required], asyncValidators: [mimeType]}),
     });
   }
 
@@ -53,7 +52,6 @@ export class ContactComponent implements OnInit {
       this.form.value.lastName,
       this.form.value.email,
       this.form.value.description,
-      this.form.value.image,
     )
     this.isLoading = false
     this.form.reset();
