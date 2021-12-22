@@ -31,7 +31,6 @@ export class OrdersComponent implements OnInit {
       for(let i=0; i<order.length; i++){
         this.total = order[i].orders[0].carts.price * order[i].orders[0].carts.price
       }
-      console.log(this.total)
     });
   }
 

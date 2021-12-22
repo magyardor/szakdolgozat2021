@@ -20,8 +20,12 @@ mongoose.connect("mongodb+srv://dorina:" + process.env.MONGO_DB_PASSWORD + "@web
   console.log('Connection failed!');
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({
+  extended: true,
+  limit: '50mb',
+  parameterLimit: 100000
+}));
 app.use("/images/news", express.static(path.join(__dirname, "images/news")));
 app.use("/images/products", express.static(path.join(__dirname, "images/products")));
 app.use("/images/messages", express.static(path.join(__dirname, "images/messages")));

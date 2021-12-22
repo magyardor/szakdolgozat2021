@@ -4,7 +4,7 @@ exports.postNews = (req, res, next) => {
   const news = new News({
     title: req.body.title,
     description: req.body.description,
-    imagePath: "images/news/" + req.file.filename,
+    imagePath: "/images/news/" + req.file.filename,
     startDate: req.body.startDate,
     endDate: req.body.endDate,
   });
@@ -22,7 +22,7 @@ exports.postNews = (req, res, next) => {
 exports.putNews = (req, res, next) => {
   let imagePath = req.body.imagePath;
   if(req.file) {
-    imagePath = "images/news/" + req.file.filename
+    imagePath = "/images/news/" + req.file.filename
   }
   const news = new News({
     _id: req.body.id,
