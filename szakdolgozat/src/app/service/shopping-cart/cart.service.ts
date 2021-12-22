@@ -114,7 +114,6 @@ export class CartService {
       {"orders": [{"carts": this.productsItem, "data": this.all, "transport": this.transportChoice, "pay": this.payChoice, "grandTotal": grandTotal, "orderTotal": orderTotal}]}
     );
     const listData = this.fullOrder;
-    console.log(listData)
     this.http.post<{orders: Orders}>(environment.apiUrl + "/api/orders", listData[0])
     .subscribe(responseData => {
       const data: Orders = {

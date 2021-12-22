@@ -19,7 +19,6 @@ export class ContactService {
     private router: Router,
   ){
     this.baseUrl = window.location.origin;
-    console.log(this.baseUrl)
   }
 
   getMessage(){
