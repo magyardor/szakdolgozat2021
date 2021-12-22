@@ -1,4 +1,5 @@
 <div class="products-list">
+  <div *ngFor="let group of groupList" class="group"><h1>{{group.name}}</h1></div>
   <mat-grid-list [responsive]="true" (responsiveColsChange)="cols = $event" rowHeight="2:3" style="margin: 1rem;">
     <div *ngFor="let prod of productList">
       <mat-grid-tile>
@@ -16,6 +17,3 @@
     </div>
   </mat-grid-list>
 </div>
-<!-- <div *ngFor="let group of groupList">
-  <pre>{{group | json}}</pre>
-</div> -->

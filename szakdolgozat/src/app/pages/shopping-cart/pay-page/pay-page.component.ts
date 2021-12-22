@@ -1,12 +1,13 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/cdk/stepper';
+import { getLocaleExtraDayPeriods } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AlertService } from 'src/app/service/alert.service';
 import { CartService } from 'src/app/service/shopping-cart/cart.service';
-import { mimeType } from 'src/app/service/validators/mime-type.validator';
 
 @Component({
   selector: 'app-pay-page',
@@ -17,21 +18,24 @@ export class PayPageComponent implements OnInit {
   fullPrice: any;
   cartsList: any;
   orderList: any;
-  transportPrice: number = 0;
   payChoice: any;
+  orderID: any;
+  transportPrice: number = 0;
   grandTotal: number = 0;
-  form!: FormGroup;
   checked: boolean = false;
-  isLinear = true;
+  isLoading: boolean = false;
   imagePreview!: string;
+  isLinear = true;
+  form!: FormGroup;
   stepperOriental!: Observable<StepperOrientation>;
 
   constructor(
     private carts: CartService,
     private alertService: AlertService,
     breakPoint: BreakpointObserver,
+    private router: Router
   ) {
-    this.stepperOriental = breakPoint.observe('(min-width: 600px)').pipe(map(({matches}) => (matches ? 'horizontal':'vertical')));
+    this.stepperOriental = breakPoint.observe('(min-width: 800px)').pipe(map(({matches}) => (matches ? 'horizontal':'vertical')));
    }
 
   ngOnInit(): void {
@@ -102,7 +106,25 @@ export class PayPageComponent implements OnInit {
   }
 
   fullOrder() {
+    this.isLoading = true;
     this.carts.addFullOrderItem(this.grandTotal, this.fullPrice._value);
+    this.getOrderID();
+  }
+
+  cancel() {
+    this.form.reset();
+    this.carts.productsItem = [];
+    this.router.navigate(['/home']);
+  }
+
+  async getOrderID() {
+    const list = this.carts.getprodUpdatedListener().subscribe((x: any) => {
+      const list2 = x;
+      if(list2){
+        this.orderID = this.carts.orderID;
+      }
+    });
+    this.isLoading = false;
   }
 
   onImagePicked(event: Event) {

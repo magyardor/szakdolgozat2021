@@ -38,6 +38,9 @@ export class OrdersService {
     return this.orderUpdate.asObservable();
   }
 
+  getOrder(id: any) {
+    return this.http.get<{_id: any, orders: any}>( environment.apiUrl + "/api/orders/" + id)
+  }
 
   deleteOrders(id: any){
     return this.http.delete(environment.apiUrl + "/api/orders/" + id)

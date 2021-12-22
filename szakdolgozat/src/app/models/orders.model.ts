@@ -1,5 +1,5 @@
 export interface Orders {
-  id: number;
+  id: any;
   orders: any;
 }
 

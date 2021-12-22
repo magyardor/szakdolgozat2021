@@ -4,5 +4,4 @@ export interface Messages {
   lastName: string;
   email: string;
   description: string;
-  imagePath: string;
 }

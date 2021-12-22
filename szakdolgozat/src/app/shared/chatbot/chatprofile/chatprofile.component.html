@@ -7,24 +7,28 @@
   </div>
   <div class="chat-profile-body" *ngIf="selectedChat">
     <div class="animated display-message">
-      <div class="chat__message chat__message_B" style="--delay: 2s">
+      <div class="chat__message chat__message_B" style="--delay: 1s">
         <div class="chat__content">
           {{selectedChat.title}}
         </div>
       </div>
-      <div class="chat__message chat__message_A" style="--delay: 6s">
+      <div class="chat__message chat__message_A" style="--delay: 3s">
         <div class="chat__content">
           {{selectedChat.description}}
         </div>
       </div>
-      <div class="chat__message chat__message_B" style="--delay: 2s" *ngIf="message">
-        <div class="chat__content">
-          {{message}}
-        </div>
-      </div>
-      <div class="chat__message chat__message_A" style="--delay: 6s" *ngIf="message">
-        <div class="chat__content">
-          {{selectedChat.contact}}
+      <div *ngIf="message">
+        <div *ngFor="let msg of message; let i=index">
+          <div class="chat__message chat__message_B" style="--delay: 1s">
+            <div class="chat__content">
+              {{message[i]}}
+            </div>
+          </div>
+          <div class="chat__message chat__message_A" style="--delay: 3s">
+            <div class="chat__content">
+              {{selectedChat.contact}}
+            </div>
+          </div>
         </div>
       </div>
     </div>

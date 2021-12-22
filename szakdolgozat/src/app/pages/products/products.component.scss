@@ -2,6 +2,13 @@
   margin: auto;
 }
 
+.group{
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  color: var(--light-color);
+}
+
 .card-box {
 background-color: var(--light-color);
 display: grid;

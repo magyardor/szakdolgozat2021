@@ -6,7 +6,6 @@ exports.postMessages = (req, res, next) => {
     lastName: req.body.lastName,
     email: req.body.email,
     description: req.body.description,
-    imagePath: "/images/messages/" + req.file.filename,
   });
   msg.save().then(result => {
     res.status(201).json({

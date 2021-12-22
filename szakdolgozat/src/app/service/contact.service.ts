@@ -32,7 +32,6 @@ export class ContactService {
           lastName: msg.lastName,
           email: msg.email,
           description: msg.description,
-          imagePath: environment.apiUrl + msg.imagePath,
         };
       });
     })
@@ -46,13 +45,12 @@ export class ContactService {
     return this.msgUpdate.asObservable();
   }
 
-  sendMessage(firstName: string, lastName: string, email: string, description: string, image: File | string,){
+  sendMessage(firstName: string, lastName: string, email: string, description: string){
     const messagesData = new FormData();
     messagesData.append("firstName", firstName);
     messagesData.append("lastName", lastName);
     messagesData.append("email", email);
     messagesData.append("description", description);
-    messagesData.append("image", image, firstName);
     this.http.post<{message: string, messages: Messages}>(environment.apiUrl + "/api/messages", messagesData)
     .subscribe(responseData => {
       const messages: Messages = {
@@ -61,7 +59,6 @@ export class ContactService {
         lastName: lastName,
         email: email,
         description: description,
-        imagePath: responseData.messages.imagePath,
       };
       this.messages.push(messages);
       this.msgUpdate.next([...this.messages]);

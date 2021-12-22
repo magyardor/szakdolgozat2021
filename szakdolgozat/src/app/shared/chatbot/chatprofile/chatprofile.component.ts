@@ -38,7 +38,9 @@ export class ChatprofileComponent implements OnInit {
   onSendText(event: any) {
     if(event.type === "click")
     {
-      this.message = this.form.value.message;
+      this.chat.addMessage(this.form.value.message);
+      this.message = this.chat.chatList;
+      this.form.reset();
     }
   }
 }

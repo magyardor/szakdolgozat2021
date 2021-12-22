@@ -17,6 +17,11 @@ router.get("",
   OrdersController.getOrders
 )
 
+router.get("/:id",
+  img,
+  OrdersController.getOrderID
+)
+
 router.delete("/:id",
   checkAuth,
   OrdersController.deleteOrders

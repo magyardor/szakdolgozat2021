@@ -59,13 +59,6 @@
         <input matInput type="email" placeholder="Email" formControlName="email" required>
         <mat-error *ngIf="form.get('email')?.invalid">Please enter valid email.</mat-error>
       </mat-form-field>
-      <div>
-        <button mat-stroked-button type="button" class="btn-secondary" (click)="filePicker.click()" required>{{'FORM.ADD_PRODUCTS.PICK_IMAGE' | translate}}</button>
-        <input type="file" #filePicker (change)="onImagePicked($event)">
-      </div>
-      <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image')?.valid">
-        <img [src]="imagePreview" [alt]="form.value.fistName">
-      </div>
       <mat-form-field appearance="outline">
         <mat-label>{{'FORM.ABOUT_US.MESSAGE' | translate}}</mat-label>
         <textarea matInput rows="4" placeholder="Description" formControlName="description" required></textarea>
