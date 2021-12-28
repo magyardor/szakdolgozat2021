@@ -13,8 +13,18 @@ footer{
   align-items: center;
 }
 
+.mobile {
+  @media screen and (max-width: 660px){
+    width: 130px;
+  }
+}
+
 img {
   width: 15%;
+  @media screen and (max-width: 660px){
+    display: none;
+  }
+
 }
 
 #logo_monogram {

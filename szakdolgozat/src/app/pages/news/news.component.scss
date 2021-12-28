@@ -2,6 +2,11 @@
   display: grid;
   width: 60%;
   margin: auto;
+
+  @media screen and (max-width: 660px){
+    width: 100%;
+    margin: auto;
+  }
 }
 
 .news-header {

@@ -15,6 +15,11 @@
 
 .text-white {
   color: var(--white-color);
+
+  @media screen and (max-width: 800px){
+    max-width: 250px;
+    white-space: pre-wrap;
+  }
 }
 
 .text-secondary {
@@ -29,6 +34,10 @@
 .transport-page-body {
   display: flex;
   margin-bottom: 2rem;
+
+  @media screen and (max-width: 660px){
+   display: grid;
+  }
 }
 
 .transport-left {
@@ -101,4 +110,8 @@ input[type=file] {
 
 .done {
   font-size: 20px;
+}
+
+.vertical {
+  width: 330px;
 }
