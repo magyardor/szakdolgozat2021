@@ -2,11 +2,38 @@
   color: var(--highlighter-color);
 }
 
-.prod-image {
- /*  width: 100%; */
-  display: flex;
+.image-header {
+  @media screen and (max-width: 660px){
+    display: none !important;
+  }
 }
 
-.prod-image img {
+.image-row {
   width: 20%;
+  .prod-image {
+    display: flex;
+
+    img {
+      width: 20%;
+    }
+  }
+
+  @media screen and (max-width: 660px){
+    display: none !important;
+  }
+}
+
+.quantity-row {
+  display: flex;
+  .number {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 660px){
+    display: grid;
+  }
 }

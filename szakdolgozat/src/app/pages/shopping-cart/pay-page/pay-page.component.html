@@ -265,7 +265,7 @@
         </mat-step>
       </mat-horizontal-stepper>
     </div>
-    <div *ngSwitchCase="'vertical'">
+    <div *ngSwitchCase="'vertical'" class="vertical">
       <mat-vertical-stepper [linear]="isLinear" #stepper>
         <mat-step label="Adatok megadása" [stepControl]="form">
           <form [formGroup]="form" (submit)="addShipOrder()">
