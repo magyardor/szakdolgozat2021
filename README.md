@@ -1,4 +1,4 @@
-# Kisvállalatokat segítő webáruház Andular keretrendszerben
+# Kisvállalatokat segítő webáruház Angular keretrendszerben
 ## Témabejelentő
 
 A cél egy kozmetikai termékeket értékesítő webshop alkalmazás megvalósítása. A weboldal tartalmazna egy vásárlói felületet, amin olyan
