@@ -59,7 +59,7 @@ A föntebbiekben említett szerveroldalon található végpontok listája:
 Az alkalmazás lényegi funkciók bemutatása a program futása közben mentett képernyőfotók segítségével.
 #### Webáruház felülete
 A program fejlesztése során a vásárlókat segítő, számos funkció került bele az alkalmazásba. Ilyen segítő funkciók például:
-- Chat: a vásárlóban felmerülő kérdések megválaszolása
+- Chat: a vásárlóban felmerülő kérdések megválaszolása és megjelenításe animáció használatával
 ![Chat](chat_response.png)
 - Alert message: a felhasználó által indított kérések folyamatáról informáló üzenetek
 ![Alert](alert_message.PNG)
